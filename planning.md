@@ -115,11 +115,5 @@ Users, Swappabilia
 Problem
 -------
 
-- Are competitors fail because they base their online trading on money
+- Our competitors fail because they base their online trading on money
 - We'd like to quickly access a list of belongings others are willing to swap, and offer something of our own in exchange
-
-
-
-
-
-

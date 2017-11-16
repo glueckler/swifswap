@@ -2,10 +2,22 @@ Project Description
 -------------------
 
 - Title: swifswap
-- Description: swifswap is an app that makes trading your goods enjoyable, once again, just like back in the day.
+- Description:
+  - Swifswap is an app that makes trading your goods enjoyable, once again, just like back in the day.  Only now we don't need to carry around our heavy armour and gold.  Swifswap is a platform that will host your swappabilia, and make it much easier to find others interested in what you got.
 - Target Audience
   - Users who enjoy trading
   - Users who are actively online
+
+
+
+
+Problem
+-------
+
+- Are competitors fail because they base their online trading on money
+- We'd like to quickly access a list of belongings others are willing to swap, and offer something of our own in exchange
+
+
 
 
 User Stories
@@ -78,45 +90,44 @@ As an existing user:
 
 
 
-
-
-App Data
+Big Plan
 --------
 
-Users, Swappabilia
-
-### The User
-
-- email
-- password
-- interests (or lack thereof)
-- things to swap
-
-
-
-### The Browse
-
-- categories
-- filters
-
-
-
-### The Swappabilia
-
-- photo
-- its category
-- its location
-- a swap chat
+1. Plan the f-ck out of the app user stories, stack, etc.
+2. ERD
+3. Routes
+4. Migrations
+5. Authentication Wrapper (start using React)
+6. Build out HTML
+7. Styles styles.. styles..
 
 
 
 
 
-Problem
--------
 
-- Are competitors fail because they base their online trading on money
-- We'd like to quickly access a list of belongings others are willing to swap, and offer something of our own in exchange
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

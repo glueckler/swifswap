@@ -1,4 +1,6 @@
-## Project Description
+Project Description
+-------------------
+
 - Title: swifswap
 - Description: swifswap is an app that makes trading your goods enjoyable, once again, just like back in the day.
 - Target Audience
@@ -6,7 +8,8 @@
   - Users who are actively online
 
 
-## User Stories
+User Stories
+------------
 
 As a new user (or loged out):
 - On the homepage I will see a list of items available to trade, and a register/login option
@@ -77,12 +80,13 @@ As an existing user:
 
 
 
-## App Data
+App Data
+--------
 
 Users, Swappabilia
 
-The User
---------
+### The User
+
 - email
 - password
 - interests (or lack thereof)
@@ -90,15 +94,15 @@ The User
 
 
 
-The Browse
-----------
+### The Browse
+
 - categories
 - filters
 
 
 
-The Swappabilia
----------------
+### The Swappabilia
+
 - photo
 - its category
 - its location
@@ -108,7 +112,8 @@ The Swappabilia
 
 
 
-## Problem
+Problem
+-------
 
 - Are competitors fail because they base their online trading on money
 - We'd like to quickly access a list of belongings others are willing to swap, and offer something of our own in exchange

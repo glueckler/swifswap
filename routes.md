@@ -13,13 +13,13 @@ API
 ### User
 
 - See user profile
-  - api.get('/user')
+  - api.get('/users/:id')
 - Create new user
-  - api.post('/user')
+  - api.post('/users')
 - Update user profile
-  - api.put('/user')
+  - api.put('/users/:id')
 - Delete account
-  - api.delete('/user')
+  - api.delete('/users/:id')
 
 ### Session
 
@@ -31,29 +31,27 @@ API
 ### Item
 
 - See item
-  - api.get('item')
+  - api.get('items/:id')
 - Create item
-  - api.post('item')
+  - api.post('items')
 - Update item
-  - api.put('item')
+  - api.put('items/:id')
 - Delete item
-  - api.delete('item')
+  - api.delete('items/:id')
 
 ### Chat
 
-- See chat messages
-  - api.get('chat')
+- Get chat rooms
+  - api.get('chats')
 - Create new chat
-  - api.post('chat')
+  - api.post('chats/:id')
 - Delete chat
-  - api.delete('chat')
+  - api.delete('chats/:id')
 
 ### Messages
 
 - Get messages
-  - api.get('message')
-- Create message
-  - api.post('message')
+  - websockets
 
 
 

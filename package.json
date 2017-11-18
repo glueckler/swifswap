@@ -2,13 +2,24 @@
   "name": "swifswap",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon",
+    "heart": "echo '<3'"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "webpack": "^3.8.1"
+    "koa-logger": "^3.1.0",
+    "nodemon": "^1.12.1",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
+  },
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "koa": "^2.4.1",
+    "koa-router": "^7.3.0",
+    "path": "^0.12.7"
   }
 }

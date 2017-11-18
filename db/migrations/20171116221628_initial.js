@@ -1,6 +1,6 @@
 exports.up = function(knex) {
   return knex.schema.createTable('users', function (table) {
-    table.increments();
+    table.increments().notNullable();
     table.string('username').notNullable();
     table.string('location').notNullable();
     table.string('email').notNullable();
@@ -9,51 +9,51 @@ exports.up = function(knex) {
   })
   .createTable('chats', function(table) {
     table.increments().notNullable();
-    table.integer('sender_id').references('id').inTable('users').notNullable();
-    table.integer('receiver_id').references('id').inTable('users').notNullable();
+    table.integer('sender_id').references('id').inTable('users').onDelete('CASCADE').notNullable();
+    table.integer('receiver_id').references('id').inTable('users').onDelete('CASCADE').notNullable();
 
   })
   .createTable('messages', function(table) {
-    table.increments();
+    table.increments().notNullable();
     table.string('content');
     table.timestamp('created_at').defaultTo(knex.fn.now());
-    table.integer('chat_id').references('id').inTable('chats').notNullable();
-    table.integer('user_id').references('id').inTable('users').notNullable();
+    table.integer('chat_id').references('id').inTable('chats').onDelete('CASCADE').notNullable();
+    table.integer('user_id').references('id').inTable('users').onDelete('CASCADE').notNullable();
   })
   .createTable('items', function(table) {
-    table.increments();
+    table.increments().notNullable();
     table.string('name');
     table.string('description');
   })
   .createTable('photos', function(table) {
-    table.increments();
-    table.integer('item_id').references('id').inTable('items').notNullable();
+    table.increments().notNullable();
+    table.integer('item_id').references('id').inTable('items').onDelete('CASCADE').notNullable();
     table.string('img_path');
   })
   .createTable('tags', function(table) {
-    table.increments();
+    table.increments().notNullable();
     table.string('name');
   })
   .createTable('users_favourites', function(table) {
-    table.increments();
-    table.integer('user_id').references('id').inTable('users').notNullable();
-    table.integer('item_id').references('id').inTable('items').notNullable();
+    table.increments().notNullable();
+    table.integer('user_id').references('id').inTable('users').onDelete('CASCADE').notNullable();
+    table.integer('item_id').references('id').inTable('items').onDelete('CASCADE').notNullable();
   })
   .createTable('users_tags', function(table) {
-    table.increments();
-    table.integer('user_id').references('id').inTable('users').notNullable();
-    table.integer('tag_id').references('id').inTable('tags').notNullable();
+    table.increments().notNullable();
+    table.integer('user_id').references('id').inTable('users').onDelete('CASCADE').notNullable();
+    table.integer('tag_id').references('id').inTable('tags').onDelete('CASCADE').notNullable();
 
   })
   .createTable('items_tags', function(table) {
-    table.increments();
-    table.integer('item_id').references('id').inTable('items').notNullable();
-    table.integer('tag_id').references('id').inTable('tags').notNullable();
+    table.increments().notNullable();
+    table.integer('item_id').references('id').inTable('items').onDelete('CASCADE').notNullable();
+    table.integer('tag_id').references('id').inTable('tags').onDelete('CASCADE').notNullable();
   })
   .createTable('items_chats', function(table) {
-    table.increments();
-    table.integer('item_id').references('id').inTable('items').notNullable();
-    table.integer('chat_id').references('id').inTable('chats').notNullable();
+    table.increments().notNullable();
+    table.integer('item_id').references('id').inTable('items').onDelete('CASCADE').notNullable();
+    table.integer('chat_id').references('id').inTable('chats').onDelete('CASCADE').notNullable();
   })
 };
 

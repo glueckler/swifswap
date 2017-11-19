@@ -1,34 +1,10 @@
-require('dotenv').config()
 const { items } = require('./controllers/controller')
-const logger    = require('koa-logger')
-const Router    = require('koa-router')
+const { app, api } = require('./server.config')
 
-const Koa       = require('koa')
-const app       = new Koa()
-const api       = new Router({ prefix: '/api' })
-
-app.use(api.routes())
-
-if (process.env.NODE_ENV === 'development') {
-  console.log('koa server script running in development ENV!')
-  app.use(logger())
-}
-
-items.testQuery()
-
-app.use(async (ctx, next) => {
-  try {
-    await next()
-  } catch (err) {
-    ctx.status = err.status || 500
-    ctx.body = err.message
-    ctx.app.emit('error', err, ctx)
-  }
-})
+items.sayHello()
 
 api.get('/', async ctx => {
   ctx.body = 'Hello mr Mr'
-  // knex.select().table('items')
 })
 
 // See user profile
@@ -86,4 +62,5 @@ api.post('/chats/:id', async ctx => {
 api.delete('/chats/:id', async ctx => {
   ctx.body = 'you called delete at /chats/:id'
 })
+
 app.listen(3000)

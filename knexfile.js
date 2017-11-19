@@ -6,8 +6,8 @@ module.exports = {
     client: 'pg',
     connection: {
       database: 'swifswap',
-      user: 'labber',
-      password: 'labber'
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD
     },
     migrations: {
       directory: './db/migrations'
@@ -16,7 +16,6 @@ module.exports = {
       directory: './db/seeds'
     }
   }
-
 
   // production: {
   //   client: 'postgresql',

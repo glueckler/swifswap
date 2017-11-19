@@ -53,6 +53,10 @@ api.get('/chats', async ctx => {
   ctx.body = (await chat.getChats())
 })
 
+api.get('/chats/:id', async ctx => {
+  ctx.body = (await chat.getChatById(ctx.params.id))[0]
+})
+
 api.post('/chats/:id', async ctx => {
   ctx.body = 'you called post at /chats/:id'
 })

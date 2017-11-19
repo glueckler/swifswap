@@ -6,154 +6,154 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex('users_favourites').insert([{
         user_id: 4,
-        "item_id": 9
+        item_id: 9
       }, {
-        "user_id": 13,
-        "item_id": 11
+        user_id: 13,
+        item_id: 11
       }, {
-        "user_id": 49,
-        "item_id": 18
+        user_id: 49,
+        item_id: 18
       }, {
-        "user_id": 46,
-        "item_id": 6
+        user_id: 46,
+        item_id: 6
       }, {
-        "user_id": 9,
-        "item_id": 30
+        user_id: 9,
+        item_id: 30
       }, {
-        "user_id": 32,
-        "item_id": 25
+        user_id: 32,
+        item_id: 25
       }, {
-        "user_id": 38,
-        "item_id": 17
+        user_id: 38,
+        item_id: 17
       }, {
-        "user_id": 30,
-        "item_id": 47
+        user_id: 30,
+        item_id: 47
       }, {
-        "user_id": 1,
-        "item_id": 11
+        user_id: 1,
+        item_id: 11
       }, {
-        "user_id": 31,
-        "item_id": 7
+        user_id: 31,
+        item_id: 7
       }, {
-        "user_id": 47,
-        "item_id": 49
+        user_id: 47,
+        item_id: 49
       }, {
-        "user_id": 46,
-        "item_id": 50
+        user_id: 46,
+        item_id: 50
       }, {
-        "user_id": 1,
-        "item_id": 2
+        user_id: 1,
+        item_id: 2
       }, {
-        "user_id": 11,
-        "item_id": 46
+        user_id: 11,
+        item_id: 46
       }, {
-        "user_id": 42,
-        "item_id": 44
+        user_id: 42,
+        item_id: 44
       }, {
-        "user_id": 7,
-        "item_id": 45
+        user_id: 7,
+        item_id: 45
       }, {
-        "user_id": 9,
-        "item_id": 38
+        user_id: 9,
+        item_id: 38
       }, {
-        "user_id": 18,
-        "item_id": 16
+        user_id: 18,
+        item_id: 16
       }, {
-        "user_id": 15,
-        "item_id": 49
+        user_id: 15,
+        item_id: 49
       }, {
-        "user_id": 19,
-        "item_id": 50
+        user_id: 19,
+        item_id: 50
       }, {
-        "user_id": 18,
-        "item_id": 25
+        user_id: 18,
+        item_id: 25
       }, {
-        "user_id": 46,
-        "item_id": 48
+        user_id: 46,
+        item_id: 48
       }, {
-        "user_id": 17,
-        "item_id": 5
+        user_id: 17,
+        item_id: 5
       }, {
-        "user_id": 4,
-        "item_id": 3
+        user_id: 4,
+        item_id: 3
       }, {
-        "user_id": 39,
-        "item_id": 25
+        user_id: 39,
+        item_id: 25
       }, {
-        "user_id": 28,
-        "item_id": 41
+        user_id: 28,
+        item_id: 41
       }, {
-        "user_id": 47,
-        "item_id": 8
+        user_id: 47,
+        item_id: 8
       }, {
-        "user_id": 45,
-        "item_id": 36
+        user_id: 45,
+        item_id: 36
       }, {
-        "user_id": 13,
-        "item_id": 18
+        user_id: 13,
+        item_id: 18
       }, {
-        "user_id": 48,
-        "item_id": 49
+        user_id: 48,
+        item_id: 49
       }, {
-        "user_id": 43,
-        "item_id": 48
+        user_id: 43,
+        item_id: 48
       }, {
-        "user_id": 4,
-        "item_id": 50
+        user_id: 4,
+        item_id: 50
       }, {
-        "user_id": 33,
-        "item_id": 30
+        user_id: 33,
+        item_id: 30
       }, {
-        "user_id": 44,
-        "item_id": 6
+        user_id: 44,
+        item_id: 6
       }, {
-        "user_id": 7,
-        "item_id": 36
+        user_id: 7,
+        item_id: 36
       }, {
-        "user_id": 21,
-        "item_id": 50
+        user_id: 21,
+        item_id: 50
       }, {
-        "user_id": 28,
-        "item_id": 24
+        user_id: 28,
+        item_id: 24
       }, {
-        "user_id": 14,
-        "item_id": 35
+        user_id: 14,
+        item_id: 35
       }, {
-        "user_id": 30,
-        "item_id": 19
+        user_id: 30,
+        item_id: 19
       }, {
-        "user_id": 19,
-        "item_id": 9
+        user_id: 19,
+        item_id: 9
       }, {
-        "user_id": 10,
-        "item_id": 31
+        user_id: 10,
+        item_id: 31
       }, {
-        "user_id": 28,
-        "item_id": 23
+        user_id: 28,
+        item_id: 23
       }, {
-        "user_id": 50,
-        "item_id": 4
+        user_id: 50,
+        item_id: 4
       }, {
-        "user_id": 21,
-        "item_id": 35
+        user_id: 21,
+        item_id: 35
       }, {
-        "user_id": 41,
-        "item_id": 19
+        user_id: 41,
+        item_id: 19
       }, {
-        "user_id": 33,
-        "item_id": 4
+        user_id: 33,
+        item_id: 4
       }, {
-        "user_id": 8,
-        "item_id": 5
+        user_id: 8,
+        item_id: 5
       }, {
-        "user_id": 23,
-        "item_id": 4
+        user_id: 23,
+        item_id: 4
       }, {
-        "user_id": 44,
-        "item_id": 33
+        user_id: 44,
+        item_id: 33
       }, {
-        "user_id": 46,
-        "item_id": 3
-      }]);
-    });
-};
+        user_id: 46,
+        item_id: 3
+      }])
+    })
+}

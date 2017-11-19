@@ -37,6 +37,6 @@ exports.seed = function(knex, Promise) {
           name: 'Sports'},
         {
           name: 'Vehicles'}
-      ]);
-    });
-};
+      ])
+    })
+}

@@ -5,155 +5,155 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('items_chats').insert([{
-        "item_id": 4,
-        "chat_id": 29
+        item_id: 4,
+        chat_id: 29
       }, {
-        "item_id": 19,
-        "chat_id": 14
+        item_id: 19,
+        chat_id: 14
       }, {
-        "item_id": 34,
-        "chat_id": 19
+        item_id: 34,
+        chat_id: 19
       }, {
-        "item_id": 36,
-        "chat_id": 46
+        item_id: 36,
+        chat_id: 46
       }, {
-        "item_id": 18,
-        "chat_id": 22
+        item_id: 18,
+        chat_id: 22
       }, {
-        "item_id": 11,
-        "chat_id": 1
+        item_id: 11,
+        chat_id: 1
       }, {
-        "item_id": 13,
-        "chat_id": 40
+        item_id: 13,
+        chat_id: 40
       }, {
-        "item_id": 47,
-        "chat_id": 17
+        item_id: 47,
+        chat_id: 17
       }, {
-        "item_id": 44,
-        "chat_id": 44
+        item_id: 44,
+        chat_id: 44
       }, {
-        "item_id": 15,
-        "chat_id": 37
+        item_id: 15,
+        chat_id: 37
       }, {
-        "item_id": 5,
-        "chat_id": 20
+        item_id: 5,
+        chat_id: 20
       }, {
-        "item_id": 42,
-        "chat_id": 50
+        item_id: 42,
+        chat_id: 50
       }, {
-        "item_id": 36,
-        "chat_id": 27
+        item_id: 36,
+        chat_id: 27
       }, {
-        "item_id": 27,
-        "chat_id": 48
+        item_id: 27,
+        chat_id: 48
       }, {
-        "item_id": 1,
-        "chat_id": 21
+        item_id: 1,
+        chat_id: 21
       }, {
-        "item_id": 41,
-        "chat_id": 19
+        item_id: 41,
+        chat_id: 19
       }, {
-        "item_id": 35,
-        "chat_id": 21
+        item_id: 35,
+        chat_id: 21
       }, {
-        "item_id": 36,
-        "chat_id": 22
+        item_id: 36,
+        chat_id: 22
       }, {
-        "item_id": 2,
-        "chat_id": 24
+        item_id: 2,
+        chat_id: 24
       }, {
-        "item_id": 36,
-        "chat_id": 47
+        item_id: 36,
+        chat_id: 47
       }, {
-        "item_id": 39,
-        "chat_id": 5
+        item_id: 39,
+        chat_id: 5
       }, {
-        "item_id": 38,
-        "chat_id": 44
+        item_id: 38,
+        chat_id: 44
       }, {
-        "item_id": 23,
-        "chat_id": 34
+        item_id: 23,
+        chat_id: 34
       }, {
-        "item_id": 33,
-        "chat_id": 47
+        item_id: 33,
+        chat_id: 47
       }, {
-        "item_id": 15,
-        "chat_id": 11
+        item_id: 15,
+        chat_id: 11
       }, {
-        "item_id": 37,
-        "chat_id": 30
+        item_id: 37,
+        chat_id: 30
       }, {
-        "item_id": 20,
-        "chat_id": 12
+        item_id: 20,
+        chat_id: 12
       }, {
-        "item_id": 12,
-        "chat_id": 40
+        item_id: 12,
+        chat_id: 40
       }, {
-        "item_id": 29,
-        "chat_id": 37
+        item_id: 29,
+        chat_id: 37
       }, {
-        "item_id": 24,
-        "chat_id": 29
+        item_id: 24,
+        chat_id: 29
       }, {
-        "item_id": 15,
-        "chat_id": 27
+        item_id: 15,
+        chat_id: 27
       }, {
-        "item_id": 22,
-        "chat_id": 6
+        item_id: 22,
+        chat_id: 6
       }, {
-        "item_id": 43,
-        "chat_id": 15
+        item_id: 43,
+        chat_id: 15
       }, {
-        "item_id": 37,
-        "chat_id": 8
+        item_id: 37,
+        chat_id: 8
       }, {
-        "item_id": 14,
-        "chat_id": 39
+        item_id: 14,
+        chat_id: 39
       }, {
-        "item_id": 38,
-        "chat_id": 24
+        item_id: 38,
+        chat_id: 24
       }, {
-        "item_id": 6,
-        "chat_id": 7
+        item_id: 6,
+        chat_id: 7
       }, {
-        "item_id": 29,
-        "chat_id": 27
+        item_id: 29,
+        chat_id: 27
       }, {
-        "item_id": 34,
-        "chat_id": 25
+        item_id: 34,
+        chat_id: 25
       }, {
-        "item_id": 45,
-        "chat_id": 22
+        item_id: 45,
+        chat_id: 22
       }, {
-        "item_id": 37,
-        "chat_id": 17
+        item_id: 37,
+        chat_id: 17
       }, {
-        "item_id": 24,
-        "chat_id": 32
+        item_id: 24,
+        chat_id: 32
       }, {
-        "item_id": 31,
-        "chat_id": 46
+        item_id: 31,
+        chat_id: 46
       }, {
-        "item_id": 11,
-        "chat_id": 15
+        item_id: 11,
+        chat_id: 15
       }, {
-        "item_id": 47,
-        "chat_id": 42
+        item_id: 47,
+        chat_id: 42
       }, {
-        "item_id": 19,
-        "chat_id": 15
+        item_id: 19,
+        chat_id: 15
       }, {
-        "item_id": 24,
-        "chat_id": 28
+        item_id: 24,
+        chat_id: 28
       }, {
-        "item_id": 38,
-        "chat_id": 34
+        item_id: 38,
+        chat_id: 34
       }, {
-        "item_id": 3,
-        "chat_id": 39
+        item_id: 3,
+        chat_id: 39
       }, {
-        "item_id": 2,
-        "chat_id": 12
+        item_id: 2,
+        chat_id: 12
       }]);
     });
 };

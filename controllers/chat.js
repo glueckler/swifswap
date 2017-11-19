@@ -6,6 +6,9 @@ const chat = function (db) {
   c.getChats = async function (id) {
     return db.select().from('chats')
   }
+  c.getChatById = async function (id) {
+    return db.select().from('chats').where({ id })
+  }
   return c
 }
 

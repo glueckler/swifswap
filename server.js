@@ -14,6 +14,12 @@ if (process.env.NODE_ENV === 'development') {
   app.use(logger())  
 }
 
+asdf
+asdf
+asdf
+asdf
+asdf
+
 app.use(async (ctx, next) => {
   try {
     await next()

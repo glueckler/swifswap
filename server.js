@@ -4,7 +4,7 @@ const env       = require('dotenv')
 const logger    = require('koa-logger')
 const Router    = require('koa-router')
 
-const Koa       = require('koa');
+const Koa       = require('koa')
 const app       = new Koa()
 const api       = new Router({ prefix: '/api' })
 

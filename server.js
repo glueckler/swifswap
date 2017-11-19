@@ -7,11 +7,12 @@ const Koa       = require('koa');
 const app       = new Koa()
 const api       = new Router({ prefix: '/api' })
 
+
 app.use(api.routes())
 
 if (process.env.NODE_ENV === 'development') {
   console.log('koa server script ran in development mode!!!!!!!')
-  app.use(logger())  
+  app.use(logger())
 }
 
 app.use(async (ctx, next) => {
@@ -26,6 +27,7 @@ app.use(async (ctx, next) => {
 
 api.get('/', async ctx => {
   ctx.body = 'Hello mr Mr'
+  // knex.select().table('items')
 })
 
 //USERS ROUTES
@@ -35,7 +37,7 @@ api.get('/users/:id', async ctx => {
 })
 //Create new user 
 api.post('/users', async ctx => {
-  ctx.body = 'you called the post method at /users'
+  ctx.body = 'you called the post method at /users';
 })
 //Update user profile 
 api.put('/users/:id', async ctx => {

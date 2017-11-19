@@ -1,8 +1,6 @@
 const { items } = require('./controllers/controller')
 const { app, api } = require('./server.config')
 
-items.sayHello()
-
 api.get('/', async ctx => {
   ctx.body = 'Hello mr Mr'
 })
@@ -35,7 +33,9 @@ api.delete('/session', async ctx => {
 
 // Item
 api.get('/items/:id', async ctx => {
-  ctx.body = 'you called get at /items/:id'
+  const item = items.getItemById(1)
+  console.log(item)
+  ctx.body = item
 })
 
 api.post('/items', async ctx => {

@@ -4,6 +4,9 @@ const users = function (db) {
     console.log('this is totally an example')
   }
 
+  u.getUserById = async function (id) {
+    return db.select().from('users').where({ id })
+  }
   return u
 }
 

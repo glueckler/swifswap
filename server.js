@@ -1,4 +1,4 @@
-const { items } = require('./controllers/controller')
+const { items, users, chat } = require('./controllers/controller')
 const { app, api, bodyParser } = require('./server.config')
 
 api.get('/', async ctx => {
@@ -7,7 +7,7 @@ api.get('/', async ctx => {
 
 // See user profile
 api.get('/users/:id', async ctx => {
-  ctx.body = 'you are in the users id route'
+  ctx.body = (await users.getUserById(ctx.params.id))[0]
 })
 
 api.post('/users', async ctx => {
@@ -41,7 +41,7 @@ api.post('/items', bodyParser(), async ctx => {
 })
 
 api.put('/items/:id', async ctx => {
-  ctx.body = (await items.updateItem(ctx.params.id))
+
 })
 
 api.delete('/items/:id', async ctx => {
@@ -50,7 +50,7 @@ api.delete('/items/:id', async ctx => {
 
 // Chat
 api.get('/chats', async ctx => {
-  ctx.body = 'you called get at /chats'
+  ctx.body = (await chat.getChats())
 })
 
 api.post('/chats/:id', async ctx => {

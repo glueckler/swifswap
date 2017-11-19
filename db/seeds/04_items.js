@@ -4,156 +4,206 @@ exports.seed = function(knex, Promise) {
   return knex('items').del()
     .then(function () {
       // Inserts seed entries
-      return knex('items').insert([{
-        "name": "adipiscing elit proin",
-        "description": "eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa"
+      return knex('items').insert([[{
+        "name": "est congue elementum in",
+        "description": "amet nulla quisque arcu libero rutrum ac lobortis vel",
+        "user_id": 33
       }, {
-        "name": "morbi",
-        "description": "lacus at turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus aliquam sit amet diam in magna bibendum imperdiet"
+        "name": "donec diam neque vestibulum",
+        "description": "erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in felis",
+        "user_id": 29
       }, {
-        "name": "lacinia eget tincidunt eget tempus",
-        "description": "nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum"
+        "name": "volutpat quam pede",
+        "description": "leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at dolor quis odio",
+        "user_id": 45
       }, {
-        "name": "condimentum curabitur in libero",
-        "description": "eget rutrum at lorem integer tincidunt ante"
+        "name": "turpis elementum",
+        "description": "faucibus orci luctus et ultrices posuere cubilia curae",
+        "user_id": 37
       }, {
-        "name": "quis odio consequat varius",
-        "description": "nunc purus phasellus in felis"
+        "name": "mi",
+        "description": "venenatis tristique fusce congue diam id ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat",
+        "user_id": 37
       }, {
-        "name": "faucibus cursus urna ut tellus",
-        "description": "erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi"
+        "name": "vivamus in felis",
+        "description": "curae duis faucibus accumsan odio curabitur convallis duis consequat dui nec nisi volutpat eleifend donec ut dolor",
+        "user_id": 30
       }, {
-        "name": "scelerisque quam turpis adipiscing",
-        "description": "volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in felis donec semper sapien a libero nam"
+        "name": "nulla nunc purus phasellus",
+        "description": "augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida",
+        "user_id": 2
       }, {
-        "name": "sed nisl nunc",
-        "description": "praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget tempus vel pede"
+        "name": "amet consectetuer adipiscing elit",
+        "description": "gravida nisi at nibh in hac",
+        "user_id": 46
       }, {
-        "name": "quam a odio",
-        "description": "nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi"
+        "name": "vestibulum aliquet ultrices erat",
+        "description": "lorem ipsum dolor sit amet consectetuer adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in ante vestibulum",
+        "user_id": 32
       }, {
-        "name": "at nunc commodo",
-        "description": "pharetra magna vestibulum aliquet ultrices erat"
-      }, {
-        "name": "orci nullam",
-        "description": "vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae duis faucibus accumsan odio"
-      }, {
-        "name": "luctus tincidunt nulla mollis",
-        "description": "ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit"
-      }, {
-        "name": "dolor sit amet consectetuer",
-        "description": "potenti cras in purus eu magna vulputate luctus"
-      }, {
-        "name": "mauris sit",
-        "description": "a nibh in quis justo maecenas rhoncus aliquam lacus"
-      }, {
-        "name": "amet eros suspendisse",
-        "description": "aenean lectus pellentesque eget nunc donec quis orci eget orci"
-      }, {
-        "name": "quam nec",
-        "description": "nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper"
-      }, {
-        "name": "tellus semper interdum mauris ullamcorper",
-        "description": "luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin ut suscipit a"
-      }, {
-        "name": "vel ipsum praesent blandit lacinia",
-        "description": "rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit"
-      }, {
-        "name": "sapien iaculis congue",
-        "description": "ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non mi integer ac neque duis bibendum morbi non"
-      }, {
-        "name": "donec dapibus duis",
-        "description": "rutrum nulla nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla"
-      }, {
-        "name": "justo in",
-        "description": "mauris enim leo rhoncus sed vestibulum sit amet cursus id"
-      }, {
-        "name": "ultrices posuere cubilia",
-        "description": "eu nibh quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum"
-      }, {
-        "name": "a ipsum integer a nibh",
-        "description": "libero nam dui proin leo odio porttitor id consequat in consequat ut"
-      }, {
-        "name": "eget elit sodales",
-        "description": "ipsum aliquam non mauris morbi non lectus aliquam"
-      }, {
-        "name": "integer ac neque duis bibendum",
-        "description": "sapien arcu sed augue aliquam erat volutpat in congue etiam justo"
-      }, {
-        "name": "potenti cras in purus eu",
-        "description": "luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at feugiat non"
-      }, {
-        "name": "maecenas",
-        "description": "ipsum aliquam non mauris morbi non lectus aliquam sit amet diam in magna bibendum imperdiet nullam"
-      }, {
-        "name": "sem fusce consequat",
-        "description": "vel ipsum praesent blandit lacinia"
-      }, {
-        "name": "in sagittis",
-        "description": "sapien arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus"
-      }, {
-        "name": "est congue elementum",
-        "description": "lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi nulla ac"
-      }, {
-        "name": "morbi",
-        "description": "tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at"
-      }, {
-        "name": "pede justo lacinia eget",
-        "description": "aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed"
-      }, {
-        "name": "fermentum justo",
-        "description": "ipsum primis in faucibus orci luctus et ultrices posuere"
-      }, {
-        "name": "etiam justo",
-        "description": "in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate elementum"
-      }, {
-        "name": "dapibus augue",
-        "description": "eget orci vehicula condimentum curabitur in libero ut massa volutpat"
-      }, {
-        "name": "varius integer",
-        "description": "consectetuer adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum"
-      }, {
-        "name": "venenatis",
-        "description": "pulvinar lobortis est phasellus sit amet erat nulla tempus"
+        "name": "sociis natoque penatibus",
+        "description": "vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis",
+        "user_id": 47
       }, {
         "name": "diam",
-        "description": "aliquam non mauris morbi non lectus aliquam sit amet diam in magna bibendum imperdiet"
+        "description": "praesent id massa id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi",
+        "user_id": 50
       }, {
-        "name": "viverra pede ac diam cras",
-        "description": "neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet"
+        "name": "non mauris morbi non lectus",
+        "description": "sapien sapien non mi integer ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla tellus",
+        "user_id": 28
       }, {
-        "name": "donec semper sapien",
-        "description": "justo eu massa donec dapibus duis at velit eu est"
+        "name": "rhoncus sed vestibulum sit",
+        "description": "rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit",
+        "user_id": 34
       }, {
-        "name": "fringilla",
-        "description": "aliquet massa id lobortis convallis tortor risus dapibus augue"
+        "name": "vulputate vitae nisl aenean lectus",
+        "description": "habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla",
+        "user_id": 35
       }, {
-        "name": "sit amet consectetuer adipiscing elit",
-        "description": "rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel sem"
+        "name": "sodales scelerisque mauris sit",
+        "description": "vitae ipsum aliquam non mauris morbi non lectus aliquam sit amet diam in magna bibendum imperdiet nullam orci pede venenatis non sodales sed",
+        "user_id": 36
       }, {
-        "name": "vel ipsum praesent blandit lacinia",
-        "description": "libero nam dui proin leo odio"
+        "name": "velit eu est congue",
+        "description": "eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat",
+        "user_id": 11
       }, {
-        "name": "lorem vitae mattis nibh ligula",
-        "description": "nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede justo eu massa donec dapibus"
+        "name": "tincidunt eget",
+        "description": "velit id pretium iaculis diam erat fermentum justo nec",
+        "user_id": 14
       }, {
-        "name": "ut nulla",
-        "description": "nulla sed accumsan felis ut at dolor quis odio consequat varius integer ac leo pellentesque ultrices mattis odio donec vitae"
+        "name": "mauris vulputate elementum nullam varius",
+        "description": "magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis natoque penatibus",
+        "user_id": 32
       }, {
-        "name": "congue etiam",
-        "description": "pede ullamcorper augue a suscipit nulla elit ac nulla"
+        "name": "at feugiat non pretium quis",
+        "description": "ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue",
+        "user_id": 48
       }, {
-        "name": "massa volutpat convallis",
-        "description": "sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes"
+        "name": "blandit lacinia erat vestibulum sed",
+        "description": "commodo placerat praesent blandit nam nulla",
+        "user_id": 15
       }, {
-        "name": "erat",
-        "description": "a pede posuere nonummy integer non velit donec diam"
+        "name": "quis augue luctus",
+        "description": "natoque penatibus et magnis dis parturient montes",
+        "user_id": 28
       }, {
-        "name": "amet nulla quisque arcu",
-        "description": "tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend"
+        "name": "augue luctus tincidunt nulla",
+        "description": "sem praesent id massa id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada in imperdiet et",
+        "user_id": 11
       }, {
-        "name": "cubilia",
-        "description": "et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet"
+        "name": "a libero nam dui",
+        "description": "dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque",
+        "user_id": 46
+      }, {
+        "name": "imperdiet nullam orci pede venenatis",
+        "description": "morbi non quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet",
+        "user_id": 16
+      }, {
+        "name": "odio condimentum id luctus",
+        "description": "odio justo sollicitudin ut suscipit a feugiat et eros vestibulum ac est",
+        "user_id": 39
+      }, {
+        "name": "suspendisse",
+        "description": "sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu",
+        "user_id": 36
+      }, {
+        "name": "nec",
+        "description": "a feugiat et eros vestibulum ac est lacinia nisi venenatis tristique fusce congue diam id",
+        "user_id": 40
+      }, {
+        "name": "libero nam dui proin leo",
+        "description": "ultrices enim lorem ipsum dolor sit amet",
+        "user_id": 29
+      }, {
+        "name": "orci luctus et ultrices posuere",
+        "description": "non lectus aliquam sit amet diam in magna bibendum imperdiet nullam orci",
+        "user_id": 5
+      }, {
+        "name": "sem fusce consequat nulla",
+        "description": "luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et",
+        "user_id": 41
+      }, {
+        "name": "ornare imperdiet sapien urna pretium",
+        "description": "tempus semper est quam pharetra magna ac consequat",
+        "user_id": 21
+      }, {
+        "name": "aliquam sit amet diam",
+        "description": "sapien iaculis congue vivamus metus arcu adipiscing molestie",
+        "user_id": 10
+      }, {
+        "name": "lectus vestibulum quam sapien",
+        "description": "lectus in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum",
+        "user_id": 37
+      }, {
+        "name": "aliquet massa id lobortis convallis",
+        "description": "mus vivamus vestibulum sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus",
+        "user_id": 17
+      }, {
+        "name": "aliquet maecenas",
+        "description": "penatibus et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum",
+        "user_id": 20
+      }, {
+        "name": "eros elementum pellentesque quisque porta",
+        "description": "dapibus dolor vel est donec odio justo sollicitudin ut suscipit a feugiat",
+        "user_id": 42
+      }, {
+        "name": "metus arcu adipiscing molestie hendrerit",
+        "description": "pede malesuada in imperdiet et commodo",
+        "user_id": 19
+      }, {
+        "name": "nisl aenean lectus",
+        "description": "integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo",
+        "user_id": 37
+      }, {
+        "name": "a suscipit nulla",
+        "description": "vel nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend",
+        "user_id": 37
+      }, {
+        "name": "aliquet at feugiat non",
+        "description": "ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue etiam",
+        "user_id": 26
+      }, {
+        "name": "mauris morbi non",
+        "description": "pellentesque quisque porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in felis donec",
+        "user_id": 48
+      }, {
+        "name": "fusce posuere",
+        "description": "tellus nisi eu orci mauris lacinia sapien quis libero",
+        "user_id": 48
+      }, {
+        "name": "lectus",
+        "description": "ridiculus mus vivamus vestibulum sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes",
+        "user_id": 27
+      }, {
+        "name": "gravida nisi at nibh in",
+        "description": "at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat",
+        "user_id": 12
+      }, {
+        "name": "vel",
+        "description": "vitae nisl aenean lectus pellentesque eget nunc donec quis orci eget",
+        "user_id": 27
+      }, {
+        "name": "nulla quisque",
+        "description": "luctus et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat dui nec nisi volutpat eleifend",
+        "user_id": 42
+      }, {
+        "name": "odio curabitur convallis duis",
+        "description": "sed tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc rhoncus dui",
+        "user_id": 25
+      }, {
+        "name": "tortor risus dapibus",
+        "description": "erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in felis",
+        "user_id": 27
+      }, {
+        "name": "donec ut dolor",
+        "description": "vivamus tortor duis mattis egestas metus aenean fermentum donec ut mauris eget massa tempor",
+        "user_id": 41
+      }, {
+        "name": "in magna bibendum imperdiet",
+        "description": "elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien",
+        "user_id": 10
       }]);
     });
 };

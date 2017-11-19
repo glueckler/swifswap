@@ -3,6 +3,9 @@ const chat = function (db) {
   c.exampleFunction = function () {
     console.log('this is an example')
   }
+  c.getChats = async function (id) {
+    return db.select().from('chats')
+  }
   return c
 }
 

@@ -4,11 +4,11 @@ npm i -D eslint eslint-config-standard eslint-plugin-node eslint-plugin-promise 
 module.exports = {
   "extends": "standard",
   "rules": {
-    //"padded-blocks": 0
+    "no-multi-spaces": 0   // disallow multiple spaces
   },
   "env": {
     "browser": true, // browser global variables
-    "node": false, // Node.js global variables and Node.js scoping
+    "node": true, // Node.js global variables and Node.js scoping
     "commonjs": false, // CommonJS global variables and CommonJS scoping (use this for browser-only code that uses Browserify/WebPack)
     "shared-node-browser": false, // Globals common to both Node and Browser
     "es6": true, // enable all ECMAScript 6 features except for modules (this automatically sets the ecmaVersion parser option to 6)

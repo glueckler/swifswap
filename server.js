@@ -16,9 +16,6 @@ if (process.env.NODE_ENV === 'development') {
 
 asdf
 asdf
-asdf
-asdf
-asdf
 
 app.use(async (ctx, next) => {
   try {

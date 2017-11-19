@@ -16,7 +16,9 @@ if (process.env.NODE_ENV === 'development') {
   app.use(logger())  
 }
 
-items.testQuery()
+// items.testQuery()
+
+// items.createItem()
 
 app.use(async (ctx, next) => {
   try {
@@ -30,7 +32,6 @@ app.use(async (ctx, next) => {
 
 api.get('/', async ctx => {
   ctx.body = 'Hello mr Mr'
-  // knex.select().table('items')
 })
 
 //USERS ROUTES
@@ -65,7 +66,9 @@ api.delete('/session', async ctx => {
 //ITEM ROUTES
 //see item
 api.get('/items/:id', async ctx => {
-  ctx.body = 'you called get at /items/:id'
+  const item = items.getItemById(1)
+  console.log(item)
+  ctx.body = item
 })
 //create item
 api.post('/items', async ctx => {

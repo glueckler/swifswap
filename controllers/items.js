@@ -8,6 +8,12 @@ const items = function(db) {
     db.select().from('items').then(results => { results.forEach(result => { console.log(result) } ) })
   }
     
+  i.getItemById = function() {
+    db.select().from('items').where({id: 1}).then(results => { results.forEach(result => { console.log(result) } ) })
+  }
+  i.createItem = function() {
+    db('items').insert({ id: 51, name: "shoehorn", description: "for helping ye put yer boots on"}).then(function (results) {console.log(results)})
+  }
   return i
 } 
 

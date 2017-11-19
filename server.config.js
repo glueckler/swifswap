@@ -1,10 +1,11 @@
 require('dotenv').config()
-const logger    = require('koa-logger')
-const Router    = require('koa-router')
+const logger     = require('koa-logger')
+const bodyParser = require('koa-body')
+const Router     = require('koa-router')
 
-const Koa       = require('koa')
-const app       = new Koa()
-const api       = new Router({ prefix: '/api' })
+const Koa        = require('koa')
+const app        = new Koa()
+const api        = new Router({ prefix: '/api' })
 
 app.use(api.routes())
 
@@ -25,5 +26,6 @@ app.use(async (ctx, next) => {
 
 module.exports = {
   app,
-  api
+  api,
+  bodyParser
 }

@@ -8,8 +8,8 @@ const items = function (db) {
     db.select().from('items').then(results => { results.forEach(result => { console.log(result) }) })
   }
 
-  i.getItemById = function (id) {
-    db.select().from('items').where({id: id}).then(results => { results.forEach(result => { console.log(result) }) })
+  i.getItemById = async function (id) {
+    return db.select().from('items').where({ id })
   }
   i.createItem = function () {
     db('items')
@@ -20,3 +20,7 @@ const items = function (db) {
 }
 
 module.exports = items
+
+function type (obj) {
+  return Object.prototype.toString.call(obj).slice(8, -1)
+}

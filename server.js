@@ -33,9 +33,7 @@ api.delete('/session', async ctx => {
 
 // Item
 api.get('/items/:id', async ctx => {
-  const item = items.getItemById(1)
-  console.log(item)
-  ctx.body = item
+  ctx.body = (await items.getItemById(ctx.params.id))[0]
 })
 
 api.post('/items', async ctx => {

@@ -1,5 +1,5 @@
 const { items } = require('./controllers/controller')
-const { app, api } = require('./server.config')
+const { app, api, bodyParser } = require('./server.config')
 
 api.get('/', async ctx => {
   ctx.body = 'Hello mr Mr'
@@ -35,10 +35,11 @@ api.delete('/session', async ctx => {
 api.get('/items/:id', async ctx => {
   ctx.body = (await items.getItemById(ctx.params.id))[0]
 })
-// items.createItem()
-api.post('/items', async ctx => {
-  ctx.body = 'you called post at /items'
+
+api.post('/items', bodyParser(), async ctx => {
+  await items.createItem(ctx.request.body)
 })
+
 api.put('/items/:id', async ctx => {
   ctx.body = (await items.updateItem(ctx.params.id))
 })

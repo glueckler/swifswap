@@ -11,20 +11,17 @@ const items = function (db) {
   i.getItemById = async function (id) {
     return db.select().from('items').where({ id })
   }
-  i.createItem = async function () {
-    return db('items')
-      .insert({ name: 'test', description: 'test', user_id: 4 })
+
+  i.createItem = async function (item) {
+    const { name, description } = item
+    await db
+      .insert({
+        name,
+        description
+      })
+      .into('items')
   }
-  i.updateItem = async function (id) {
-    return db('items').where('id', id)
-      .update({name: 'testing update',
-               description: 'this good stuff',
-               user_id: 10
-              })
-  }
-  i.deleteItem = async function () {
-    return db('items')
-  }
+
   return i
 }
 

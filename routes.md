@@ -9,9 +9,11 @@ API
 - See user profile
   - api.get('/users/:id')
   - db: Select * from users at id
+  - curl -i localhost:3000/api/users/4
 - Create new user
   - api.post('/users')
   - db: insert * where user id
+  - curl -X POST -i localhost:3000/api/users -d " 
 - Update user profile
   - api.put('/users/:id')
   - db: update user at id
@@ -36,6 +38,7 @@ API
 - Create item
   - api.post('items')
   - db: insert item 
+  - curl -X POST -i localhost:3000/api/items -d "name=deansthing" -d "description=thingnumber5"
 - Update item
   - api.put('items/:id')
   - db: update item id

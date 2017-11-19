@@ -1,4 +1,5 @@
 require('dotenv').config()
+const { items } = require('./controllers/controller')
 const env       = require('dotenv')
 const logger    = require('koa-logger')
 const Router    = require('koa-router')
@@ -11,9 +12,11 @@ const api       = new Router({ prefix: '/api' })
 app.use(api.routes())
 
 if (process.env.NODE_ENV === 'development') {
-  console.log('koa server script ran in development mode!!!!!!!')
-  app.use(logger())
+  console.log('koa server script running in development ENV!')
+  app.use(logger())  
 }
+
+items.testQuery()
 
 app.use(async (ctx, next) => {
   try {

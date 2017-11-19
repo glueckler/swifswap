@@ -35,13 +35,12 @@ api.delete('/session', async ctx => {
 api.get('/items/:id', async ctx => {
   ctx.body = (await items.getItemById(ctx.params.id))[0]
 })
-
+// items.createItem()
 api.post('/items', async ctx => {
   ctx.body = 'you called post at /items'
 })
-
-api.post('/items/:id', async ctx => {
-  ctx.body = 'you called update at /items/:id'
+api.put('/items/:id', async ctx => {
+  ctx.body = (await items.updateItem(ctx.params.id))
 })
 
 api.delete('/items/:id', async ctx => {

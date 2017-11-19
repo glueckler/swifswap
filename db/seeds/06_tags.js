@@ -5,7 +5,7 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('tags').insert([
-        {id: 1, name: 'Appliances'},
+        {name: 'Appliances'},
         {id: 2, name: 'Bikes, Boards, etc.'},
         {id: 3, name: 'Books'},
         {id: 4, name: 'Clothing'},

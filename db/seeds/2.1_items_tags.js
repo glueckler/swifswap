@@ -1,11 +1,10 @@
-
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('items_tags').del()
     .then(function () {
       // Inserts seed entries
       return knex('items_tags').insert([{
-        item_id: 32,
+        item_id: 43,
         tag_id: 16
       }, {
         item_id: 21,
@@ -140,7 +139,7 @@ exports.seed = function(knex, Promise) {
         item_id: 23,
         tag_id: 10
       }, {
-        item_id: 49,
+        item_id: 42,
         tag_id: 7
       }, {
         item_id: 38,
@@ -154,6 +153,61 @@ exports.seed = function(knex, Promise) {
       }, {
         item_id: 25,
         tag_id: 13
-      }])
+      }, {
+        item_id: 41,
+        tag_id: 11
+      }, {
+        item_id: 6,
+        tag_id: 3
+      }, {
+        item_id: 40,
+        tag_id: 4
+      }, {
+        item_id: 7,
+        tag_id: 10
+      }, {
+        item_id: 36,
+        tag_id: 1
+      }, {
+        item_id: 9,
+        tag_id: 9
+      }, {
+        item_id: 33,
+        tag_id: 10
+      }, {
+        item_id: 34,
+        tag_id: 2
+      }, {
+        item_id: 9,
+        tag_id: 2
+      }, {
+        item_id: 31,
+        tag_id: 4
+      }, {
+        item_id: 19,
+        tag_id: 14
+      }, {
+        item_id: 12,
+        tag_id: 14
+      }, {
+        item_id: 30,
+        tag_id: 16
+      }, {
+        item_id: 10,
+        tag_id: 11
+      }, {
+        item_id: 16,
+        tag_id: 12
+      }, {
+        item_id: 27,
+        tag_id: 1
+      }, {
+        item_id: 28,
+        tag_id: 2
+      }, {
+        item_id: 17,
+        tag_id: 4
+      }
+      ])
     })
 }

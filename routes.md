@@ -41,7 +41,8 @@ API
 - Create item
   - api.post('items')
   - db: insert item 
-  - curl -X POST -i localhost:3000/api/items -d "name=deansthing" -d "description=thingnumber5"
+    curl -d '{"name":"A new Item", "description": "Description of an item to trade :)", "imageUrl": "['http://dummyimage.com/212x142.jpg/5fa2dd/ffffff']", "tags": "['Electronics', 'Games']"}' -H "Content-Type: application/json" -X POST -i localhost:3000/api/items
+
 - Update item
   - api.put('items/:id')
   - db: update item id

@@ -51,7 +51,8 @@ api.get('/items/:id', async ctx => {
 })
 
 api.post('/items', bodyParser(), async ctx => {
-  await items.createItem(ctx.request.body)
+  console.log(ctx.request.body)
+  // await items.createItem(ctx.request.body)
 })
 
 api.put('/items/:id', async ctx => {

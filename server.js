@@ -40,9 +40,6 @@ api.delete('/session', async ctx => {
 // Item
 api.get('/items/:id', async ctx => {
   const item = (await items.getItemById(ctx.params.id))
-  function type (obj) {
-    return Object.prototype.toString.call(obj).slice(8, -1)
-  }
   ctx.body = item
 })
 
@@ -66,7 +63,7 @@ api.get('/chats', async ctx => {
 })
 
 api.get('/chats/:id', async ctx => {
-  ctx.body = (await chat.getChatById(ctx.params.id))[0]
+  
 })
 
 api.post('/chats/:id', async ctx => {

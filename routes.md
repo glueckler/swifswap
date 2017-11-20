@@ -35,6 +35,7 @@ API
 - See item
   - api.get('items/:id')
   - db: select * item at id
+  - curl -i localhost:3000/api/items/7
 - Create item
   - api.post('items')
   - db: insert item 

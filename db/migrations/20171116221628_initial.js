@@ -41,8 +41,8 @@ exports.up = function(knex) {
   })
   .createTable('users_tags', function(table) {
     table.increments().notNullable();
-    table.integer('user_id').references('id').inTable('users').onDelete('CASCADE').notNullable();
-    table.integer('tag_id').references('id').inTable('tags').onDelete('CASCADE').notNullable();
+    table.integer('user_id').references('id').inTable('users').onDelete('CASCADE');
+    table.integer('tag_id').references('id').inTable('tags').onDelete('CASCADE');
 
   })
   .createTable('items_tags', function(table) {

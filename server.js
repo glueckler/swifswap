@@ -5,6 +5,8 @@ api.get('/', async ctx => {
   ctx.body = 'Hello mr Mr'
 })
 
+// ----------------------
+
 // See user profile
 api.get('/users/:id', async ctx => {
   ctx.body = (await users.getUserById(ctx.params.id))[0]
@@ -22,6 +24,8 @@ api.delete('users/:id', async ctx => {
   ctx.body = 'you called the delete method at /users/:id'
 })
 
+// ----------------------
+
 // Session
 api.post('/session', async ctx => {
   ctx.body = 'you called the post method at /session'
@@ -31,9 +35,15 @@ api.delete('/session', async ctx => {
   ctx.body = 'you called the delete method at /session'
 })
 
+// ----------------------
+
 // Item
 api.get('/items/:id', async ctx => {
-  ctx.body = (await items.getItemById(ctx.params.id))[0]
+  const item = (await items.getItemById(ctx.params.id))
+  function type (obj) {
+    return Object.prototype.toString.call(obj).slice(8, -1)
+  }
+  ctx.body = item
 })
 
 api.post('/items', bodyParser(), async ctx => {
@@ -47,6 +57,8 @@ api.put('/items/:id', async ctx => {
 api.delete('/items/:id', async ctx => {
   ctx.body = 'you called delete at /items/:id'
 })
+
+// ----------------------
 
 // Chat
 api.get('/chats', async ctx => {

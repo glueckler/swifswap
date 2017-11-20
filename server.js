@@ -51,8 +51,8 @@ api.get('/items/:id', async ctx => {
 })
 
 api.post('/items', bodyParser(), async ctx => {
-  console.log(ctx.request.body)
-  // await items.createItem(ctx.request.body)
+  // User id is hardcoded to 5
+  await items.createItem(ctx)
 })
 
 api.put('/items/:id', async ctx => {

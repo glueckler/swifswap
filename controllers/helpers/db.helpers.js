@@ -8,12 +8,11 @@ module.exports = {
       return arr
     }
     function customizer (objValue, srcValue) {
-      console.log('obj', objValue)
-      console.log('src', srcValue)
       if (objValue !== srcValue) {
         if (Array.isArray(objValue)) {
           if (!_.includes(objValue, srcValue)) {
-            return objValue.push(srcValue)
+            objValue.push(srcValue)
+            return objValue
           }
         } else {
           return [objValue, srcValue]

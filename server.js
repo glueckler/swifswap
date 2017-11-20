@@ -33,8 +33,9 @@ api.delete('users/:id', async ctx => {
 // ----------------------
 
 // Session
-api.post('/session', async ctx => {
+api.post('/session', bodyParser(), async ctx => {
   ctx = await sessions.validateSignIn(ctx)
+  ctx.redirect('/')
 })
 
 api.delete('/session', async ctx => {

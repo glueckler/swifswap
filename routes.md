@@ -27,7 +27,8 @@ API
   - api.post('/session')
   - select password where user at id
   - set cookie
-  - curl -X POST localhost:3000/api/session -d "account=mbinny0" -d "password=6QHMXQ6G32Q7"
+  - curl -X POST localhost:3000/api/session -d "account=mbinny0" -d "password=tO4NVmU78VMj"
+  - curl -X POST localhost:3000/api/session -d "account=cfotitt0@vimeo.com" -d "password=tO4NVmU78VMj"
 - Logout
   - api.delete('/session')
   - delete cookie

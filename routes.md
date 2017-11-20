@@ -38,6 +38,17 @@ API
   - api.get('items/:id')
   - db: select * item at id
   - curl -i localhost:3000/api/items/7
+    -{
+    "name": "nulla nunc purus phasellus",
+    "description": "augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida",
+    "img_path": [
+        "http://dummyimage.com/154x141.bmp/dddddd/000000",
+        "http://dummyimage.com/187x211.bmp/dddddd/000000",
+        "http://dummyimage.com/197x119.jpg/dddddd/000000",
+        "http://dummyimage.com/222x165.bmp/5fa2dd/ffffff"
+    ],
+    "tagName": "Music"
+    }
 - Create item
   - api.post('items')
   - db: insert item 
@@ -65,20 +76,3 @@ API
 
 - Get messages
   - websockets
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

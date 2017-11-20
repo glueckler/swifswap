@@ -1,7 +1,7 @@
 const sessions = function () {
   const s = {}
-  s.example = function () {
-    console.log('here is another example')
+  s.validateSignIn = function(ctx) {
+    
   }
   return s
 }

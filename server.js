@@ -1,15 +1,21 @@
-const { items, users, chat } = require('./controllers/controller')
-const { app, api, bodyParser } = require('./server.config')
+const { items, users, chat, sessions } = require('./controllers/controller')
+const { app, api, client, bodyParser } = require('./server.config')
 
 api.get('/', async ctx => {
   ctx.body = 'Hello mr Mr'
 })
 
-// ----------------------
+// ------- C L I E N T  R O U T E S --------
+
+client.get('/', async ctx => {
+  ctx.body = 'Hello World I\'m a computer'
+})
+
+// ------- A P I  R O U T E S --------
 
 // See user profile
 api.get('/users/:id', async ctx => {
-  ctx.body = (await users.getUserById(ctx.params.id))[0]
+  ctx.body = (await users.getUserById(ctx.params.id))
 })
 
 api.post('/users', async ctx => {
@@ -28,7 +34,7 @@ api.delete('users/:id', async ctx => {
 
 // Session
 api.post('/session', async ctx => {
-  ctx.body = 'you called the post method at /session'
+  ctx = await sessions.validateSignIn(ctx)
 })
 
 api.delete('/session', async ctx => {
@@ -63,7 +69,6 @@ api.get('/chats', async ctx => {
 })
 
 api.get('/chats/:id', async ctx => {
-  
 })
 
 api.post('/chats/:id', async ctx => {
@@ -73,5 +78,3 @@ api.post('/chats/:id', async ctx => {
 api.delete('/chats/:id', async ctx => {
   ctx.body = 'you called delete at /chats/:id'
 })
-
-app.listen(3000)

@@ -33,7 +33,7 @@ api.delete('/session', async ctx => {
 
 // Item
 api.get('/items/:id', async ctx => {
-  ctx.body = (await items.getItemById(ctx.params.id))[0]
+  ctx.body = (await items.getItemById(ctx.params.id))
 })
 
 api.post('/items', bodyParser(), async ctx => {

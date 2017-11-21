@@ -6,7 +6,7 @@ const chat = function (db) {
     console.log('this is an example')
   }
 
-  // TODO: this query is incomplete... adjusting seeds first before coming back to it
+  // TODO: this query is incomplete... adjusting seeds first before coming back to it... Jeremy assisted with logic
   c.getChatsByUserId = async function (userId) {
     const userChatsFull = await db
       .from('chats')

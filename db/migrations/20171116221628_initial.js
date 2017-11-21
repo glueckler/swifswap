@@ -17,6 +17,7 @@ exports.up = function (knex) {
       table.increments().notNullable()
       table.string('content')
       table.timestamp('created_at').defaultTo(knex.fn.now()).notNullable()
+      table.boolean('received').defaultTo(false)
       table.integer('chat_id').references('id').inTable('chats').onDelete('CASCADE').notNullable()
       table.integer('user_id').references('id').inTable('users').onDelete('CASCADE').notNullable()
     })
@@ -24,10 +25,6 @@ exports.up = function (knex) {
       table.increments().notNullable()
       table.string('name')
       table.string('description')
-    })
-    .createTable('photos', function (table) {
-      table.increments().notNullable()
-      table.integer('item_id').references('id').inTable('items').onDelete('CASCADE').notNullable()
       table.string('img_path')
     })
     .createTable('tags', function (table) {
@@ -58,5 +55,5 @@ exports.up = function (knex) {
 
 exports.down = function (knex) {
   return knex.schema
-    .dropTable('items_chats').dropTable('items_tags').dropTable('users_tags').dropTable('users_favourites').dropTable('tags').dropTable('photos').dropTable('items').dropTable('messages').dropTable('chats').dropTable('users')
+    .dropTable('items_chats').dropTable('items_tags').dropTable('users_tags').dropTable('users_favourites').dropTable('tags').dropTable('items').dropTable('messages').dropTable('chats').dropTable('users')
 }

@@ -15,11 +15,11 @@ client.get('/', async ctx => {
 
 // See user profile
 api.get('/users/:id', async ctx => {
-  ctx.body = (await users.getUserById(ctx.params.id))
+  ctx.body = await users.getUserById(ctx.params.id)
 })
 
-api.post('/users', async ctx => {
-  ctx.body = 'you called the post method at /users'
+api.post('/users', bodyParser(), async ctx => {
+  ctx = await users.createUser(ctx)
 })
 
 api.put('/users/:id', async ctx => {
@@ -51,8 +51,7 @@ api.get('/items/:id', async ctx => {
 })
 
 api.post('/items', bodyParser(), async ctx => {
-  // User id is hardcoded to 5
-  await items.createItem(ctx)
+  ctx = await items.createItem(ctx)
 })
 
 api.put('/items/:id', async ctx => {

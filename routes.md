@@ -13,7 +13,9 @@ API
 - Create new user
   - api.post('/users')
   - db: insert * where user id
-  - curl -X POST -i localhost:3000/api/users -d " 
+  curl -X POST -i localhost:3000/api/users -d "username=deanosaur" -d "password=asdf" -d "email=dean@dean.com" -d "location=Vancouver"
+  curl -X POST -i localhost:3000/api/users -d "username=deano" -d "password=asdf" -d "email=dean@dean.DEAN" -d "location=Vancouver" -d "img_path=/source/profile/image"
+  
 - Update user profile
   - api.put('/users/:id')
   - db: update user at id
@@ -54,7 +56,7 @@ API
   - db: insert item 
     curl -d '{"name":"A new Item", "description": "Description of an item to trade :)", "imageUrls": ["http://dummyimage.com/212x142.jpg/5fa2dd/ffffff", "http://dummyimage.com/300x500.jpg/5fa2dd/ffffff"], "tags": ["Electronics", "Games"]}' -H "Content-Type: application/json" -X POST -i localhost:3000/api/items
 
-    curl -d '{"name":"Brand New Char Char", "description": "And a final test with love <3", "imageUrls": ["http://dummyimage.com/212x142.jpg/5fa2dd/ffffff", "http://dummyimage.com/300x500.jpg/5fa2dd/ffffff", "http://dummyimage.com/111x111.jpg/5fa2dd/asdfgh"], "tags": ["Electronics", "Games"]}' -H "Content-Type: application/json" -X POST -i localhost:3000/api/items
+    curl -d '{"name":"Brand New Char Char", "description": "And a final test with love <3", "imageUrls": ["http://dummyimage.com/212x142.jpg/5fa2dd/ffffff", "http://dummyimage.com/300x500.jpg/5fa2dd/ffffff", "http://dummyimage.com/111x111.jpg/5fa2dd/asdfgh"], "tags": ["Electronics", "Household"]}' -H "Content-Type: application/json" -X POST -i localhost:3000/api/items
 
 
 - Update item

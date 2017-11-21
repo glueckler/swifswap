@@ -9,7 +9,8 @@ const users = function (db) {
       'users.img_path as userPhoto',
       'items.name as itemName',
       'items.description as itemDescription',
-      'items.id as itemId'
+      'items.id as itemId',
+      'items.img_path as itemImage'
     ).where('users.id', id)
     return userData
   }
@@ -28,7 +29,6 @@ const users = function (db) {
 
     await db('users').insert(ctx.request.body)
     return ctx
-
   }
 
   return u

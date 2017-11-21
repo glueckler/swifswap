@@ -40,23 +40,12 @@ API
   - api.get('items/:id')
   - db: select * item at id
   - curl -i localhost:3000/api/items/7
-    {
-    "name": "nulla nunc purus phasellus",
-    "description": "augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida",
-    "img_path": [
-        "http://dummyimage.com/154x141.bmp/dddddd/000000",
-        "http://dummyimage.com/187x211.bmp/dddddd/000000",
-        "http://dummyimage.com/197x119.jpg/dddddd/000000",
-        "http://dummyimage.com/222x165.bmp/5fa2dd/ffffff"
-    ],
-    "tagName": "Music"
-    }
+
 - Create item
   - api.post('items')
   - db: insert item 
-    curl -d '{"name":"A new Item", "description": "Description of an item to trade :)", "imageUrls": ["http://dummyimage.com/212x142.jpg/5fa2dd/ffffff", "http://dummyimage.com/300x500.jpg/5fa2dd/ffffff"], "tags": ["Electronics", "Games"]}' -H "Content-Type: application/json" -X POST -i localhost:3000/api/items
+    curl -d '{"name":"A new Item", "description": "Description of an item to trade :)", "imageUrl": "http://dummyimage.com/300x500.jpg/5fa2dd/ffffff", "tags": ["Electronics", "Games"]}' -H "Content-Type: application/json" -X POST -i localhost:3000/api/items
 
-    curl -d '{"name":"Brand New Char Char", "description": "And a final test with love <3", "imageUrls": ["http://dummyimage.com/212x142.jpg/5fa2dd/ffffff", "http://dummyimage.com/300x500.jpg/5fa2dd/ffffff", "http://dummyimage.com/111x111.jpg/5fa2dd/asdfgh"], "tags": ["Electronics", "Household"]}' -H "Content-Type: application/json" -X POST -i localhost:3000/api/items
 
 
 - Update item

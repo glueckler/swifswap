@@ -47,7 +47,6 @@ API
     curl -d '{"name":"A new Item", "description": "Description of an item to trade :)", "imageUrl": "http://dummyimage.com/300x500.jpg/5fa2dd/ffffff", "tags": ["Electronics", "Games"]}' -H "Content-Type: application/json" -X POST -i localhost:3000/api/items
 
 
-
 - Update item
   - api.put('items/:id')
   - db: update item id
@@ -60,6 +59,8 @@ API
 - Get chat rooms
   - api.get('chats')
   - db: select * from chat at user id
+  curl -i localhost:3000/api/chats/3
+
 - Create new chat
   - api.post('chats/:id')
   - db: insert chat

@@ -1,6 +1,6 @@
 const dbHelpers = require('./helpers/db.helpers.js')
 
-const items = function (db, tagsHash) {
+const items = function (db) {
   const i = {}
 
   i.getItemById = async function (paramsId) {

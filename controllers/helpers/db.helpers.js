@@ -1,4 +1,3 @@
-
 const _ = require('lodash')
 
 module.exports = {
@@ -23,6 +22,12 @@ module.exports = {
     }
     return arr.reduce((a, b) => {
       return _.mergeWith(a, b, customizer)
+    })
+  },
+
+  getTagIdsByTagName: function (db, arr) {
+    return db.select('id').from('tags').whereIn('name', arr).then(data => {
+      return data.map(a => a.id)
     })
   }
 

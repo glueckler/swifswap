@@ -33,14 +33,24 @@ const items = function (db) {
     return dbHelpers.flattenQuery(itemsFull)
   }
 
-  i.createItem = async function (item) {
-    const { name, description } = item
-    await db
-      .insert({
-        name,
-        description
-      })
-      .into('items')
+  i.createItem = async function (ctx) {
+    const postBody = ctx.request.body
+    const userId = '5'
+    const { name, description, imageUrls, tags } = postBody
+
+    const itemId = await db.insert({
+      name,
+      description,
+      user_id: userId
+    }, 'id').into('items')
+      .then(id => parseInt(id, 10))
+    
+    const insertImageUrls = imageUrls.map(a => { return { item_id: itemId, img_path: a } })
+    await db.insert(insertImageUrls).into('photos')
+
+    const tagIds = await dbHelpers.getTagIdsByTagName(db, tags)
+    const insertTags = tagIds.map(a => { return { item_id: itemId, tag_id: a } })
+    await db.insert(insertTags).into('items_tags')
   }
 
   return i

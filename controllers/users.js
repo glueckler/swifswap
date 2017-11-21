@@ -1,5 +1,3 @@
-const dbHelpers = require('./helpers/db.helpers.js')
-
 const users = function (db) {
   const u = {}
 
@@ -30,6 +28,7 @@ const users = function (db) {
 
     await db('users').insert(ctx.request.body)
     return ctx
+
   }
 
   return u

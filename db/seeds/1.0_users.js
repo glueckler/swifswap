@@ -1,308 +1,51 @@
 
-exports.seed = function(knex, Promise) {
+exports.seed = function (knex, Promise) {
   // Deletes ALL existing entries
   return knex('users').del()
     .then(function () {
       // Inserts seed entries
-      return knex('users').insert([ { 
-        username: 'mbinny0',
-        location: 'Waywood',
-        email: 'cfotitt0@vimeo.com',
-        password: 'tO4NVmU78VMj',
-        img_path: 'https://api.adorable.io/avatars/285/mbinny0' },
-      { 
-        username: 'jcritchell1',
-        location: 'Waubesa',
-        email: 'lsjostrom1@accuweather.com',
-        password: '6QHMXQ6G32Q7',
-        img_path: 'https://api.adorable.io/avatars/285/jcritchell1' },
-      { 
-        username: 'dvidler2',
-        location: 'Summerview',
-        email: 'rofeeny2@barnesandnoble.com',
-        password: 'UqQpmGuK2',
-        img_path: 'https://api.adorable.io/avatars/285/dvidler2' },
-      { 
-        username: 'kminghi3',
-        location: 'Forest Run',
-        email: 'chellyar3@unc.edu',
-        password: 'yA4LobTgv',
-        img_path: 'https://api.adorable.io/avatars/285/kminghi3' },
-      { 
-        username: 'eyitzhok4',
-        location: 'Springs',
-        email: 'rzanneli4@amazon.co.jp',
-        password: 'PP8RCb0qzZw5',
-        img_path: 'https://api.adorable.io/avatars/285/eyitzhok4' },
-      { 
-        username: 'veskrigge5',
-        location: 'Lunder',
-        email: 'dverrell5@nymag.com',
-        password: 'RjgPC2G',
-        img_path: 'https://api.adorable.io/avatars/285/veskrigge5' },
-      { 
-        username: 'wmurtimer6',
-        location: 'Morning',
-        email: 'ftuxwell6@examiner.com',
-        password: 'XCOVh8oFyx1W',
-        img_path: 'https://api.adorable.io/avatars/285/wmurtimer6' },
-      { 
-        username: 'bhaugen7',
-        location: 'Mayer',
-        email: 'kseifert7@nifty.com',
-        password: 'Za2NTOb',
-        img_path: 'https://api.adorable.io/avatars/285/bhaugen7' },
-      { 
-        username: 'gciccottio8',
-        location: 'Kingsford',
-        email: 'rhalksworth8@deliciousdays.com',
-        password: 'nJ3TMkj4',
-        img_path: 'https://api.adorable.io/avatars/285/gciccottio8' },
-      { 
-        username: 'rdrieu9',
-        location: 'Mendota',
-        email: 'ckobiela9@rakuten.co.jp',
-        password: 'LmKvZcxQMw9',
-        img_path: 'https://api.adorable.io/avatars/285/rdrieu9' },
-      { 
-        username: 'zknealea',
-        location: 'Thierer',
-        email: 'psenechella@springer.com',
-        password: 'WLZgCtq',
-        img_path: 'https://api.adorable.io/avatars/285/zknealea' },
-      { 
-        username: 'lkleynenb',
-        location: 'Lotheville',
-        email: 'lwarenb@miibeian.gov.cn',
-        password: 'hyyRofTI',
-        img_path: 'https://api.adorable.io/avatars/285/lkleynenb' },
-      { 
-        username: 'awilhelmyc',
-        location: 'Sullivan',
-        email: 'ppirkisc@wix.com',
-        password: 'c6tHjzRr8D',
-        img_path: 'https://api.adorable.io/avatars/285/awilhelmyc' },
-      { 
-        username: 'abirleyd',
-        location: 'Messerschmidt',
-        email: 'igrzeszczakd@cmu.edu',
-        password: 'KWh9QvK9qnd',
-        img_path: 'https://api.adorable.io/avatars/285/abirleyd' },
-      { 
-        username: 'breedse',
-        location: 'Maple',
-        email: 'ijahere@discuz.net',
-        password: 'yeuIYpDmevZR',
-        img_path: 'https://api.adorable.io/avatars/285/breedse' },
-      { 
-        username: 'draveauf',
-        location: 'Schlimgen',
-        email: 'idemcikf@dedecms.com',
-        password: 'PtEDlw3',
-        img_path: 'https://api.adorable.io/avatars/285/draveauf' },
-      { 
-        username: 'hrusheg',
-        location: 'Eastlawn',
-        email: 'jblakesleeg@freewebs.com',
-        password: 'DSWv46VeHQqR',
-        img_path: 'https://api.adorable.io/avatars/285/hrusheg' },
-      { 
-        username: 'kcopph',
-        location: 'Twin Pines',
-        email: 'bgrahlh@cbsnews.com',
-        password: 'cnCXghL4kka7',
-        img_path: 'https://api.adorable.io/avatars/285/kcopph' },
-      { 
-        username: 'amcclellandi',
-        location: 'Crowley',
-        email: 'tstariei@usatoday.com',
-        password: 'pw9JyI',
-        img_path: 'https://api.adorable.io/avatars/285/amcclellandi' },
-      { 
-        username: 'fsanperj',
-        location: 'Caliangt',
-        email: 'nlupsonj@china.com.cn',
-        password: 'PUA9Sq2n',
-        img_path: 'https://api.adorable.io/avatars/285/fsanperj' },
-      { 
-        username: 'gcuttlerk',
-        location: 'Messerschmidt',
-        email: 'ebesseyk@nps.gov',
-        password: '1Fn4ztlY2h',
-        img_path: 'https://api.adorable.io/avatars/285/gcuttlerk' },
-      { 
-        username: 'msharkeyl',
-        location: 'West',
-        email: 'rszymonil@cafepress.com',
-        password: 'Xpzx1uMzlS',
-        img_path: 'https://api.adorable.io/avatars/285/msharkeyl' },
-      { 
-        username: 'lwindasm',
-        location: 'Marquette',
-        email: 'aduddlem@cam.ac.uk',
-        password: 'ILW0dTBdDjNB',
-        img_path: 'https://api.adorable.io/avatars/285/lwindasm' },
-      { 
-        username: 'mkithern',
-        location: '4th',
-        email: 'cstoaden@nbcnews.com',
-        password: 'GhrEKTanWU',
-        img_path: 'https://api.adorable.io/avatars/285/mkithern' },
-      { 
-        username: 'fmiddleo',
-        location: 'Pine View',
-        email: 'sclaypoleo@mapquest.com',
-        password: 'giNWconLfRA',
-        img_path: 'https://api.adorable.io/avatars/285/fmiddleo' },
-      { 
-        username: 'tuebelp',
-        location: 'Columbus',
-        email: 'pgerrensp@dmoz.org',
-        password: 'MkSup5O5t',
-        img_path: 'https://api.adorable.io/avatars/285/tuebelp' },
-      { 
-        username: 'dwimmsq',
-        location: 'Sycamore',
-        email: 'torhtmannq@merriam-webster.com',
-        password: 'm3WWhXtOg',
-        img_path: 'https://api.adorable.io/avatars/285/dwimmsq' },
-      { 
-        username: 'ghumer',
-        location: 'Sage',
-        email: 'tpaddickr@lycos.com',
-        password: 'nASYP5e',
-        img_path: 'https://api.adorable.io/avatars/285/ghumer' },
-      { 
-        username: 'cclemmetts',
-        location: 'David',
-        email: 'kgittingss@skyrock.com',
-        password: 'dh25h6d9J',
-        img_path: 'https://api.adorable.io/avatars/285/cclemmetts' },
-      { 
-        username: 'snuddet',
-        location: 'Sauthoff',
-        email: 'epickrillt@patch.com',
-        password: 'EHNdAy',
-        img_path: 'https://api.adorable.io/avatars/285/snuddet' },
-      { 
-        username: 'mharmeu',
-        location: 'Sunnyside',
-        email: 'shumu@skyrock.com',
-        password: 'CtRkjPX',
-        img_path: 'https://api.adorable.io/avatars/285/mharmeu' },
-      { 
-        username: 'dguerinv',
-        location: 'Monument',
-        email: 'ptremethackv@slashdot.org',
-        password: 'mjkpQ1obS',
-        img_path: 'https://api.adorable.io/avatars/285/dguerinv' },
-      { 
-        username: 'scobbingw',
-        location: 'Hazelcrest',
-        email: 'rfranklingw@privacy.gov.au',
-        password: 'ItviKrAvCRv',
-        img_path: 'https://api.adorable.io/avatars/285/scobbingw' },
-      { 
-        username: 'eestrellax',
-        location: 'Lawn',
-        email: 'tweatherburnx@biglobe.ne.jp',
-        password: 'jGjwP7G',
-        img_path: 'https://api.adorable.io/avatars/285/eestrellax' },
-      { 
-        username: 'cbeldeny',
-        location: 'Merrick',
-        email: 'mheighwayy@businessweek.com',
-        password: '6PchyC',
-        img_path: 'https://api.adorable.io/avatars/285/cbeldeny' },
-      { 
-        username: 'fharkinsz',
-        location: 'Blue Bill Park',
-        email: 'mkubiczekz@thetimes.co.uk',
-        password: '5CRQRtNWS',
-        img_path: 'https://api.adorable.io/avatars/285/fharkinsz' },
-      { 
-        username: 'jbargery10',
-        location: 'Sutteridge',
-        email: 'agodrich10@uiuc.edu',
-        password: 'IZDDJTsNZwt',
-        img_path: 'https://api.adorable.io/avatars/285/jbargery10' },
-      { 
-        username: 'gmcmenamin11',
-        location: 'International',
-        email: 'isiebert11@bandcamp.com',
-        password: 'ZEnqfq40dHjh',
-        img_path: 'https://api.adorable.io/avatars/285/gmcmenamin11' },
-      { 
-        username: 'dnisard12',
-        location: 'Forster',
-        email: 'lyesson12@about.me',
-        password: 'jWihWZS',
-        img_path: 'https://api.adorable.io/avatars/285/dnisard12' },
-      { 
-        username: 'omoan13',
-        location: 'Beilfuss',
-        email: 'rcrewther13@sbwire.com',
-        password: 'IXIN4M2f1',
-        img_path: 'https://api.adorable.io/avatars/285/omoan13' },
-      { 
-        username: 'sdrinnan14',
-        location: 'Upham',
-        email: 'kbook14@vk.com',
-        password: 'ZKUdM9P0jkL',
-        img_path: 'https://api.adorable.io/avatars/285/sdrinnan14' },
-      { 
-        username: 'nbodell15',
-        location: 'Oakridge',
-        email: 'dscogings15@nba.com',
-        password: 'n3AfGue',
-        img_path: 'https://api.adorable.io/avatars/285/nbodell15' },
-      { 
-        username: 'amacgowan16',
-        location: 'Macpherson',
-        email: 'obelf16@wikispaces.com',
-        password: 'lQc34NIj1To7',
-        img_path: 'https://api.adorable.io/avatars/285/amacgowan16' },
-      { 
-        username: 'mhouseman17',
-        location: 'Hagan',
-        email: 'mrittmeier17@bravesites.com',
-        password: '3uUj5r1Jxwk',
-        img_path: 'https://api.adorable.io/avatars/285/mhouseman17' },
-      { 
-        username: 'ocornhill18',
-        location: 'Petterle',
-        email: 'klawlie18@purevolume.com',
-        password: '8ZqLwced',
-        img_path: 'https://api.adorable.io/avatars/285/ocornhill18' },
-      { 
-        username: 'hdriuzzi19',
-        location: 'Dawn',
-        email: 'adolohunty19@globo.com',
-        password: 'IeNkHMIai3wu',
-        img_path: 'https://api.adorable.io/avatars/285/hdriuzzi19' },
-      { 
-        username: 'wocaherny1a',
-        location: 'Logan',
-        email: 'rconsterdine1a@cdc.gov',
-        password: '3q2pugFnD',
-        img_path: 'https://api.adorable.io/avatars/285/wocaherny1a' },
-      { 
-        username: 'rbarton1b',
-        location: 'Dottie',
-        email: 'tbutten1b@state.tx.us',
-        password: '5iFbHU8XzuW',
-        img_path: 'https://api.adorable.io/avatars/285/rbarton1b' },
-      { 
-        username: 'lbeyne1c',
-        location: 'Gina',
-        email: 'mromei1c@pcworld.com',
-        password: 'tgv9as',
-        img_path: 'https://api.adorable.io/avatars/285/lbeyne1c' },
-      { 
-        username: 'fclubbe1d',
-        location: 'Springs',
-        email: 'dgallegos1d@bbb.org',
-        password: 'mNCMzfQTafM',
-        img_path: 'https://api.adorable.io/avatars/285/fclubbe1d' } ]);
-    });
-};
+      return knex('users').insert([ {
+        username: 'alice',
+        location: 'Gastown',
+        email: 'alice@test.com',
+        password: 'qwertyuiop',
+        img_path: 'https://api.adorable.io/avatars/285/alice'
+      },
+      {
+        username: 'bob',
+        location: 'Kerrisdale',
+        email: 'bob@bob.ca',
+        password: 'bobster',
+        img_path: 'https://api.adorable.io/avatars/285/bob'
+      },
+      {
+        username: 'carol',
+        location: 'North Van',
+        email: 'carol@north.uk',
+        password: 'banana',
+        img_path: 'https://api.adorable.io/avatars/285/carol'
+      },
+      {
+        username: 'deltron',
+        location: 'Delta',
+        email: 'del@del.net',
+        password: 'deldel',
+        img_path: 'https://api.adorable.io/avatars/285/deltron'
+      },
+      {
+        username: 'eliza',
+        location: 'UBC',
+        email: 'liz@amazon.co.jp',
+        password: 'goose',
+        img_path: 'https://api.adorable.io/avatars/285/eliza'
+      },
+      {
+        username: 'joeler',
+        location: 'Lighthouse Labs',
+        email: 'joel@joel.joel',
+        password: 'joel',
+        img_path: 'https://api.adorable.io/avatars/285/joel'
+      },
+      ])
+    })
+}

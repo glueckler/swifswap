@@ -1,105 +1,33 @@
 
-exports.seed = function(knex, Promise) {
+exports.seed = function (knex, Promise) {
   // Deletes ALL existing entries
   return knex('users_favourites').del()
     .then(function () {
       // Inserts seed entries
-      return knex('users_favourites').insert([{
-        user_id: 4,
-        item_id: 9
-      }, {
-        user_id: 13,
-        item_id: 11
-      }, {
-        user_id: 49,
+      return knex('users_favourites').insert([ {
+        user_id: 1,
         item_id: 1
-      }, {
-        user_id: 46,
+      },
+      {
+        user_id: 1,
+        item_id: 4
+      },
+      {
+        user_id: 1,
         item_id: 6
-      }, {
-        user_id: 9,
+      },
+      {
+        user_id: 2,
+        item_id: 4
+      },
+      {
+        user_id: 3,
         item_id: 2
-      }, {
-        user_id: 32,
-        item_id: 3
-      }, {
-        user_id: 38,
-        item_id: 1
-      }, {
-        user_id: 30,
-        item_id: 4
-      }, {
-        user_id: 1,
-        item_id: 11
-      }, {
-        user_id: 31,
-        item_id: 7
-      }, {
-        user_id: 47,
-        item_id: 5
-      }, {
-        user_id: 46,
-        item_id: 6
-      }, {
-        user_id: 1,
-        item_id: 7
-      }, {
-        user_id: 11,
-        item_id: 8
-      }, {
-        user_id: 42,
-        item_id: 9
-      }, {
-        user_id: 7,
-        item_id: 10
-      }, {
-        user_id: 9,
-        item_id: 11
-      }, {
-        user_id: 18,
-        item_id: 12
-      }, {
-        user_id: 15,
-        item_id: 14
-      }, {
-        user_id: 19,
-        item_id: 13
-      }, {
-        user_id: 18,
-        item_id: 14
-      }, {
-        user_id: 46,
-        item_id: 15
-      }, {
-        user_id: 17,
-        item_id: 5
-      }, {
+      },
+      {
         user_id: 4,
-        item_id: 3
-      }, {
-        user_id: 47,
-        item_id: 8
-      }, {
-        user_id: 44,
         item_id: 6
-      }, {
-        user_id: 19,
-        item_id: 9
-      }, {
-        user_id: 50,
-        item_id: 4
-      }, {
-        user_id: 33,
-        item_id: 4
-      }, {
-        user_id: 8,
-        item_id: 5
-      }, {
-        user_id: 23,
-        item_id: 4
-      }, {
-        user_id: 46,
-        item_id: 3
-      }])
+      },
+      ])
     })
 }

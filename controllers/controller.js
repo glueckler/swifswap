@@ -6,5 +6,5 @@ module.exports = {
   items: require('./items')(knex),
   users: require('./users')(knex),
   sessions: require('./sessions')(knex),
-  chats: require('./chat')(knex)
+  chats: require('./chats')(knex)
 }

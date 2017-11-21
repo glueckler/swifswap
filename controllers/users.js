@@ -7,7 +7,6 @@ const users = function (db) {
   }
 
   u.getUserById = async function (id) {
-    // return db.select().from('users').where({ id })
     const userFull = await db
       .select(
         'users.username',

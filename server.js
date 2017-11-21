@@ -1,4 +1,4 @@
-const { items, users, chat, sessions } = require('./controllers/controller')
+const { items, users, chats, sessions } = require('./controllers/controller')
 const { app, api, client, bodyParser } = require('./server.config')
 
 api.get('/', async ctx => {
@@ -70,8 +70,8 @@ api.delete('/items/:id', async ctx => {
 //   ctx.body = (await chat.getChats())
 // })
 
-api.get('/chats/:id', async ctx => {
-  ctx.body = (await chat.getChatsByUserId(ctx.params.id))
+api.get('/chats', async ctx => {
+  ctx.body = await chats.getChatsByUserId(ctx)
 })
 
 api.post('/chats/:id', async ctx => {

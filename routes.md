@@ -59,7 +59,7 @@ API
 - Get chat rooms
   - api.get('chats')
   - db: select * from chat at user id
-  curl -i localhost:3000/api/chats/3
+  curl -i localhost:3000/api/chats
 
 - Create new chat
   - api.post('chats/:id')

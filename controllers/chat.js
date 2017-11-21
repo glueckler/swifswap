@@ -1,33 +1,34 @@
-const dbHelpers = require('./helpers/db.helpers.js')
-
-const chat = function (db) {
+const chats = function (db) {
   const c = {}
-  c.exampleFunction = function () {
-    console.log('this is an example')
+
+  c.getChatsByUserId = async function (ctx) {
+    let userId = '3'
+    const chats = await
+      db('chats')
+        .join('users as receiver', 'chats.receiver_id', 'receiver.id')
+        .join('users as sender', 'chats.sender_id', 'sender.id')
+        .join('items_chats as icids', 'chats.id', 'icids.chat_id')
+        .join('items', 'icids.item_id', 'items.id')
+        .select(
+          'sender.username as senderName',
+          'sender.id as senderId',
+          'receiver.id as receiverId',
+          'receiver.username as receiverName',
+          'chats.id as chatId',
+          'items.img_path as itemPhoto',
+          'items.user_id as itemUserId',
+          'items.name as itemName'
+        )
+        .where('receiver.id', userId)
+        .orWhere('sender.id', userId)
+    console.log(chats)
+    return ctx
   }
 
-  // TODO: this query is incomplete... adjusting seeds first before coming back to it... Jeremy assisted with logic
-  c.getChatsByUserId = async function (userId) {
-    const userChatsFull = await db
-      .from('chats')
-      .fullOuterJoin('users', 'users.id', 'chats.receiver_id')
-      .fullOuterJoin('items', 'items.user_id', 'chats.receiver_id')
-      .fullOuterJoin('items_chats', 'items_chats.item_id', 'items.id')
-      .fullOuterJoin('photos', 'photos.item_id', 'items_chats.item_id')
-      .select(
-        'users.username AS receiver_username',
-        'chats.created_at AS chat_creation_time',
-        'chats.updated_at',
-        'chats.id AS chat_id',
-        'items.name AS item_name',
-        'photos.img_path AS item_photo')
-      .where({ 'chats.sender_id': userId })
-    return dbHelpers.flattenQuery(userChatsFull)
-  }
   c.getMessagesByChatId = async function (id) {
     return db.select().from('chats').where({ id })
   }
   return c
 }
 
-module.exports = chat
+module.exports = chats

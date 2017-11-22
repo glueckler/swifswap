@@ -38,7 +38,7 @@ exports.seed = function (knex, Promise) {
         name: 'boat',
         description: 'floats with ease',
         user_id: 4,
-        img_path: 'http://i.imgur.com/MObThDk.jpghttp://i.imgur.com/MObThDk.jpg'
+        img_path: 'http://i.imgur.com/MObThDk.jpg'
       },
       {
         name: 'power mac',

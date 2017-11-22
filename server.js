@@ -69,7 +69,16 @@ api.get('/chats', async ctx => {
 })
 
 api.get('/chats/:id', async ctx => {
-  ctx.body = await chats.getMessagesByChatId(ctx.params.id)
+  const messages = await chats.getMessagesByChatId(ctx.params.id)
+  const sender = (await chats.getSenderByChatID(ctx.params.id))[0]
+  const receiver = (await chats.getReceiverByChatId(ctx.params.id))[0]
+  const items = await chats.getItemsByChatId(ctx.params.id)
+  ctx.body = {
+    sender,
+    receiver,
+    items,
+    messages
+  }
 })
 
 api.post('/chats/:id', async ctx => {

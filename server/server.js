@@ -2,6 +2,10 @@ const { items, users, chats, sessions } = require('./controllers/controller')
 const { app, api, client, bodyParser } = require('./server.config')
 
 
+api.get('/', async ctx => {
+  ctx = await items.getHomePageItems(ctx)
+})
+
 // ------- C L I E N T  R O U T E S --------
 
 client.get('/', async ctx => {
@@ -69,7 +73,6 @@ api.get('/chats', async ctx => {
   ctx = await chats.getChatsByUserId(ctx)
 })
 
-
 api.get('/chats/:id', async ctx => {
   const messages = await chats.getMessagesByChatId(ctx.params.id)
   const sender = (await chats.getSenderByChatID(ctx.params.id))[0]
@@ -85,7 +88,7 @@ api.get('/chats/:id', async ctx => {
 
 api.post('/chats', bodyParser(), async ctx => {
   ctx = await chats.createChat(ctx)
-
+  ctx.status = 200
 })
 
 api.delete('/chats/:id', async ctx => {

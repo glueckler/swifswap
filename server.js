@@ -64,14 +64,8 @@ api.delete('/items/:id', async ctx => {
 
 // ----------------------
 
-// Chat
-// do we need this route?
-// api.get('/chats', async ctx => {
-//   ctx.body = (await chat.getChats())
-// })
-
 api.get('/chats', async ctx => {
-  ctx.body = await chats.getChatsByUserId(ctx)
+  ctx = await chats.getChatsByUserId(ctx)
 })
 
 api.post('/chats/:id', async ctx => {

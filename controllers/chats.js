@@ -1,3 +1,5 @@
+const dbHelpers = require('./helpers/db.helpers.js')
+
 const chats = function (db) {
   const c = {}
 
@@ -15,13 +17,18 @@ const chats = function (db) {
           'receiver.id as receiverId',
           'receiver.username as receiverName',
           'chats.id as chatId',
+          'chats.updated_at as chatUpdated',
+          'chats.created_at as chatCreated',
           'items.img_path as itemPhoto',
           'items.user_id as itemUserId',
-          'items.name as itemName'
-        )
+          'items.name as itemName',
+          'items.id as itemId',
+          'items.description as itemDescription'
+          )
         .where('receiver.id', userId)
         .orWhere('sender.id', userId)
-    console.log(chats)
+
+    ctx.body = dbHelpers.flattenChats(chats)
     return ctx
   }
 

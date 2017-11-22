@@ -64,9 +64,11 @@ api.delete('/items/:id', async ctx => {
 
 // ----------------------
 
+// Chats
 api.get('/chats', async ctx => {
   ctx = await chats.getChatsByUserId(ctx)
 })
+
 
 api.get('/chats/:id', async ctx => {
   const messages = await chats.getMessagesByChatId(ctx.params.id)
@@ -81,8 +83,9 @@ api.get('/chats/:id', async ctx => {
   }
 })
 
-api.post('/chats/:id', async ctx => {
-  ctx.body = 'you called post at /chats/:id'
+api.post('/chats', bodyParser(), async ctx => {
+  ctx = await chats.createChat(ctx)
+
 })
 
 api.delete('/chats/:id', async ctx => {

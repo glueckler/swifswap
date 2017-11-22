@@ -44,9 +44,6 @@ const chats = function (db) {
       .where('chats.id', chatId)
   }
 
-  c.postMessageToChat = async function (chatId) {
-  }
-
   c.getItemsByChatId = async function (chatId) {
     return db('messages')
       .join('chats', 'chats.id', 'messages.chat_id')
@@ -58,14 +55,8 @@ const chats = function (db) {
         'items.img_path as photo',
         'items.name as name',
         'items.user_id as user_id',
-        // 'users.username'
       )
       .where('chats.id', chatId)
-  }
-
-  c.getSenderItem = async function (chatId) {
-    return db('items')
-      .join('users')
   }
 
   c.getSenderByChatID = async function (chatId) {
@@ -86,6 +77,12 @@ const chats = function (db) {
         'users.id'
       )
       .where('chats.id', chatId)
+  }
+
+  c.createChat = async function (ctx) {
+    const { senderId, receiverId, senderItemId, receiverItemId }  = ctx.request.body
+    const chatId = parseInt(await db('chats').insert({sender_id: senderId, receiver_id: receiverId}, 'id'), 10)
+    await db('items_chats').insert([{chat_id: chatId, item_id: receiverItemId}, {chat_id: chatId, item_id: senderItemId}])
   }
 
   return c

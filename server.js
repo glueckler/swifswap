@@ -2,7 +2,7 @@ const { items, users, chats, sessions } = require('./controllers/controller')
 const { app, api, client, bodyParser } = require('./server.config')
 
 api.get('/', async ctx => {
-  ctx.body = 'Hello mr Mr'
+  ctx = await items.getHomePageItems(ctx)
 })
 
 // ------- C L I E N T  R O U T E S --------

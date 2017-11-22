@@ -34,7 +34,12 @@ API
 - Logout
   - api.delete('/session')
   - delete cookie
+
 ### Item
+
+- Homepage
+  - api.get('/')
+  curl -i localhost:3000/api
 
 - See item
   - api.get('items/:id')

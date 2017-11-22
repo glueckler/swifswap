@@ -33,10 +33,16 @@ const items = function (db) {
       img_path: imageUrl
     }, 'id').into('items')
       .then(id => parseInt(id, 10))
-    
+
     const tagIds = await dbHelpers.getTagIdsByTagName(db, tags)
     const insertTags = tagIds.map(a => { return { item_id: itemId, tag_id: a } })
     await db.insert(insertTags).into('items_tags')
+  }
+
+  i.getHomePageItems = async function (ctx) {
+    const homepageQuery = await db.select().from('items').limit(50).orderBy('created_at', 'desc')
+    ctx.body = homepageQuery
+    return ctx
   }
 
   return i

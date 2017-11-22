@@ -1,4 +1,4 @@
-const dbHelpers = require('./helpers/db.helpers.js')
+const dbHelpers = require('./db-helpers/db.helpers.js')
 
 const items = function (db) {
   const i = {}

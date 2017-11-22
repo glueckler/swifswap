@@ -25,8 +25,23 @@ const chats = function (db) {
     return ctx
   }
 
-  c.getMessagesByChatId = async function (id) {
-    return db.select().from('chats').where({ id })
+  c.getMessagesByChatId = async function (chatId) {
+    return db('messages')
+      .join('chats', 'chats.id', 'messages.chat_id')
+      .join('items_chats', 'items_chats.chat_id', 'chats.id')
+      
+      .join('items', 'items_chats.item_id', 'items.id')
+      .join('users', 'messages.user_id', 'users.id')
+      .select(
+        // 'items.img_path as offeredItemPhoto',
+        'items.name as itemName',
+        // 'items.id as itemId',
+        'items_chats.item_id',
+        'users.username as messageAuthor',
+        'messages.content as messageContent',
+        'messages.created_at as messageCreationTime'
+      )
+      .where('chats.id', chatId)
   }
   return c
 }

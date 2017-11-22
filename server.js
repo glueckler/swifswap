@@ -74,6 +74,10 @@ api.get('/chats', async ctx => {
   ctx.body = await chats.getChatsByUserId(ctx)
 })
 
+api.get('/chats/:id', async ctx => {
+  ctx.body = await chats.getMessagesByChatId(ctx.params.id)
+})
+
 api.post('/chats/:id', async ctx => {
   ctx.body = 'you called post at /chats/:id'
 })

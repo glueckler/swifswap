@@ -69,6 +69,19 @@ api.get('/chats', async ctx => {
   ctx = await chats.getChatsByUserId(ctx)
 })
 
+api.get('/chats/:id', async ctx => {
+  const messages = await chats.getMessagesByChatId(ctx.params.id)
+  const sender = (await chats.getSenderByChatID(ctx.params.id))[0]
+  const receiver = (await chats.getReceiverByChatId(ctx.params.id))[0]
+  const items = await chats.getItemsByChatId(ctx.params.id)
+  ctx.body = {
+    sender,
+    receiver,
+    items,
+    messages
+  }
+})
+
 api.post('/chats', bodyParser(), async ctx => {
   ctx = await chats.createChat(ctx)
   ctx.status = 200

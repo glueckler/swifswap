@@ -1,4 +1,4 @@
-const dbHelpers = require('./helpers/db.helpers.js')
+const dbHelpers = require('./db-helpers/db.helpers.js')
 
 const chats = function (db) {
   const c = {}
@@ -24,7 +24,7 @@ const chats = function (db) {
           'items.name as itemName',
           'items.id as itemId',
           'items.description as itemDescription'
-          )
+        )
         .where('receiver.id', userId)
         .orWhere('sender.id', userId)
 
@@ -32,8 +32,51 @@ const chats = function (db) {
     return ctx
   }
 
-  c.getMessagesByChatId = async function (id) {
-    return db.select().from('chats').where({ id })
+  c.getMessagesByChatId = async function (chatId) {
+    return db('messages')
+      .join('chats', 'chats.id', 'messages.chat_id')
+      .join('users', 'messages.user_id', 'users.id')
+      .select(
+        'users.username as messageAuthor',
+        'messages.content as messageContent',
+        'messages.created_at as messageCreationTime'
+      )
+      .where('chats.id', chatId)
+  }
+
+  c.getItemsByChatId = async function (chatId) {
+    return db('messages')
+      .join('chats', 'chats.id', 'messages.chat_id')
+      .join('items_chats', 'items_chats.chat_id', 'chats.id')
+      .join('items', 'items_chats.item_id', 'items.id')
+      .join('users', 'messages.user_id', 'users.id')
+      .distinct()
+      .select(
+        'items.img_path as photo',
+        'items.name as name',
+        'items.user_id as user_id',
+      )
+      .where('chats.id', chatId)
+  }
+
+  c.getSenderByChatID = async function (chatId) {
+    return db('users')
+      .join('chats', 'users.id', 'chats.sender_id')
+      .select(
+        'users.username',
+        'users.id'
+      )
+      .where('chats.id', chatId)
+  }
+
+  c.getReceiverByChatId = async function (chatId) {
+    return db('users')
+      .join('chats', 'users.id', 'chats.receiver_id')
+      .select(
+        'users.username',
+        'users.id'
+      )
+      .where('chats.id', chatId)
   }
 
   c.createChat = async function (ctx) {

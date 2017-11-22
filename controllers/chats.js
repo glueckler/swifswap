@@ -37,9 +37,11 @@ const chats = function (db) {
   }
 
   c.createChat = async function (ctx) {
-    const { senderId, receiverId, senderItemId, receiverItemId }  = ctx.request.body
+    const { senderId, receiverId, senderItemId, receiverItemId, message }  = ctx.request.body
     const chatId = parseInt(await db('chats').insert({sender_id: senderId, receiver_id: receiverId}, 'id'), 10)
     await db('items_chats').insert([{chat_id: chatId, item_id: receiverItemId}, {chat_id: chatId, item_id: senderItemId}])
+    await db('messages').insert({content: message, chat_id: chatId, user_id: senderId})
+    return ctx
   }
 
   return c

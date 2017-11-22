@@ -71,6 +71,7 @@ api.get('/chats', async ctx => {
 
 api.post('/chats', bodyParser(), async ctx => {
   ctx = await chats.createChat(ctx)
+  ctx.status = 200
 })
 
 api.delete('/chats/:id', async ctx => {

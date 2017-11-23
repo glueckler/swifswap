@@ -1,6 +1,7 @@
 const { items, users, chats, sessions } = require('./controllers/controller')
 const { app, api, client, bodyParser } = require('./server.config')
 
+
 api.get('/', async ctx => {
   ctx = await items.getHomePageItems(ctx)
 })
@@ -12,6 +13,9 @@ client.get('/', async ctx => {
 })
 
 // ------- A P I  R O U T E S --------
+api.get('/', async ctx => {
+  ctx.body = 'Hello mr Mr'
+  })
 
 // See user profile
 api.get('/users/:id', async ctx => {

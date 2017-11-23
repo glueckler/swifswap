@@ -6,14 +6,19 @@
         <li><a href="javscript:">Register</a></li>
         <li><a href="javscript:">Chat</a></li>
         <li><a href="javscript:">Profile</a></li>
+
       </ul>
+      <router-view/>
     </nav>
   </div>
 </template>
 
 <script>
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+  }
 }
 </script>
 

@@ -3,17 +3,21 @@
     <nav class="nav">
       <ul class="nav__list">
         <li>Login</li>
-        <li>Register</li>
+        <li><router-link to="/register">Register</router-link></li>
         <li>Chat</li>
         <li>Profile</li>
       </ul>
+      <router-view/>
     </nav>
   </div>
 </template>
 
 <script>
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+  }
 }
 </script>
 

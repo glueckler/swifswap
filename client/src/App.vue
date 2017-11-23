@@ -2,10 +2,10 @@
   <div id="app">
     <nav class="nav">
       <ul class="nav__list">
-        <li>Login</li>
-        <li>Register</li>
-        <li>Chat</li>
-        <li>Profile</li>
+        <li><a href="javscript:">Login</a></li>
+        <li><a href="javscript:">Register</a></li>
+        <li><a href="javscript:">Chat</a></li>
+        <li><a href="javscript:">Profile</a></li>
       </ul>
     </nav>
   </div>
@@ -18,10 +18,11 @@ export default {
 </script>
 
 <style lang="scss">
+@import './assets/styles/_base';
 .nav {
   
   &__list {
-    background: red;
+    background: $shade-1;
 
     li {
       display: inline-block;

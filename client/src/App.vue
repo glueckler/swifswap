@@ -24,10 +24,11 @@ export default {
 </script>
 
 <style lang="scss">
+@import './assets/styles/_base';
 .nav {
   
   &__list {
-    background: red;
+    background: $shade-1;
 
     li {
       display: inline-block;

@@ -5,9 +5,8 @@
         <li><router-link to="/">Swifswap</router-link></li>
         <li><router-link to="/login">Login</router-link></li>
         <li><router-link to="/register">Register</router-link></li>
-        <li>Chat</li>
         <li>Profile</li>
-        <li>Chats</li>
+        <li><router-link to="/chats">Chats</router-link></li>
       </ul>
       <router-view/>
     </nav>
@@ -19,6 +18,7 @@
 export default {
   name: 'app',
   components: {
+
   }
 }
 </script>
@@ -35,4 +35,6 @@ export default {
     }
   }
 }
+
+
 </style>

@@ -4,7 +4,6 @@
     <ul class="nav__list">
       <li><router-link to="/login">Login</router-link></li>
       <li><router-link to="/register">Register</router-link></li>
-      <li><router-link to="/chat/:id">Chat</router-link></li>
       <li>Profile</li>
       <li><router-link to="/chats">Chats</router-link></li>
     </ul>

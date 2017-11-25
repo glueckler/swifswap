@@ -2,9 +2,9 @@
   <div id="show-chats">
     <h2>Your swap chats</h2>
         <div class="single-chat" v-for="chat in chats">
-          <router-link :to="'chat/'+chat.id">{{ chat.receiver.name }}'s {{ chat.receiverItem.name }}</router-link>
+          <router-link :to="'chats/'+chat.id">{{ chat.receiver.name }}'s {{ chat.receiverItem.name }}</router-link>
         </div>
-      </div>        
+      </div>
       </ul>
   </div>
 </template>
@@ -17,15 +17,26 @@ export default {
     return {
       chats: {}
     }
-  }, 
+  },
   mounted () {
     this.getChats()
   },
   methods: {
     getChats() {
-      fetch('api/chats')
+      fetch('/api/chats')
         .then(response => {
-          console.log(response.json())
+          if (response.status !== 200) {
+          console.log('Looks like there was a problem. Status Code: ' +
+            response.status);
+          return;
+          }
+          console.log(response)
+          response.json().then((data) => {
+            this.chats = data
+          })
+          .catch(function(err) {
+            console.log('Fetch Error :-S', err);
+          })
         })
     }
   }

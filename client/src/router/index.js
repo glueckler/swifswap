@@ -14,10 +14,9 @@ const routes = [
   { path: '/register', component: Register },
   { path: '/login', component: Login },
   { path: '/chats', component: Chats },
-  { path: '/chat/:id', component: Chat },
+  { path: '/chats/:id', component: Chat },
 
 ]
 
 
 export default new Router({ routes, mode: 'history' })
-

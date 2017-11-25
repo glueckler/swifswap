@@ -2,28 +2,28 @@
   <div class="homepage">
     <div class="item-grid">
       <div class="column">
-        <article class="item" v-for="item in homepageItems.col1">
+        <article class="item" v-for="item in homepageItems[0]">
           <h3 class="item__name">{{ item.name }}</h3>
           <img class="item__photo" :src="item.img_path">
           <p class="item__description">{{ item.description }}</p>
         </article>
       </div>
-      <div class="column" v-if="homepageItems.col2">
-        <article class="item" v-for="item in homepageItems.col2">
+      <div class="column" v-if="homepageItems[1]">
+        <article class="item" v-for="item in homepageItems[1]">
           <h3 class="item__name">{{ item.name }}</h3>
           <img class="item__photo" :src="item.img_path">
           <p class="item__description">{{ item.description }}</p>
         </article>
       </div>
-      <div class="column" v-if="homepageItems.col3">
-        <article class="item" v-for="item in homepageItems.col3">
+      <div class="column" v-if="homepageItems[2]">
+        <article class="item" v-for="item in homepageItems[2]">
           <h3 class="item__name">{{ item.name }}</h3>
           <img class="item__photo" :src="item.img_path">
           <p class="item__description">{{ item.description }}</p>
         </article>
       </div>
-      <div class="column" v-if="homepageItems.col4">
-        <article class="item" v-for="item in homepageItems.col4">
+      <div class="column" v-if="homepageItems[3]">
+        <article class="item" v-for="item in homepageItems[3]">
           <h3 class="item__name">{{ item.name }}</h3>
           <img class="item__photo" :src="item.img_path">
           <p class="item__description">{{ item.description }}</p>

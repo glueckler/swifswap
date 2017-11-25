@@ -77,6 +77,7 @@ api.get('/chats', async ctx => {
 })
 
 api.get('/chats/:id', async ctx => {
+  // ctx = await chats.getMessages(ctx)
   const messages = await chats.getMessagesByChatId(ctx.params.id)
   const sender = (await chats.getSenderByChatID(ctx.params.id))[0]
   const receiver = (await chats.getReceiverByChatId(ctx.params.id))[0]
@@ -87,6 +88,10 @@ api.get('/chats/:id', async ctx => {
     items,
     messages
   }
+})
+
+api.post('/chats/:id', async ctx => {
+  ctx.body = 'Post to chat/:id not configured with db yet - dean'
 })
 
 api.post('/chats', bodyParser(), async ctx => {

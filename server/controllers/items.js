@@ -24,6 +24,7 @@ const items = function (db) {
     const userId = '5'
 
     const postBody = ctx.request.body
+    console.log(postBody)
     const { name, description, imageUrl, tags } = postBody
 
     const itemId = await db.insert({

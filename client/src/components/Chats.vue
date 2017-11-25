@@ -30,7 +30,6 @@ export default {
             response.status);
           return;
           }
-          console.log(response)
           response.json().then((data) => {
             this.chats = data
           })

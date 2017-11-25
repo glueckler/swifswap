@@ -1,11 +1,11 @@
 <template>
-  <div class="message-page">
+  <div v-if="chat.receiver" class="chat">
     <h2>Your swifswap with {{ chat.receiver.username }}</h2>
-    <div v-for="message in chat.messages" >
+    <div v-for="message in chat.messages">
       <p>{{ message.messageAuthor }}: {{ message.messageContent }}</p>
     </div>
-    <form>
-      <textarea class="new-message" placeholder="Enter a new message" @keyup.enter="submit" v-model="newMessage"></textarea>
+    <form class="chat__form">
+      <textarea placeholder="Enter a new message" @keyup.enter="submit" v-model="newMessage"></textarea>
     </form>
   </div>
 </template>
@@ -24,24 +24,27 @@ export default {
   },
   methods: {
     submit: function () {
-      console.log('you hit enter in the chat form')
       var value = this.newMessage
-      console.log('value', value)
       this.chat.messages.push({
         messageAuthor: 'me',
         messageContent: value,
         messageCreationTime: new Date()
       })
-      console.log('this.chat.messages', this.chat.messages)
       this.newMessage = ''
     },
     getMessages: function() {
       fetch('/api/chats/' + this.$route.params.id)
         .then(response => {
-          console.log('response', response)
+          if (response.status !== 200) {
+          console.log('Looks like there was a problem. Status Code: ' +
+            response.status);
+          return;
+          }
           response.json().then((data) => {
-            console.log('data', data)
             this.chat = data
+          })
+          .catch(function(err) {
+            console.log('Fetch Error :-S', err);
           })
         })
       }
@@ -51,13 +54,21 @@ export default {
 </script>
 
 <style lang="scss">
-  .message-page {
+  .chat {
     text-align: center;
-    border: 0em 4em 1em 4em
-  }
-  textarea {
-    font-family: 'Times New Roman', Times, serif;
-    width: 25em;
-    height: 5em;
+    border: 0em 4em 1em 4em;
+    margin: auto;
+
+  
+    &__form {
+
+      textarea {
+      
+        font-family: 'Times New Roman', Times, serif;
+        width: 25em;
+        height: 5em;
+        
+      }
+    }
   }
 </style>

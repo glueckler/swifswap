@@ -64,7 +64,6 @@ export default {
       })
       console.log('this.chat.messages', this.chat.messages)
       this.newMessage = ''
-      
 
     }
   }

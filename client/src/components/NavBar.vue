@@ -5,8 +5,9 @@
       <li><router-link to="/login">Login</router-link></li>
       <li><router-link to="/register">Register</router-link></li>
       <li><router-link to="/chat/:id">Chat</router-link></li>
-      <li>Profile</li>
+      <li><router-link to="/profile">Profile</router-link></li>
       <li><router-link to="/chats">Chats</router-link></li>
+      <li><router-link to="/newitem">New Item</router-link></li>
     </ul>
   </nav>
 </template>
@@ -46,6 +47,7 @@ export default {
       display: inline-block;
       a:hover {
         text-decoration: underline;
+        cursor: pointer;
       }
     }
   }

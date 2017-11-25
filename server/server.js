@@ -17,7 +17,10 @@ api.get('/', async ctx => {
   ctx.body = 'Hello mr Mr'
   })
 
-// See user profile
+// user routes
+api.get('/profile', async ctx => {
+  ctx.body = await users.getUserById('3')
+})
 api.get('/users/:id', async ctx => {
   ctx.body = await users.getUserById(ctx.params.id)
 })

@@ -7,12 +7,10 @@
 
 <script>
 import NavBar from '@/components/NavBar'
-import HomePage from '@/components/HomePage'
 
 export default {
   components: {
-    NavBar,
-    HomePage
+    NavBar
   }
 }
 </script>

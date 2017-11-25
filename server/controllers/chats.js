@@ -79,6 +79,20 @@ const chats = function (db) {
       .where('chats.id', chatId)
   }
 
+  c.getMessages = async function (ctx) {
+    const messages = await chats.getMessagesByChatId(ctx.params.id)
+    const sender = (await chats.getSenderByChatID(ctx.params.id))[0]
+    const receiver = (await chats.getReceiverByChatId(ctx.params.id))[0]
+    const items = await chats.getItemsByChatId(ctx.params.id)
+    ctx.body = {
+      sender,
+      receiver,
+      items,
+      messages
+    }
+    return ctx
+  }
+
   c.createChat = async function (ctx) {
     const { senderId, receiverId, senderItemId, receiverItemId, message }  = ctx.request.body
     const chatId = parseInt(await db('chats').insert({sender_id: senderId, receiver_id: receiverId}, 'id'), 10)

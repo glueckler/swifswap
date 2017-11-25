@@ -1,10 +1,9 @@
 <template>
   <nav class="nav">
-    <router-link to="/">Swifswap</router-link>
+    <router-link to="/" class="nav__logo">Swifswap</router-link>
     <ul class="nav__list">
       <li><router-link to="/login">Login</router-link></li>
       <li><router-link to="/register">Register</router-link></li>
-      <li><router-link to="/chat/:id">Chat</router-link></li>
       <li><router-link to="/profile">Profile</router-link></li>
       <li><router-link to="/chats">Chats</router-link></li>
       <li><router-link to="/newitem">New Item</router-link></li>
@@ -39,6 +38,13 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 0 .3em;
+
+  &__logo {
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+  }
 
   &__list {
 

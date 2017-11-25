@@ -50,7 +50,7 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss">
   .message-page {
     text-align: center;
     border: 0em 4em 1em 4em

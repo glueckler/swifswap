@@ -1,6 +1,6 @@
 <template>
   <div class="message-page">
-    <h2>Your swap chat with {{ chat.receiver.username }}</h2>
+    <h2>Your swifswap with {{ chat.receiver.username }}</h2>
     <div v-for="message in chat.messages" >
       <p>{{ message.messageAuthor }}: {{ message.messageContent }}</p>
     </div>
@@ -74,6 +74,12 @@ export default {
 
 <style>
   .message-page {
-    text-align: center
+    text-align: center;
+    border: 0em 4em 1em 4em
+  }
+  textarea {
+    font-family: 'Times New Roman', Times, serif;
+    width: 25em;
+    height: 5em;
   }
 </style>

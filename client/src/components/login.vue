@@ -1,16 +1,8 @@
 <template>
-  <form class="login">
-      <label for="username-email">Username or Email</label>
-      <input
-        type="text" 
-        id="username-email"
-        v-model="username">
-      <label for="password">Password</label>
-      <input
-        type="password" 
-        id="password"
-        v-model="password">
-    <button type="submit">Register</button>
+  <form class="login" v-on:submit.prevent="onSubmit">
+    <input type="text" id="username" v-model="username" placeholder="username">
+    <input type="password" id="password" v-model="password" placeholder="password">
+    <button type="submit">Log in</button>
   </form>  
 </template>
 
@@ -25,8 +17,8 @@ export default {
     }
   },
   methods: {
-    login() {
-      
+    onSubmit: function() {
+      console.log('you clicked the submit button in the login form')
     }
   }
 }

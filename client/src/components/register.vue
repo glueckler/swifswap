@@ -1,20 +1,8 @@
 <template>
-  <form class="register">
-      <label for="username">Username</label>
-      <input
-        type="text" 
-        id="username"
-        v-model="username">
-      <label for="email">Email</label>
-      <input
-        type="email" 
-        id="email"
-        v-model="email">
-      <label for="password">Password</label>
-      <input
-        type="password" 
-        id="password"
-        v-model="password">
+  <form class="register" v-on:submit.prevent="onSubmit">
+    <input type="text" id="username" v-model="username" placeholder="username">
+    <input type="email" id="email" v-model="email" placeholder="email">
+    <input type="password" id="password" v-model="password" placeholder="password">
     <button type="submit">Register</button>
   </form>  
 </template>
@@ -30,8 +18,8 @@ export default {
     }
   },
   methods: {
-    register() {
-      
+    onSubmit: function() {
+      console.log('yo')
     }
   }
 }

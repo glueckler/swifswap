@@ -1,11 +1,12 @@
 <template>
-  <div>
+  <div class="message-page">
     <h2>Your swap chat with {{ chat.receiver.username }}</h2>
     <div v-for="message in chat.messages" >
       <p>{{ message.messageAuthor }}: {{ message.messageContent }}</p>
-
-
     </div>
+    <form>
+      <textarea class="new-message" placeholder="Enter a new message" @keyup.enter="submit" v-model="newMessage"></textarea>
+    </form>
   </div>
 </template>
 
@@ -14,6 +15,7 @@ export default {
   name: 'Chat',
   data () {
     return {
+      newMessage: '',
       chat: {
         "sender": {
             "username": "carol",
@@ -48,7 +50,22 @@ export default {
             }
         ]
       }
+    }
+  },
+  methods: {
+    submit: function () {
+      console.log('you hit enter in the chat form')
+      var value = this.newMessage
+      console.log('value', value)
+      this.chat.messages.push({
+        messageAuthor: 'me',
+        messageContent: value,
+        messageCreationTime: new Date()
+      })
+      console.log('this.chat.messages', this.chat.messages)
+      this.newMessage = ''
       
+
     }
   }
 
@@ -56,4 +73,7 @@ export default {
 </script>
 
 <style>
+  .message-page {
+    text-align: center
+  }
 </style>

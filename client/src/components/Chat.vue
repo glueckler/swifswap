@@ -63,11 +63,9 @@ export default {
     &__form {
 
       textarea {
-      
         font-family: 'Times New Roman', Times, serif;
         width: 25em;
         height: 5em;
-        
       }
     }
   }

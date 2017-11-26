@@ -1,8 +1,8 @@
 <template>
   <div id="show-chats">
-    <h2>Your swap chats</h2>
+    <h1>your swifswaps</h1>
         <div class="single-chat" v-for="chat in chats">
-          <router-link :to="'chats/'+chat.id">{{ chat.receiver.name }}'s {{ chat.receiverItem.name }}</router-link>
+          <p><router-link :to="'chats/'+chat.id">{{ chat.receiver.name }}'s {{ chat.receiverItem.name }} | last message at: {{ chat.updated }}</router-link></p>
         </div>
       </div>
       </ul>
@@ -43,5 +43,9 @@ export default {
 </script>
 
 <style>
-
+  #show-chats {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
 </style>

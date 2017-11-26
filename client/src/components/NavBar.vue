@@ -1,12 +1,12 @@
 <template>
   <nav class="nav">
-    <router-link to="/" class="nav__logo">Swifswap</router-link>
+    <router-link to="/" class="nav__logo">swifswap</router-link>
     <ul class="nav__list">
-      <li><router-link to="/login">Login</router-link></li>
-      <li><router-link to="/register">Register</router-link></li>
-      <li><router-link to="/profile">Profile</router-link></li>
-      <li><router-link to="/chats">Chats</router-link></li>
-      <li><router-link to="/newitem">New Item</router-link></li>
+      <li><router-link to="/login">login</router-link></li> |
+      <li><router-link to="/register">register</router-link></li> |
+      <li><router-link to="/profile">profile</router-link></li> |
+      <li><router-link to="/chats">chats</router-link></li> |
+      <li><router-link to="/newitem">new item</router-link></li>
     </ul>
   </nav>
 </template>
@@ -20,12 +20,16 @@ export default {
 </script>
 
 <style lang="scss">
+
 @import '../assets/styles/_base';
 .nav {
+  
   all: initial;
   * {
     all: unset;
   }
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 900;
 
   position: sticky;
   top: 0;
@@ -47,9 +51,8 @@ export default {
   }
 
   &__list {
-
+    font-size:1.5rem;
     li {
-
       display: inline-block;
       a:hover {
         text-decoration: underline;

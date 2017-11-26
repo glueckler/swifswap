@@ -24,7 +24,7 @@ const items = function (db) {
     const userId = '5'
 
     const postBody = ctx.request.body
-    console.log(postBody)
+    console.log(postBody) // DELETE ME
     const { name, description, imageUrl, tags } = postBody
 
     const itemId = await db.insert({
@@ -38,6 +38,9 @@ const items = function (db) {
     const tagIds = await dbHelpers.getTagIdsByTagName(db, tags)
     const insertTags = tagIds.map(a => { return { item_id: itemId, tag_id: a } })
     await db.insert(insertTags).into('items_tags')
+
+    ctx.body = 'Posted at item_id ' + itemId
+    return ctx
   }
 
   i.getHomePageItems = async function (ctx) {

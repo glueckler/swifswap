@@ -1,15 +1,28 @@
 require('dotenv').config()
-const logger     = require('koa-logger')
-const bodyParser = require('koa-body')
-const Router     = require('koa-router')
+const Koa         = require('koa')
+const serve       = require('koa-static')
+const logger      = require('koa-logger')
+const Router      = require('koa-router')
+const path        = require('path')
+const bodyParser  = require('koa-body')()
+const multiParser = require('koa-body')({
+  multipart: true,
+  formidable: {
+    uploadDir: path.join(__dirname, 'static/images'),
+    keepExtensions: true
+  }
+})
+// const multer     = require('koa-multer')
 
-const Koa        = require('koa')
-const app        = new Koa()
-const api        = new Router({ prefix: '/api' })
-const client     = new Router()
+const app         = new Koa()
+const api         = new Router({ prefix: '/api' })
+const client      = new Router()
+// const upItemImg  = multer({ dest: '../image-uploads/item-imgs' })
 
 app.use(api.routes())
 app.use(client.routes())
+
+app.use(serve('static'))
 
 if (process.env.NODE_ENV === 'development') {
   console.log('koa server script running in development ENV!')
@@ -30,7 +43,9 @@ module.exports = {
   app,
   api,
   client,
-  bodyParser
+  bodyParser,
+  multiParser,
+  path
 }
 
 app.listen(3000)

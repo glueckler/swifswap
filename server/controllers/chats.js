@@ -54,7 +54,7 @@ const chats = function (db) {
       .select(
         'items.img_path as photo',
         'items.name as name',
-        'items.user_id as user_id',
+        'items.user_id as user_id'
       )
       .where('chats.id', chatId)
   }
@@ -80,15 +80,11 @@ const chats = function (db) {
   }
 
   c.getMessages = async function (ctx) {
-    const messages = await chats.getMessagesByChatId(ctx.params.id)
-    const sender = (await chats.getSenderByChatID(ctx.params.id))[0]
-    const receiver = (await chats.getReceiverByChatId(ctx.params.id))[0]
-    const items = await chats.getItemsByChatId(ctx.params.id)
     ctx.body = {
-      sender,
-      receiver,
-      items,
-      messages
+      sender: (await c.getSenderByChatID(ctx.params.id))[0],
+      receiver: await c.getMessagesByChatId(ctx.params.id),
+      items: await c.getItemsByChatId(ctx.params.id),
+      messages: await c.getMessagesByChatId(ctx.params.id)
     }
     return ctx
   }

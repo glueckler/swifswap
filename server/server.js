@@ -1,5 +1,6 @@
+const fs = require('fs')
 const { items, users, chats, sessions } = require('./controllers/controller')
-const { app, api, client, bodyParser } = require('./server.config')
+const { api, client, bodyParser, multiParser } = require('./server.config')
 
 
 api.get('/', async ctx => {
@@ -25,7 +26,7 @@ api.get('/users/:id', async ctx => {
   ctx.body = await users.getUserById(ctx.params.id)
 })
 
-api.post('/users', bodyParser(), async ctx => {
+api.post('/users', bodyParser, async ctx => {
   ctx = await users.createUser(ctx)
 })
 
@@ -40,7 +41,7 @@ api.delete('users/:id', async ctx => {
 // ----------------------
 
 // Session
-api.post('/session', bodyParser(), async ctx => {
+api.post('/session', bodyParser, async ctx => {
   ctx = await sessions.validateSignIn(ctx)
   ctx.redirect('/')
 })
@@ -57,8 +58,16 @@ api.get('/items/:id', async ctx => {
   ctx.body = item
 })
 
-api.post('/items', bodyParser(), async ctx => {
+api.post('/items', bodyParser, async ctx => {
   ctx = await items.createItem(ctx)
+})
+
+api.post('/items/photo', multiParser, async ctx => {
+  const { files, fields } = ctx.request.body
+  fs.rename(files.photo.path, './static/images/' + fields.fileName, function (err) {
+    if (err) throw err
+  })
+  ctx.body = 'well received?'
 })
 
 api.put('/items/:id', async ctx => {
@@ -77,24 +86,14 @@ api.get('/chats', async ctx => {
 })
 
 api.get('/chats/:id', async ctx => {
-  // ctx = await chats.getMessages(ctx)
-  const messages = await chats.getMessagesByChatId(ctx.params.id)
-  const sender = (await chats.getSenderByChatID(ctx.params.id))[0]
-  const receiver = (await chats.getReceiverByChatId(ctx.params.id))[0]
-  const items = await chats.getItemsByChatId(ctx.params.id)
-  ctx.body = {
-    sender,
-    receiver,
-    items,
-    messages
-  }
+  ctx = await chats.getMessages(ctx)
 })
 
 api.post('/chats/:id', async ctx => {
   ctx.body = 'Post to chat/:id not configured with db yet - dean'
 })
 
-api.post('/chats', bodyParser(), async ctx => {
+api.post('/chats', bodyParser, async ctx => {
   ctx = await chats.createChat(ctx)
   ctx.status = 200
 })

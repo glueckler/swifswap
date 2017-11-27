@@ -1,21 +1,23 @@
 <template>
-  <div v-if="chat.receiver" class="chat">
+  <div>
+    <div v-if="chat.receiver" class="chat">
       <h1>your swifswap with {{ chat.receiver.username }}</h1>
-    <div class="chat__items">
-      <div v-for="item in chat.items" class="chat__items__container">
-        <h2 class="chat__items__container__name">{{ item.name }}</h2>
-        <div class="chat__items__container__image">
-          <img :src="item.photo" >
+      <div class="chat__items">
+        <div v-for="item in chat.items" class="chat__items__container">
+          <h2 class="chat__items__container__name">{{ item.name }}</h2>
+          <div class="chat__items__container__image">
+            <img :src="item.photo" >
+          </div>
         </div>
       </div>
-    </div>
-    <div class="chat-text">
-      <div v-for="message in chat.messages">
-        <p>{{ message.messageAuthor }}: {{ message.messageContent }}</p>
+      <div class="chat-text">
+        <div v-for="message in chat.messages">
+          <p>{{ message.messageAuthor }}: {{ message.messageContent }}</p>
+        </div>
+        <form class="form">
+          <textarea placeholder="Enter a new message" @keyup.enter="submit" v-model="newMessage"></textarea>
+        </form>
       </div>
-      <form class="form">
-        <textarea placeholder="Enter a new message" @keyup.enter="submit" v-model="newMessage"></textarea>
-      </form>
     </div>
   </div>
 </template>
@@ -26,7 +28,7 @@ export default {
   data () {
     return {
       newMessage: '',
-      chat: {}
+      chat: {},
     }
   },
   mounted () {

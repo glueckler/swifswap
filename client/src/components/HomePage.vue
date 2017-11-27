@@ -4,8 +4,8 @@
       <div class="column">
         <article class="item" v-for="item in homepageItems[0]">
           <router-link :to="'items/'+item.id">
-          <h3 class="item__name">{{ item.name }}</h3>
           <img class="item__photo" :src="item.img_path">
+          <h3 class="item__name">{{ item.name }}</h3>
           <p class="item__description">{{ item.description }}</p>
           </router-link>
         </article>
@@ -13,8 +13,8 @@
       <div class="column" v-if="homepageItems[1]">
         <article class="item" v-for="item in homepageItems[1]">
           <router-link :to="'items/'+item.id">
-          <h3 class="item__name">{{ item.name }}</h3>
           <img class="item__photo" :src="item.img_path">
+          <h3 class="item__name">{{ item.name }}</h3>
           <p class="item__description">{{ item.description }}</p>
           </router-link>
         </article>
@@ -22,17 +22,17 @@
       <div class="column" v-if="homepageItems[2]">
         <article class="item" v-for="item in homepageItems[2]">
           <router-link :to="'items/'+item.id">
-          <h3 class="item__name">{{ item.name }}</h3>
           <img class="item__photo" :src="item.img_path">
+          <h3 class="item__name">{{ item.name }}</h3>
           <p class="item__description">{{ item.description }}</p>
-          </router-link>      
+          </router-link>
         </article>
       </div>
       <div class="column" v-if="homepageItems[3]">
         <article class="item" v-for="item in homepageItems[3]">
           <router-link :to="'items/'+item.id">
-          <h3 class="item__name">{{ item.name }}</h3>
           <img class="item__photo" :src="item.img_path">
+          <h3 class="item__name">{{ item.name }}</h3>
           <p class="item__description">{{ item.description }}</p>
           </router-link>
         </article>
@@ -88,17 +88,24 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../assets/styles/_base';
+
 .item-grid {
+  @include sidepadding
+  padding-top: 29px;
   display: flex;
+  margin-right: -29px;
 }
 .column {
-  background: #ddd;
+  padding-right: 29px;
   flex-grow: 1;
   flex-basis: 0;
 }
 .item {
+  transition: all 1s ease-in-out;
+
   &:hover {
-    border: 1px solid black;
+    transform: scale(1.01);
   }
   &__photo {
     width: 100%;

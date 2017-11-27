@@ -2,26 +2,40 @@ const fs = require('fs')
 const { items, users, chats, sessions } = require('./controllers/controller')
 const { api, client, bodyParser, multiParser } = require('./server.config')
 
-
 api.get('/', async ctx => {
-  ctx = await items.getHomePageItems(ctx)
+  await items.getHomePageItems(ctx)
 })
 
 // ------- C L I E N T  R O U T E S --------
 
 client.get('/', async ctx => {
-  ctx.body = 'Hello World I\'m a computer'
+  ctx.redirect('http://localhost:8080')
+})
+
+client.get('/logout', async ctx => {
+  ctx = await sessions.destroySession(ctx)
+  ctx.redirect('/')
+})
+
+client.post('/sessions', bodyParser, async ctx => {
+  ctx = await sessions.validateSignIn(ctx)
+  ctx.redirect('/')
 })
 
 // ------- A P I  R O U T E S --------
-api.get('/', async ctx => {
-  ctx.body = 'Hello mr Mr'
-  })
 
 // user routes
+api.get('/usersession', async ctx => {
+  ctx.user = await sessions.validate(ctx)
+  if (ctx.user) {
+    ctx.body = ctx.user
+  }
+})
+
 api.get('/profile', async ctx => {
   ctx.body = await users.getUserById('3')
 })
+
 api.get('/users/:id', async ctx => {
   ctx.body = await users.getUserById(ctx.params.id)
 })
@@ -34,19 +48,29 @@ api.put('/users/:id', async ctx => {
   ctx.body = 'you called the put method at /users/:id'
 })
 
-api.delete('users/:id', async ctx => {
+api.delete('/users/:id', async ctx => {
   ctx.body = 'you called the delete method at /users/:id'
 })
 
 // ----------------------
 
-// Session
-api.post('/session', bodyParser, async ctx => {
+// Sessions
+api.post('/sessions', bodyParser, async ctx => {
   ctx = await sessions.validateSignIn(ctx)
-  ctx.redirect('/')
+  ctx.body = 'this is the end'
 })
 
-api.delete('/session', async ctx => {
+api.get('/set', async ctx => {
+  ctx = await sessions.setSession(ctx, 'sleepa')
+  ctx.body = 'just so you know'
+})
+
+api.get('/destroy', async ctx => {
+  ctx = await sessions.destroySession(ctx)
+  ctx.body = 'session destroyed'
+})
+
+api.delete('/sessions', async ctx => {
   ctx.body = 'you called the delete method at /session'
 })
 

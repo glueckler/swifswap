@@ -1,26 +1,36 @@
 <template>
-  <form class="login" v-on:submit.prevent="onSubmit">
-    <input type="text" id="username" v-model="username" placeholder="username">
-    <input type="password" id="password" v-model="password" placeholder="password">
-    <button type="submit">Log in</button>
-  </form>  
+  <form method="POST" v-bind:action='login' class="login">
+    <input type="text" name="username" v-model="loginForm.username" placeholder="username">
+    <input type="password" name="password" v-model="loginForm.password" placeholder="password">
+    <input type="submit">Log in</input>
+  </form>
 </template>
 
 <script>
+import { apiHost } from '../../url.config'
 export default {
   name: 'Login',
   data() {
     return {
-      username: '',
-      email: '',
-      password: ''
+      loginForm: {
+        username: '',
+        email: '',
+        password: ''
+      },
+      login: apiHost + '/sessions'
     }
   },
-  methods: {
-    onSubmit: function() {
-      console.log('you clicked the submit button in the login form')
-    }
-  }
+  // methods: {
+  //   onSubmit: function() {
+  //     fetch('/api/sessions', {
+  //       method: 'post',
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify(this.loginForm)
+  //     })
+  //   }
+  // }
 }
 </script>
 

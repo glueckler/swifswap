@@ -12,6 +12,7 @@ const items = function (db) {
         'items.name',
         'items.description',
         'items.img_path',
+        'items.user_id',
         'tags.name as tagName'
       )
       .where('items.id', paramsId)

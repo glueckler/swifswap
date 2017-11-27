@@ -23,6 +23,7 @@
     </button>
   </div>
 </template>
+
 <script>
 import uuid from 'uuid/v4'
 import { apiHost } from '../../url.config.js'

@@ -92,7 +92,7 @@ API
     }
 
 - Create new chat
-  - api.post('chats/:id')
+  - api.post('chats')
   - db: insert chat
     curl -X POST localhost:3000/api/chats -H "Content-Type: application/json" -d '{"senderId":"4","receiverId":"2","senderItemId":"6","receiverItemId":"1", "message":"hey I really like you but only as a friend."}'
 

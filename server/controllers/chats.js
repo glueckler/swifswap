@@ -82,7 +82,7 @@ const chats = function (db) {
   c.getMessages = async function (ctx) {
     ctx.body = {
       sender: (await c.getSenderByChatID(ctx.params.id))[0],
-      receiver: await c.getMessagesByChatId(ctx.params.id),
+      receiver: (await c.getReceiverByChatId(ctx.params.id))[0],
       items: await c.getItemsByChatId(ctx.params.id),
       messages: await c.getMessagesByChatId(ctx.params.id)
     }

@@ -39,7 +39,7 @@ export default {
     all: unset;
   }
   font-family: 'Work Sans', sans-serif;
-  font-weight: 900;
+  font-weight: 700;
 
   position: sticky;
   top: 0;

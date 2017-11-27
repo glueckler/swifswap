@@ -1,0 +1,6 @@
+const moment = require('moment')
+var a = moment([2017, 10, 14, 12]).format()
+console.log(a)
+console.log(moment(a).fromNow())
+var b = moment(new Date()).fromNow()
+console.log(b)

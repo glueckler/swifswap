@@ -2,7 +2,7 @@
   <div id="show-chats">
     <h1>your swifswaps</h1>
         <div class="single-chat" v-for="chat in chats">
-          <p><router-link :to="'chats/'+chat.id">{{ chat.receiver.name }}'s {{ chat.receiverItem.name }} | last message at: {{ chat.updated }}</router-link></p>
+          <p><router-link :to="'chats/'+chat.id">{{ chat.receiver.name }}'s {{ chat.receiverItem.name }} | last message at: {{ convertTime(chat.updated) }}</router-link></p>
         </div>
       </div>
       </ul>
@@ -10,7 +10,9 @@
 </template>
 
 <script>
-
+// const moment = require('moment')
+import moment from 'moment'
+console.log('m', moment)
 export default {
   name: 'Chats',
   data () {
@@ -26,7 +28,7 @@ export default {
       fetch('/api/chats')
         .then(response => {
           if (response.status !== 200) {
-          console.log('Looks like there was a problem. Status Code: ' +
+            console.log('Looks like there was a problem. Status Code: ' +
             response.status);
           return;
           }
@@ -37,6 +39,9 @@ export default {
             console.log('Fetch Error :-S', err);
           })
         })
+    },
+    convertTime(x) {
+      return moment(x).fromNow()
     }
   }
 }

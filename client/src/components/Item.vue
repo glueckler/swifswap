@@ -16,7 +16,7 @@
       </p>
     </div>
     <form>
-      <textarea placeholder="Type a message and hit enter or click submit to start a chat!" @keyup.enter="swap" v-model="message"></textarea>
+      <textarea placeholder="Type a message then hit enter or click swap to start a chat!" @keyup.enter="swap" v-model="chatInfo.message"></textarea>
     </form>
     <button class="view-item__swap-button" v-on:click="swap">swap!</button>
   </div>
@@ -24,28 +24,14 @@
 
 <script>
 
-const chatInfo = {
-  senderId: '4',
-  // get receiver Id and item id... item.user_id
-  receiverId: '5',
-  senderItemId: '6',
-  receiverItemId: '8',
-  //create message field to submit
-  message: 'one liquids vessel for another'
-}
+
 
 export default {
   name: 'Item',
   data () {
     return {
       item: {},
-      chatInfo: {
-          // senderId: '4',
-          // receiverId: this.item.user_id,
-          // senderItemId: '',
-          // receiverItemId: this.item.id,
-          // message: ''
-        }
+      chatInfo: {}
     }
   },
   mounted() {
@@ -72,15 +58,18 @@ export default {
       })
     },
     swap () {
-        console.log('you clicked swap')
-        fetch('/api/chats', {
-        method: 'post',
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify(this.chatInfo)
-        })
+      this.chatInfo.senderId = '4'
+      this.chatInfo.receiverId = this.item.user_id
+      this.chatInfo.senderItemId = '6'
+      this.chatInfo.receiverItemId = this.item.id
+      fetch('/api/chats', {
+      method: 'post',
+      headers: {
+        "Content-type": "application/json"
       },
+      body: JSON.stringify(this.chatInfo)
+      })
+    },
   }
 }
 </script>
@@ -95,6 +84,9 @@ export default {
       img{
         max-width: 600px;
       }
+    }
+    textarea {
+      width: 100%;
     }
   }
 </style>

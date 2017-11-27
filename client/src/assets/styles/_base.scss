@@ -1,5 +1,9 @@
 $shade-1: #ccc;
 
+@mixin sidepadding {
+  padding: 0 29px;
+}
+
 body {
   font-family: 'Work Sans', sans-serif;
 }

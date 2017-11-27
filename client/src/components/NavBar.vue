@@ -30,28 +30,27 @@ export default {
 </script>
 
 <style lang="scss">
-
 @import '../assets/styles/_base';
 .nav {
-
   all: initial;
   * {
     all: unset;
   }
+  @include sidepadding;
   font-family: 'Work Sans', sans-serif;
   font-weight: 700;
 
   position: sticky;
+  background: white;
+  border-bottom: 1px solid #ddd;
   top: 0;
   right: 0;
   left: 0;
   height: 2em;
-  background: $shade-1;
   font-size: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 .3em;
 
   &__logo {
     &:hover {

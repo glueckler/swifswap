@@ -7,7 +7,7 @@
       <input type="location" id="location" v-model="formContent.location" placeholder="location">
       <input type="text" id="image" v-model="formContent.image" placeholder="image url">
       <button type="submit">Register</button>
-    </form>  
+    </form>
   </div>
 </template>
 
@@ -29,17 +29,27 @@ export default {
   },
   methods: {
     submitUser () {
-      console.log('submit user method called')
       fetch('/api/users', {
         method: 'post',
         headers: {
           "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-
         },
-        body: `username=${this.formContent.username}&email=${this.formContent.email}&password=${this.formContent.password}&location=${this.formContent.location}&img_path=${this.formContent.image}`
+        body:
+        `username=${this.formContent.username}
+        &email=${this.formContent.email}
+        &password=${this.formContent.password}
+        &location=${this.formContent.location}
+        &img_path=${this.formContent.image}`
 
-      }).then(window.confirm("you're so ready to swifswap!")).then(
-      this.formContent.username = '', this.formContent.email = '', this.formContent.password = '', this.formContent.location = '', this.formContent.image = '').then(this.$router.push('/'))
+      })
+      .then(this.formContent = {
+        username: '',
+        email: '',
+        password: '',
+        location: '',
+        image: ''
+      })
+      .then(this.$router.push('/'))
     }
   }
 }

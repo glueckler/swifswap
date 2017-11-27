@@ -7,6 +7,7 @@ const items = function (db) {
     const itemsFull = await db('items')
       .leftJoin('items_tags', 'items.id', 'items_tags.item_id')
       .leftJoin('tags', 'items_tags.tag_id', 'tags.id')
+      .join('users')
       .select(
         'items.id',
         'items.name',
@@ -24,7 +25,6 @@ const items = function (db) {
     const userId = '5'
 
     const postBody = ctx.request.body
-    console.log(postBody) // DELETE ME
     const { name, description, imageUrl, tags } = postBody
 
     const itemId = await db.insert({
@@ -46,7 +46,6 @@ const items = function (db) {
   i.getHomePageItems = async function (ctx) {
     const homepageQuery = await db.select().from('items').limit(50).orderBy('created_at', 'desc')
     ctx.body = homepageQuery
-    return ctx
   }
 
   return i

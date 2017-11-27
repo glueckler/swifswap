@@ -1,4 +1,5 @@
 const users = function (db) {
+  const sessions = require('./sessions')(db)
   const u = {}
 
   u.getUserById = async function (id) {
@@ -27,7 +28,9 @@ const users = function (db) {
       }
     }
 
-    await db('users').insert(ctx.request.body)
+    const userId = await db('users').insert(ctx.request.body, 'id')
+    console.log(userId[0])
+    sessions.setSession(ctx, userId[0])
     return ctx
   }
 

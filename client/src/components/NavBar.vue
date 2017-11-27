@@ -2,19 +2,29 @@
   <nav class="nav">
     <router-link to="/" class="nav__logo">swifswap</router-link>
     <ul class="nav__list">
-      <li><router-link to="/login">login</router-link></li> |
-      <li><router-link to="/register">register</router-link></li> |
-      <li><router-link to="/profile">profile</router-link></li> |
-      <li><router-link to="/chats">chats</router-link></li> |
-      <li><router-link to="/newitem">new item</router-link></li>
+      <li v-if="!userData"><router-link to="/login">login</router-link></li>
+      <li v-if="!userData"> | <router-link to="/register">register</router-link></li>
+      <li v-if="userData"><router-link to="/profile">profile</router-link></li>
+      <li v-if="userData"> | <router-link to="/chats">chats</router-link></li>
+      <li v-if="userData"> | <router-link to="/newitem">new item</router-link></li>
+      <li v-if="userData"> | <a v-bind:href="logoutRoute">logout</a></li>
     </ul>
   </nav>
 </template>
 
 <script>
-
+import { apiHost } from '../../url.config'
 export default {
-
+  props: {
+    userData: {
+      required: true
+    }
+  },
+  data () {
+    return {
+      logoutRoute: apiHost + '/logout'
+    }
+  }
 }
 
 </script>
@@ -23,7 +33,7 @@ export default {
 
 @import '../assets/styles/_base';
 .nav {
-  
+
   all: initial;
   * {
     all: unset;

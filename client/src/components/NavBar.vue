@@ -32,10 +32,7 @@ export default {
 <style lang="scss">
 @import '../assets/styles/_base';
 .nav {
-  all: initial;
-  * {
-    all: unset;
-  }
+  @include reset;
   @include sidepadding;
   font-family: 'Work Sans', sans-serif;
   font-weight: 700;

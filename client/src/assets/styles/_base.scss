@@ -4,6 +4,17 @@ $shade-1: #ccc;
   padding: 0 29px;
 }
 
+@mixin reset {
+  all: initial;
+  * {
+    all: unset;
+  }
+}
+
+@mixin font {
+  font-family: 'Work Sans', sans-serif;
+}
+
 body {
   font-family: 'Work Sans', sans-serif;
 }

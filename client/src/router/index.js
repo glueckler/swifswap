@@ -7,6 +7,7 @@ import Chat from '@/components/Chat'
 import HomePage from '@/components/HomePage'
 import Profile from '@/components/Profile'
 import NewItem from '@/components/NewItem'
+import Item from '@/components/Item'
 
 Vue.use(Router)
 
@@ -18,7 +19,8 @@ const routes = [
   { path: '/chats/:id', component: Chat },
   { path: '/profile', component: Profile },
   { path: '/users/:id', component: Profile },
-  { path: '/newitem', component: NewItem }
+  { path: '/newitem', component: NewItem },
+  { path: '/items/:id', component: Item }
 ]
 
 

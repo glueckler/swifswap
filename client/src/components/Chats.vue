@@ -10,9 +10,7 @@
 </template>
 
 <script>
-// const moment = require('moment')
 import moment from 'moment'
-console.log('m', moment)
 export default {
   name: 'Chats',
   data () {

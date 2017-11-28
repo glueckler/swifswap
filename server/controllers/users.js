@@ -2,6 +2,11 @@ const users = function (db) {
   const sessions = require('./sessions')(db)
   const u = {}
 
+  u.getUserIdByUsername = async function (username) {
+    const user = await db('users').select('id').where('username', username)
+    return user[0] && user[0].id
+  }
+
   u.getUserById = async function (id) {
     const userData = await db('users').leftJoin('items', 'users.id', 'items.user_id').select(
       'users.id as userId',

@@ -30,6 +30,7 @@ export default {
         }
         response.json().then(data => {
           this.userData = data
+          this.userData.profilePath = '/' + this.userData.username
         }).catch(err => undefined)
       })
       .catch(err => console.log('Error fetching user data.. \n', err))

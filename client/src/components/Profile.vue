@@ -28,7 +28,12 @@ export default {
   },
   methods: {
     getUserProfile () {
-      fetch('/api/users/' + this.$route.params.id).then(response => {
+      if (this.$route.params.id) {
+        var path = '/api/users/' + this.$route.params.id
+      } else if (this.$route.params.username) {
+        var path = '/api/profile/' + this.$route.params.username
+      }
+      fetch(path).then(response => {
         response.json().then(json => {
           this.userData = json
         })

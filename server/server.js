@@ -32,8 +32,9 @@ api.get('/usersession', async ctx => {
   }
 })
 
-api.get('/profile', async ctx => {
-  ctx.body = await users.getUserById('3')
+api.get('/profile/:username', async ctx => {
+  const id = await users.getUserIdByUsername(ctx.params.username)
+  ctx.redirect('/api/users/' + id)
 })
 
 api.get('/users/:id', async ctx => {

@@ -4,7 +4,7 @@
     <ul class="nav__list">
       <li v-if="!userData"><router-link to="/login">login</router-link></li>
       <li v-if="!userData"> | <router-link to="/register">register</router-link></li>
-      <li v-if="userData"><router-link to="/profile">profile</router-link></li>
+      <li v-if="userData"><a :href="userData.profilePath" to="/">profile</a></li>
       <li v-if="userData"> | <router-link to="/chats">chats</router-link></li>
       <li v-if="userData"> | <router-link to="/newitem">new item</router-link></li>
       <li v-if="userData"> | <a v-bind:href="logoutRoute">logout</a></li>

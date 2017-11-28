@@ -1,6 +1,6 @@
 // Update with your config settings.
 require('dotenv').config()
-
+console.log(process.env.PG_CONNECTION_STRING)
 module.exports = {
 
   development: {
@@ -10,6 +10,7 @@ module.exports = {
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD
     },
+    // connection: process.env.PG_CONNECTION_STRING,
     migrations: {
       directory: './db/migrations'
     },

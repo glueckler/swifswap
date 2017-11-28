@@ -29,7 +29,6 @@ export default {
   methods: {
     getUserProfile () {
       if (this.$route.params.id) {
-        console.log('heeerree')
         var path = '/api/users/' + this.$route.params.id
       } else if (this.$route.params.username) {
         var path = '/api/profile/' + this.$route.params.username

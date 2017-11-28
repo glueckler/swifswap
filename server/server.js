@@ -34,11 +34,18 @@ api.get('/usersession', async ctx => {
 
 api.get('/profile/:username', async ctx => {
   const id = await users.getUserIdByUsername(ctx.params.username)
+  if (!id) {
+    ctx.throw(400, 'user was not found')
+  }
   ctx.redirect('/api/users/' + id)
 })
 
 api.get('/users/:id', async ctx => {
-  ctx.body = await users.getUserById(ctx.params.id)
+  if (ctx.params.id) {
+    ctx.body = await users.getUserById(ctx.params.id)
+  } else {
+    ctx.throw(400, 'yo! I can\'t query an undefined username')
+  }
 })
 
 api.post('/users', bodyParser, async ctx => {

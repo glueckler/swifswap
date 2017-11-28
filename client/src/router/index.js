@@ -17,10 +17,10 @@ const routes = [
   { path: '/login', component: Login },
   { path: '/chats', component: Chats },
   { path: '/chats/:id', component: Chat },
+  { path: '/newitem', component: NewItem },
+  { path: '/items/:id', component: Item },
   { path: '/users/:id', component: Profile },
   { path: '/:username', component: Profile },
-  { path: '/newitem', component: NewItem },
-  { path: '/items/:id', component: Item }
 ]
 
 

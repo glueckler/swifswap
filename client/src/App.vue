@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <NavBar :userData="userData"/>
-    <router-view :userData="userData"/>
+    <router-view  :userData="userData"/>
+    <FooterBar/>
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar'
+import FooterBar from '@/components/FooterBar'
 
 export default {
   components: {
-    NavBar
+    NavBar,
+    FooterBar
   },
   data () {
     return {

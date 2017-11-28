@@ -6,12 +6,32 @@
         <h2 class="register-form__catch">Join the traders network!</h2>
         <h3 class="register-form__header">Join swifswap forever, or for a bit!  We've missed you!</h3>
         <form class="register-form__form" v-on:submit.prevent="submitUser">
-          <input class="register-form__field" type="text" v-model.trim="formContent.username" placeholder="username">
-          <input class="register-form__field" type="email"s v-model.trim="formContent.email" placeholder="email">
-          <input class="register-form__field" type="password" v-model="formContent.password" placeholder="password">
-          <!-- <input type="location" v-model="formContent.location" placeholder="location"> -->
-          <!-- <input type="text" v-model="formContent.image" placeholder="image url"> -->
-          <div class="register-form__field" type="submit">Register</div>
+          <input
+            class="register-form__field"
+            type="text"
+            v-model.trim="formContent.username"
+            placeholder="username"
+            autocomplete="off"
+          >
+          <input
+            class="register-form__field"
+            type="email"s
+            v-model.trim="formContent.email"
+            placeholder="email"
+            autocomplete="off"
+          >
+          <input
+            class="register-form__field
+            margin-bottom"
+            type="password"
+            v-model="formContent.password"
+            placeholder="password"
+            autocomplete="off"
+          >
+          <div
+            v-on:click="submitUser1"
+            class="register-form__field button"
+            type="submit">Register</div>
         </form>
       </div>
     </div>
@@ -64,57 +84,37 @@ export default {
 <style lang="scss">
 @import '../assets/styles/_base';
 
-.fullscreen {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -5;
-}
-
-.sofa-background {
-  background: url('../assets/images/swifsofa.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  filter: blur(6px);
-  z-index: -9;
-}
-
-.flex-middle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
 .register-form {
-  padding: 0 29px;
+  padding: 0 29px 29px;
   width: 100%;
   max-width: 390px;
   background: rgba(76,76,76,0.08);
-  height: 400px;
 
+  &__form {
+    width: 100;
+  }
 
   &__field {
     @include reset;
     @include font;
-    display: block;
-    color: black;
-    text-align: center;
-    height: 60px;
-    width: 100%;
-    background: rgba(255,255,255, 0.6);
-    &:focus {
-      outline: none;
-    }
-    &::placeholder {
-
-    }
+    @include form-basic;
   }
 
-  &__form {
-    width:100
+  .margin-bottom {
+    margin-bottom: .7em;
+  }
+
+  .button {
+    border-radius: 4px;
+    text-align: center;
+    font-size: 1.1em;
+    transition: .1s all ease-out;
+    &:hover {
+      background: rgba(255,255,255, 0.9);
+      opacity: .8;
+      transform: scale(1.01);
+      cursor: pointer;
+    }
   }
 }
 

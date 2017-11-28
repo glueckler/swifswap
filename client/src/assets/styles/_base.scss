@@ -1,5 +1,15 @@
 $shade-1: #ccc;
 
+body {
+  font-family: 'Work Sans', sans-serif;
+}
+
+@mixin max-width-centered {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 @mixin sidepadding {
   padding: 0 29px;
 }
@@ -15,6 +25,41 @@ $shade-1: #ccc;
   font-family: 'Work Sans', sans-serif;
 }
 
-body {
-  font-family: 'Work Sans', sans-serif;
+@mixin form-basic {
+  display: block;
+  color: black;
+  width: 100%;
+  padding: 1.5em 3em;
+  margin-bottom: .2em;
+  box-sizing: border-box;
+  background: rgba(255,255,255, 0.6);
+  &:focus {
+    background: rgba(255,255,255, 0.9);
+    outline: none;
+  }
+}
+
+
+.fullscreen {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -5;
+}
+
+.sofa-background {
+  background: url('../assets/images/swifsofa.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(6px);
+  z-index: -9;
+}
+
+.flex-middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

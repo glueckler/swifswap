@@ -29,14 +29,23 @@ export default {
   methods: {
     getUserProfile () {
       if (this.$route.params.id) {
+        console.log('heeerree')
         var path = '/api/users/' + this.$route.params.id
       } else if (this.$route.params.username) {
         var path = '/api/profile/' + this.$route.params.username
       }
-      fetch(path).then(response => {
-        response.json().then(json => {
-          this.userData = json
-        })
+      fetch(path)
+      .then(response => {
+        console.log(response.status)
+        if (response.status === 200) {
+          response.json().then(json => {
+            this.userData = json
+          })
+        }
+      })
+      .catch(err => {
+        console.log('here')
+        this.userData = [{username: 'Not Found'}]
       })
     }
   }

@@ -3,7 +3,11 @@
     <h1>your swifswaps</h1>
         <i  v-show="loading" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
         <div class="single-chat" v-for="chat in chats">
-          <p><router-link :to="'chats/'+chat.id">{{ chat.receiver.name }}'s {{ chat.receiverItem.name }} | last message at: {{ convertTime(chat.updated) }}</router-link></p>
+          <p>
+            <router-link :to="'chats/'+chat.id">
+            {{ chat.receiver.name }}'s {{ chat.receiverItem.name }} | last message at: {{ convertTime(chat.updated) }}
+            </router-link>
+          </p>
         </div>
       </div>
       </ul>

@@ -45,6 +45,7 @@ export default {
         messageCreationTime: new Date()
       })
       this.newMessage = ''
+      
 
     },
     getMessages() {

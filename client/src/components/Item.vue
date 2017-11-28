@@ -15,7 +15,7 @@
       </p>
     </div>
     <form>
-      <textarea placeholder="Type a message then hit enter or click swap to start a chat!" @keyup.enter="swap" v-model="chatInfo.message"></textarea>
+      <textarea placeholder="Type a message and hit enter or click swap to start a chat!" @keyup.enter="swap" v-model="chatInfo.message"></textarea>
     </form>
     <button class="view-item__swap-button" v-on:click="swap">swap!</button>
   </div>
@@ -84,6 +84,11 @@ export default {
     }
     textarea {
       width: 100%;
+    }
+    button {
+      margin: auto;
+      display: block;
+
     }
   }
 </style>

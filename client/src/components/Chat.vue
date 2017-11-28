@@ -29,7 +29,7 @@ export default {
   name: 'Chat',
   data () {
     return {
-      // newMessage: '',
+      newMessage: '',
       chat: {},
       messageInfo: {}
 
@@ -40,13 +40,6 @@ export default {
   },
   methods: {
     submit () {
-      // var value = this.newMessage
-      // this.chat.messages.push({
-      //   messageAuthor: this.chat.sender.username,
-      //   messageContent: value,
-      //   messageCreationTime: new Date()
-      // })
-      // this.newMessage = ''
       this.messageInfo.userId = this.chat.sender.id
       this.messageInfo.message = this.newMessage
       fetch('/api/chats/' + this.$route.params.id, {

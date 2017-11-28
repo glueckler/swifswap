@@ -1,7 +1,6 @@
 <template>
   <div id="show-chats">
     <h1>your swifswaps</h1>
-        {{ chats }}
         <i  v-show="loading" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
         <div class="single-chat" v-for="chat in chats">
           <p v-if="chat.updated === null">

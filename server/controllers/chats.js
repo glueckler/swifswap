@@ -98,14 +98,15 @@ const chats = function (db) {
   }
 
   c.saveMessage = async function (ctx) {
-    console.log(ctx.request.body)
-    const { content: message, user_id: userId } = ctx.request.body
-    console.log(ctx.params.id)
+    const { message: content, userId: user_id } = ctx.request.body
+
     await db('messages').insert({
-      message,
-      user_id
+      content,
+      user_id,
+      chat_id: ctx.params.id
     })
-    ctx.body = 'Save message not finished'
+    .then(() => ctx.body = 'Message saved successfully')
+    .catch(() => ctx.body = 'Error saving message')
   }
 
   return c

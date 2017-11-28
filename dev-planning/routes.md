@@ -106,3 +106,6 @@ API
   - websockets
 - Post message
   curl -X POST localhost:3000/api/chats/2 -d "message=this is a test, this is only a test" -d "userId=2"
+
+  error test:
+  curl -X POST localhost:3000/api/chats/999 -d "message=this is a test, this is only a test" -d "userId=2"

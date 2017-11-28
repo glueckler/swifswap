@@ -41,7 +41,7 @@ api.get('/profile/:username', async ctx => {
 })
 
 api.get('/users/:id', async ctx => {
-  if (ctx.params.username) {
+  if (ctx.params.id) {
     ctx.body = await users.getUserById(ctx.params.id)
   } else {
     ctx.throw(400, 'yo! I can\'t query an undefined username')

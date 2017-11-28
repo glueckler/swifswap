@@ -1,9 +1,31 @@
 <template>
-  <form method="POST" v-bind:action='login' class="login">
-    <input type="text" name="username" v-model="loginForm.username" placeholder="username">
-    <input type="password" name="password" v-model="loginForm.password" placeholder="password">
-    <input type="submit"></input>
-  </form>
+  <div>
+    <div class="login fullscreen sofa-background"></div>
+    <div class="fullscreen flex-middle">
+      <div class="login-form">
+        <h2 class="login-form__catch">Welcome back!</h2>
+        <form class="login-form__form" method="POST" v-bind:action='login'>
+          <input
+            type="text"
+            name="username"
+            v-model="loginForm.username"
+            placeholder="username"
+            autocomplete="off"
+          >
+          <input
+            class="margin-bottom"
+            type="password" name="password"
+            v-model="loginForm.password"
+            placeholder="password"
+            autocomplete="off"
+          >
+          <input
+            type="submit"
+          >
+        </form>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -19,21 +41,44 @@ export default {
       },
       login: apiHost + '/sessions'
     }
-  },
-  // methods: {
-  //   onSubmit: function() {
-  //     fetch('/api/sessions', {
-  //       method: 'post',
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify(this.loginForm)
-  //     })
-  //   }
-  // }
+  }
 }
 </script>
 
-<style>
+<style lang="scss">
+@import '../assets/styles/_base';
 
+.login-form {
+  padding: 0 29px 29px;
+  width: 100%;
+  max-width: 390px;
+  background: rgba(76,76,76,0.08);
+
+  &__form {
+    width: 100%;
+
+    input {
+      @include reset;
+      @include font;
+      @include form-basic;
+    }
+  }
+
+  .margin-bottom {
+    margin-bottom: .7em;
+  }
+
+  input[type="submit"] {
+    border-radius: 4px;
+    text-align: center;
+    font-size: 1.1em;
+    transition: .1s all ease-out;
+    &:hover {
+      background: rgba(255,255,255, 0.9);
+      opacity: .8;
+      transform: scale(1.01);
+      cursor: pointer;
+    }
+  }
+}
 </style>

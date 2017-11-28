@@ -2,15 +2,18 @@
   <div id="app">
     <NavBar :userData="userData"/>
     <router-view/>
+    <FooterBar/>
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar'
+import FooterBar from '@/components/FooterBar'
 
 export default {
   components: {
-    NavBar
+    NavBar,
+    FooterBar
   },
   data () {
     return {

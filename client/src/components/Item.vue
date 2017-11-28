@@ -29,11 +29,13 @@ export default {
   data () {
     return {
       item: {},
-      chatInfo: {}
+      chatInfo: {},
+      senderItems: {}
     }
   },
   mounted() {
     this.getItem()
+    this.getSenderItems ()
   },
   methods: {
     getItem () {
@@ -70,6 +72,22 @@ export default {
       })
       .then(this.$router.push('/chats'))
     },
+    getSenderItems () {
+      fetch ('/api/users/' + this.userData.id)
+      .then(response => {
+        if (response.status !== 200) {
+        console.log('Looks like there was a problem. Status Code: ' +
+          response.status);
+        return;
+        }
+        response.json().then((data) => {
+          this.senderItems = data
+        })
+        .catch(function(err) {
+          console.log('Fetch Error :-S', err);
+        })
+      })
+    }
   }
 }
 </script>

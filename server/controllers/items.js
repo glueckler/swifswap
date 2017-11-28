@@ -15,7 +15,7 @@ const items = function (db) {
         'items.user_id',
         'tags.name as tagName'
       )
-      .where('items.id', '5')
+      .where('items.id', paramsId)
       .then(data => data)
       .catch(err => console.log('Error in items controller (getItemById).. ', err))
     console.log(itemsFull)

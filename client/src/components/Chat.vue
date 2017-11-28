@@ -4,10 +4,12 @@
       <h1>your swifswap with {{ chat.receiver.username }}</h1>
       <div class="chat__items">
         <div v-for="item in chat.items" class="chat__items__container">
+          <router-link :to="'/items/'+item.id">
           <h2 class="chat__items__container__name">{{ item.name }}</h2>
           <div class="chat__items__container__image">
             <img :src="item.photo" >
           </div>
+          </router-link>
         </div>
       </div>
       <div class="chat-text">

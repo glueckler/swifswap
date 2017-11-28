@@ -8,7 +8,6 @@
     </div>
     <div class="view-item__info">
       <p>{{ item.description }}</p>
-      <P> {{ item }}</P>
       <p>tag(s): 
         <ul>
           <li v-for="tag in item.tagName">{{ tag }}</li>
@@ -23,8 +22,6 @@
 </template>
 
 <script>
-
-
 
 export default {
   name: 'Item',

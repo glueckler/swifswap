@@ -113,8 +113,8 @@ api.get('/chats/:id', async ctx => {
   ctx = await chats.getMessages(ctx)
 })
 
-api.post('/chats/:id', async ctx => {
-  ctx.body = 'Post to chat/:id not configured with db yet - dean'
+api.post('/chats/:id', bodyParser, async ctx => {
+  await chats.saveMessage(ctx)
 })
 
 api.post('/chats', bodyParser, async ctx => {

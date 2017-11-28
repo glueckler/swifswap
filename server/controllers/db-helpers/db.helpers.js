@@ -3,7 +3,7 @@ const _ = require('lodash')
 module.exports = {
 
   flattenQuery: function (arr) {
-    if (arr.length === 0) {
+    if (!arr || arr.length === 0) {
       return arr
     }
     function customizer (objValue, srcValue) {

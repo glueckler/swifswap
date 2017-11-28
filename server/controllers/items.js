@@ -7,7 +7,6 @@ const items = function (db) {
     const itemsFull = await db('items')
       .leftJoin('items_tags', 'items.id', 'items_tags.item_id')
       .leftJoin('tags', 'items_tags.tag_id', 'tags.id')
-      .join('users')
       .select(
         'items.id',
         'items.name',
@@ -16,8 +15,10 @@ const items = function (db) {
         'items.user_id',
         'tags.name as tagName'
       )
-      .where('items.id', paramsId)
+      .where('items.id', '5')
       .then(data => data)
+      .catch(err => console.log('Error in items controller (getItemById).. ', err))
+    console.log(itemsFull)
     return dbHelpers.flattenQuery(itemsFull)
   }
 

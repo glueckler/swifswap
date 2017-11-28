@@ -97,6 +97,17 @@ const chats = function (db) {
     return ctx
   }
 
+  c.saveMessage = async function (ctx) {
+    console.log(ctx.request.body)
+    const { content: message, user_id: userId } = ctx.request.body
+    console.log(ctx.params.id)
+    await db('messages').insert({
+      message,
+      user_id
+    })
+    ctx.body = 'Save message not finished'
+  }
+
   return c
 }
 

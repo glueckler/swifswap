@@ -59,3 +59,5 @@ typings/
 
 # images upload folder
 server/static/images/*
+
+.vscode

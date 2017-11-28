@@ -16,8 +16,8 @@
         <div v-for="message in chat.messages">
           <p>{{ message.messageAuthor }}: {{ message.messageContent }}</p>
         </div>
-        <form class="form">
-          <textarea placeholder="Enter a new message" @keyup.enter="submit" v-model="newMessage"></textarea>
+        <form class="form" @keydown.enter.prevent="">
+          <textarea placeholder="Enter a new message and hit enter" @keyup.enter.stop ="submit" v-model="newMessage"></textarea>
         </form>
       </div>
     </div>
@@ -29,8 +29,10 @@ export default {
   name: 'Chat',
   data () {
     return {
-      newMessage: '',
+      // newMessage: '',
       chat: {},
+      messageInfo: {}
+
     }
   },
   mounted () {
@@ -38,15 +40,24 @@ export default {
   },
   methods: {
     submit () {
-      var value = this.newMessage
-      this.chat.messages.push({
-        messageAuthor: this.chat.sender.username,
-        messageContent: value,
-        messageCreationTime: new Date()
+      // var value = this.newMessage
+      // this.chat.messages.push({
+      //   messageAuthor: this.chat.sender.username,
+      //   messageContent: value,
+      //   messageCreationTime: new Date()
+      // })
+      // this.newMessage = ''
+      this.messageInfo.userId = this.chat.sender.id
+      this.messageInfo.message = this.newMessage
+      fetch('/api/chats/' + this.$route.params.id, {
+        method: 'post',
+        headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify(this.messageInfo)
       })
+      this.getMessages()
       this.newMessage = ''
-      
-
     },
     getMessages() {
       fetch('/api/chats/' + this.$route.params.id)

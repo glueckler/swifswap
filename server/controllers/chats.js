@@ -54,7 +54,8 @@ const chats = function (db) {
       .select(
         'items.img_path as photo',
         'items.name as name',
-        'items.user_id as user_id'
+        'items.user_id as user_id',
+        'items.id'
       )
       .where('chats.id', chatId)
   }

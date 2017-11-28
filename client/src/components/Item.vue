@@ -8,7 +8,6 @@
     </div>
     <div class="view-item__info">
       <p>{{ item.description }}</p>
-      <P> {{ item }}</P>
       <p>tag(s): 
         <ul>
           <li v-for="tag in item.tagName">{{ tag }}</li>
@@ -16,15 +15,13 @@
       </p>
     </div>
     <form>
-      <textarea placeholder="Type a message then hit enter or click swap to start a chat!" @keyup.enter="swap" v-model="chatInfo.message"></textarea>
+      <textarea placeholder="Type a message and hit enter or click swap to start a chat!" @keyup.enter="swap" v-model="chatInfo.message"></textarea>
     </form>
     <button class="view-item__swap-button" v-on:click="swap">swap!</button>
   </div>
 </template>
 
 <script>
-
-
 
 export default {
   name: 'Item',
@@ -87,6 +84,11 @@ export default {
     }
     textarea {
       width: 100%;
+    }
+    button {
+      margin: auto;
+      display: block;
+
     }
   }
 </style>

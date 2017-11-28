@@ -2,7 +2,7 @@
   <form method="POST" v-bind:action='login' class="login">
     <input type="text" name="username" v-model="loginForm.username" placeholder="username">
     <input type="password" name="password" v-model="loginForm.password" placeholder="password">
-    <input type="submit">Log in</input>
+    <input type="submit"></input>
   </form>
 </template>
 

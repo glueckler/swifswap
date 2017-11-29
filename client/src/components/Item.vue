@@ -18,7 +18,7 @@
       <textarea placeholder="Type a message and select an item to swap, then hit enter or click the swap button!" @keyup.enter="swap" v-model="chatInfo.message"></textarea>
     </form>
     <button class="view-item__swap-button" v-on:click="swap">swap!</button>
-    <div class="view-item__sender-swappabilia">
+    <div v-if="userData && item.user_id !== userData.id" class="view-item__sender-swappabilia">
       <h2 class="view-item__sender-swappabilia__header">Your swappabilia</h2>
       <article v-on:click="select" v-for="senderItem in senderItems">
         <!-- <div :data-item="senderItem.itemId" v-bind:class="{ active: senderItem.isActive }" v-on:click="toggle"> -->

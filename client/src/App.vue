@@ -47,14 +47,8 @@ export default {
 
 <style lang="scss">
 
-body, html {
-  height: 100%;
-  margin: 0;
-}
-
 .wrapper {
   min-height: 100%;
-  margin-bottom: 15px;
 }
 
 

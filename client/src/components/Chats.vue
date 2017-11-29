@@ -4,13 +4,18 @@
     <div class="viewport flex-middle">
       <div class="chats">
         <h2>your swifswaps</h2>
-        <i  v-show="loading" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-        <div class="single-chat" v-for="chat in sortedChats">
-          <div>
-            <router-link :to="'chats/'+chat.id">
-              {{ chat.user.name }}'s {{ chat.item.name }} | last message at: {{ convertTime(chat.updated) }}
-            </router-link>
+        <i v-show="loading" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+        <div class="chats__chat" v-for="chat in sortedChats">
+          <div class="chats__chat__img">
+            <img :src="chat.item.photo">
           </div>
+          <router-link class="chats__chat__link" :to="'chats/'+chat.item.id">
+            <div class="chats__chat__desc">
+              <h2>{{ chat.item.name }}</h2>
+              <h3><small>with</small> {{ chat.user.name }}</h3>
+              <h4>last message: {{ convertTime(chat.updated) }}</h4>
+            </div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -21,10 +26,64 @@
 @import "../assets/styles/_base";
 
 .chats {
-  padding: 0 29px 29px;
+  padding: 29px;
   width: 100%;
-  max-width: 390px;
+  max-width: 700px;
   background: rgba(255, 255, 255, 0.8);
+  border-radius: 7px;
+
+  h2 {
+    font-size: 2em;
+    margin: 0;
+  }
+
+  &__chat {
+    display: flex;
+    background: rgba(255, 255, 255, 0.6);
+    padding: .9em;
+    margin: 20px 0;
+    position: relative;
+
+    &__img {
+      display: inline-block;
+      width: 170px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__link {
+      flex: auto;
+    }
+
+    &__desc {
+      display: inline-block;
+      padding: 0 1em;
+
+      h2 {
+        font-size: 1.7em;
+        font-weight: 500;
+      }
+
+      h3 {
+        font-weight: 500;
+
+        small {
+          font-weight: 400;
+        }
+      }
+
+      h4 {
+        font-weight: 400;
+        position: absolute;
+        bottom: 0px;
+      }
+    }
+  }
 }
 </style>
 

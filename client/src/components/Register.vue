@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="register fullscreen sofa-background"></div>
-    <div class="fullscreen flex-middle">
+    <div class="viewport flex-middle">
       <div class="register-form">
         <h2 class="register-form__catch">Join the traders network!</h2>
         <h3 class="register-form__header">Join swifswap forever, or for a bit!  We've missed you!</h3>
@@ -21,8 +21,7 @@
             autocomplete="off"
           >
           <input
-            class="register-form__field
-            margin-bottom"
+            class="register-form__field margin-bottom"
             type="password"
             v-model="formContent.password"
             placeholder="password"
@@ -89,10 +88,6 @@ export default {
   width: 100%;
   max-width: 390px;
   background: rgba(76,76,76,0.08);
-
-  &__form {
-    width: 100;
-  }
 
   &__field {
     @include reset;

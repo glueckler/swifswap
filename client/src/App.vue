@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <NavBar :userData="userData"/>
-    <router-view/>
+    <div class="wrapper viewport">
+      <NavBar :userData="userData"/>
+      <router-view/>
+    </div>
     <FooterBar/>
   </div>
 </template>
@@ -43,5 +45,20 @@ export default {
 </script>
 
 <style lang="scss">
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+#app {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: 15px;
+}
+
 
 </style>

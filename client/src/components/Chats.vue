@@ -3,16 +3,30 @@
     <h1>your swifswaps</h1>
         <i  v-show="loading" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
         <div class="single-chat" v-for="chat in chats">
-          <p v-if="chat.updated === null">
-            <router-link :to="'chats/'+chat.id">
-            {{ chat.receiver.name }}'s {{ chat.receiverItem.name }} | last message at: {{ convertTime(chat.created) }}
-            </router-link>
-          </p>
-          <p v-else>
-            <router-link :to="'chats/'+chat.id">
-            {{ chat.receiver.name }}'s {{ chat.receiverItem.name }} | last message at: {{ convertTime(chat.updated) }}
-            </router-link>
-          </p>
+          <div v-if="chat.receiver.id !== userData.id">
+            <p v-if="chat.updated === null">
+              <router-link :to="'chats/'+chat.id">
+              {{ chat.receiver.name }}'s {{ chat.receiverItem.name }} | last message at: {{ convertTime(chat.created) }}
+              </router-link>
+            </p>
+            <p v-else>
+              <router-link :to="'chats/'+chat.id">
+              {{ chat.receiver.name }}'s {{ chat.receiverItem.name }} | last message at: {{ convertTime(chat.updated) }}
+              </router-link>
+            </p>
+          </div>
+          <div v-else>
+            <p v-if="chat.updated === null">
+              <router-link :to="'chats/'+chat.id">
+              {{ chat.sender.name }}'s {{ chat.senderItem.name }} | last message at: {{ convertTime(chat.created) }}
+              </router-link>
+            </p>
+            <p v-else>
+              <router-link :to="'chats/'+chat.id">
+              {{ chat.sender.name }}'s {{ chat.senderItem.name }} | last message at: {{ convertTime(chat.updated) }}
+              </router-link>
+            </p>
+          </div>
         </div>
       </div>
       </ul>

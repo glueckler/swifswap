@@ -12,6 +12,7 @@
             v-model.trim="formContent.username"
             placeholder="username"
             autocomplete="off"
+            autofocus
           >
           <input
             class="register-form__field"

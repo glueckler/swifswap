@@ -11,6 +11,7 @@
             v-model.trim="loginForm.username"
             placeholder="username"
             autocomplete="off"
+            autofocus
           >
           <input
             class="margin-bottom"

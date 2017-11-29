@@ -54,7 +54,6 @@ export default {
   },
   mounted () {
     this.getMessages()
-    console.log('userData', this.userData)
   },
   methods: {
     submit () {

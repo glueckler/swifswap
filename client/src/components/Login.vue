@@ -8,7 +8,7 @@
           <input
             type="text"
             name="username"
-            v-model="loginForm.username"
+            v-model.trim="loginForm.username"
             placeholder="username"
             autocomplete="off"
           >

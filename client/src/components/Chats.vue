@@ -9,7 +9,7 @@
           <div class="chats__chat__img">
             <img :src="chat.item.photo">
           </div>
-          <router-link class="chats__chat__link" :to="'chats/'+chat.item.id">
+          <router-link class="chats__chat__link" :to="'chats/'+chat.id">
             <div class="chats__chat__desc">
               <h2>{{ chat.item.name }}</h2>
               <h3><small>with</small> {{ chat.user.name }}</h3>
@@ -74,6 +74,7 @@ export default {
             item: chat.senderItem
           }
         }
+        sortedChat.id = chat.id
         sortedChat.updated = chat.updated
         this.sortedChats.push(sortedChat)
       }

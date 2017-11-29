@@ -1,4 +1,4 @@
-  const fs = require('fs')
+const fs = require('fs')
 const { items, users, chats, sessions } = require('./controllers/controller')
 const { api, client, bodyParser, multiParser } = require('./server.config')
 
@@ -50,6 +50,8 @@ api.get('/users/:id', async ctx => {
 
 api.post('/users', bodyParser, async ctx => {
   ctx = await users.createUser(ctx)
+  ctx = await sessions.validateSignIn(ctx)
+  ctx.redirect('/')
 })
 
 api.put('/users/:id', async ctx => {
@@ -65,21 +67,12 @@ api.delete('/users/:id', async ctx => {
 // Sessions
 api.post('/sessions', bodyParser, async ctx => {
   ctx = await sessions.validateSignIn(ctx)
-  ctx.body = 'this is the end'
-})
-
-api.get('/set', async ctx => {
-  ctx = await sessions.setSession(ctx, 'sleepa')
-  ctx.body = 'just so you know'
+  ctx.redirect('/')
 })
 
 api.get('/destroy', async ctx => {
   ctx = await sessions.destroySession(ctx)
   ctx.body = 'session destroyed'
-})
-
-api.delete('/sessions', async ctx => {
-  ctx.body = 'you called the delete method at /session'
 })
 
 // ----------------------

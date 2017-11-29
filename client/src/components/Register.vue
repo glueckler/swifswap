@@ -5,9 +5,10 @@
       <div class="register-form">
         <h2 class="register-form__catch">Join the traders network!</h2>
         <h3 class="register-form__header">Join swifswap forever, or for a bit!  We've missed you!</h3>
-        <form class="register-form__form" v-on:submit.prevent="submitUser">
+        <form class="register-form__form" method="POST" v-bind:action='register'>
           <input
             class="register-form__field"
+            name="username"
             type="text"
             v-model.trim="formContent.username"
             placeholder="username"
@@ -15,22 +16,24 @@
           >
           <input
             class="register-form__field"
-            type="email"s
+            name="email"
+            type="email"
             v-model.trim="formContent.email"
             placeholder="email"
             autocomplete="off"
           >
           <input
             class="register-form__field margin-bottom"
+            name="password"
             type="password"
             v-model="formContent.password"
             placeholder="password"
             autocomplete="off"
           >
-          <div
-            v-on:click="submitUser1"
+          <input
             class="register-form__field button"
-            type="submit">Register</div>
+            type="submit"
+            value="Register">
         </form>
       </div>
     </div>
@@ -38,6 +41,8 @@
 </template>
 
 <script>
+import { apiHost } from '../../url.config'
+
 const formContent = {
   username: '',
   email: '',
@@ -50,7 +55,8 @@ export default {
   name: 'Register',
   data() {
     return {
-      formContent
+      formContent,
+      register: apiHost + '/api/users'
     }
   },
   methods: {

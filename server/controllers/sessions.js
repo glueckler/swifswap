@@ -9,11 +9,12 @@ const sessions = function (db) {
         ctx.throw(400, 'Invalid Username')
       }
     }
-    if (!user[0].password === password) {
-      ctx.throw(400, 'Invalid Username')
-    }
 
-    ctx = await s.setSession(ctx, '' + user[0].id)
+    if (!user[0].password === password) {
+      ctx.throw(400, 'Invalid Password')
+    } else {
+      ctx = await s.setSession(ctx, '' + user[0].id)
+    }
     return ctx
   }
 

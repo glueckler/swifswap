@@ -8,14 +8,14 @@
           <input
             type="text"
             name="username"
-            v-model="loginForm.username"
+            v-model.trim="loginForm.username"
             placeholder="username"
             autocomplete="off"
           >
           <input
             class="margin-bottom"
             type="password" name="password"
-            v-model="loginForm.password"
+            v-model.trim="loginForm.password"
             placeholder="password"
             autocomplete="off"
           >

@@ -1,28 +1,84 @@
 <template>
-  <div class="new-item">
-    <div class="new-item__input">
-      <h2>Item Name</h2>
-      <input v-model.trim="formContent.name">
-    </div>
-    <div class="new-item__input">
-      <h2>Item Description</h2>
-      <input v-model.trim="formContent.description">
-    </div>
-    <div class="new-item__input">
-      <input @change="imageChange" type="file" id="item-photo">
-      <div v-if="!image">
-        <h2>Select an Image</h2>
+  <div>
+    <div class="register fullscreen item-background"></div>
+    <div class="viewport flex-middle">
+      <div class="new-item">
+        <h2>New Item</h2>
+        <h3 class="new-item__sub-header">Add some new swapabilia, you're allowed one image.  Make it count!</h3>
+        <h2 class="new-item__field-name">Item Name</h2>
+        <input class="new-item__field" v-model.trim="formContent.name">
+        <h2 class="new-item__field-name">Item Description</h2>
+        <input class="new-item__field" v-model.trim="formContent.description">
+        <div v-if="!image">
+          <h2 class="new-item__field-name">Item Photo</h2>
+          <input class="new-item__field margin-bottom" @change="imageChange" type="file" id="item-photo">
+        </div>
+        <div v-else>
+          <img class="new-item__img-preview margin-bottom" :src="image" alt="upload image preview">
+          <div class="new-item__field button" @click="removeImage">Remove Image</div>
+        </div>
+        <div class="new-item__field button" v-on:click="submitItem">
+          Submit Item
+        </div>
       </div>
-      <div v-else>
-        <img class="new-item__img-preview" :src="image" alt="upload image preview">
-        <button @click="removeImage">Remove Image</button>
-      </div>
     </div>
-    <button v-on:click="submitItem">
-      Submit Item
-    </button>
   </div>
+
 </template>
+
+<style lang="scss">
+@import '../assets/styles/_base';
+
+.new-item {
+  padding: 0 29px 29px;
+  margin: 20px 20px 65px;
+  width: 100%;
+  max-width: 600px;
+  padding: 1em 3em;
+  background: rgba(255,255,255,0.7);
+
+  &__sub-header {
+    font-weight: 400;
+  }
+
+  &__field-name {
+    font-size: 1.3em;
+    font-weight: 500;
+  }
+
+  &__img-preview {
+    width: 100%;
+    padding: 2em;
+    box-sizing: border-box;
+  }
+
+  &__field {
+    @include reset;
+    @include font;
+    @include form-basic;
+
+    &[type='file'] {
+      text-align: center;
+    }
+  }
+  .margin-bottom {
+    margin-bottom: .7em;
+  }
+
+  .button {
+    border-radius: 4px;
+    text-align: center;
+    font-size: 1.1em;
+    transition: .1s all ease-out;
+    &:hover {
+      background: rgba(255,255,255, 0.9);
+      opacity: .8;
+      transform: scale(1.01);
+      cursor: pointer;
+    }
+  }
+}
+</style>
 
 <script>
 import uuid from 'uuid/v4'
@@ -71,16 +127,16 @@ export default {
       this.formContent.imageUrl = apiHost + '/images/' + imgKey
 
       fetch('/api/items', {
-          method: 'post',
-          headers: {
-            "Content-type": "application/json"
-          },
-          body: JSON.stringify(this.formContent)
-        })
-        .then((response) => response.text())
-        .catch(function (error) {
-          console.log('Request failed', error);
-        });
+        method: 'post',
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(this.formContent)
+      })
+      .then((response) => response.text())
+      .catch(function (error) {
+        console.log('Request failed', error);
+      });
 
       const formData = new FormData()
       formData.append("photo", file);
@@ -93,12 +149,3 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-.new-item {
-
-  &__img-preview {
-    max-width: 200px;
-  }
-}
-
-</style>

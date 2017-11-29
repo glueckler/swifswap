@@ -43,7 +43,7 @@ export default {
   top: 0;
   right: 0;
   left: 0;
-  height: 2em;
+  height: $nav-height;
   font-size: 2rem;
   display: flex;
   justify-content: space-between;

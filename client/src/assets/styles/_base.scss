@@ -1,6 +1,8 @@
 $shade-1: #ccc;
 
-body {
+$nav-height: 65px;
+
+body, html {
   font-family: 'Work Sans', sans-serif;
 }
 
@@ -39,6 +41,10 @@ body {
   }
 }
 
+.viewport {
+  min-height: 100vh;
+  margin-bottom: -65px;
+}
 
 .fullscreen {
   position: fixed;
@@ -51,6 +57,14 @@ body {
 
 .sofa-background {
   background: url('../assets/images/swifsofa.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(6px);
+  z-index: -9;
+}
+
+.item-background {
+  background: url('https://images.unsplash.com/photo-1494049694820-92a3163b10ad?auto=format&fit=crop&w=2822&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D');
   background-repeat: no-repeat;
   background-size: cover;
   filter: blur(6px);

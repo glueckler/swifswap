@@ -1,9 +1,9 @@
 <template>
   <footer>
     <ul>
+      <li><logo>swifswap</logo></li>
       <li><img class="tall-boys" src="../assets/images/tallboys.png"></li>
       <li>Contact Us</li>
-      <li>Fancy Symbols</li>
       <li>No Copyright</li>
       <li>&lt;3</li>
     </ul>
@@ -20,9 +20,10 @@ footer {
   @include reset;
   @include font;
   display: block;
-  margin: 1.5em 0;
-  padding: 1.5em 0;
+  margin: 25px 0 0;
+  padding: 25px 0;
   border-top: 1px solid #eee;
+  background: #fff;
 
   ul {
     width: 100%;
@@ -41,8 +42,11 @@ footer {
         cursor: pointer;
         opacity: .7;
       }
+      logo {
+        font-weight: 700;
+      }
       img {
-        width: 100%;
+        width: 70%;
       }
     }
   }

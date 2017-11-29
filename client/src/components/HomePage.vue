@@ -102,13 +102,24 @@ export default {
   flex-basis: 0;
 }
 .item {
+  margin-bottom: 5em;
   transition: all 1s ease-in-out;
+  border-bottom: 1px solid transparent;
+  padding: .5em;
 
   &:hover {
+    border-color: #ddd;
     transform: scale(1.01);
   }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
   &__photo {
     width: 100%;
+    border: 2px solid #eee
   }
 }
 

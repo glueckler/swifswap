@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="login fullscreen sofa-background"></div>
-    <div class="fullscreen flex-middle">
+    <div class="viewport flex-middle">
       <div class="login-form">
         <h2 class="login-form__catch">Welcome back!</h2>
         <form class="login-form__form" method="POST" v-bind:action='login'>

@@ -20,7 +20,6 @@ footer {
   @include reset;
   @include font;
   display: block;
-  margin: 25px 0 0;
   padding: 25px 0;
   border-top: 1px solid #eee;
   background: #fff;

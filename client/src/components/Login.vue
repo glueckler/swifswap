@@ -16,7 +16,7 @@
           <input
             class="margin-bottom"
             type="password" name="password"
-            v-model="loginForm.password"
+            v-model.trim="loginForm.password"
             placeholder="password"
             autocomplete="off"
           >

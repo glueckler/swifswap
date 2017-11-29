@@ -22,6 +22,9 @@ const users = function (db) {
   }
 
   u.createUser = async function (ctx) {
+    //hardcode some values for now
+    ctx.request.body.location = "Vancouver"
+    ctx.request.body.img_path = "https://www.fillmurray.com/g/300/300"
     const { username, email } = ctx.request.body
     const checkUserExists = await db('users').select().where({ email }).orWhere({ username })
 
@@ -34,7 +37,6 @@ const users = function (db) {
     }
 
     const userId = await db('users').insert(ctx.request.body, 'id')
-    console.log(userId[0])
     sessions.setSession(ctx, userId[0])
     return ctx
   }

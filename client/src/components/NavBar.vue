@@ -4,10 +4,10 @@
     <ul class="nav__list">
       <li v-if="!userData"><router-link to="/login">login</router-link></li>
       <li v-if="!userData"> | <router-link to="/register">register</router-link></li>
-      <li v-if="userData"><a :href="userData.profilePath" to="/">profile</a></li>
-      <li v-if="userData"> | <router-link to="/chats">chats</router-link></li>
-      <li v-if="userData"> | <router-link to="/newitem">new item</router-link></li>
-      <li v-if="userData"> | <a v-bind:href="logoutRoute">logout</a></li>
+      <li v-if="userData"><router-link to="/newitem">new item</router-link></li>
+      <li v-if="userData"> | <a :href="userData.profilePath" to="/"><small>profile</small></a></li>
+      <li v-if="userData"> | <router-link to="/chats"><small>chats</small></router-link></li>
+      <li v-if="userData"> | <a v-bind:href="logoutRoute"><small>logout</small></a></li>
     </ul>
   </nav>
 </template>
@@ -64,6 +64,9 @@ export default {
         text-decoration: underline;
         cursor: pointer;
       }
+    }
+    small {
+      font-weight: 500;
     }
   }
 }

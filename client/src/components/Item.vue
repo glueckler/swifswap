@@ -21,7 +21,8 @@
     <div class="view-item__sender-swappabilia">
       <h2 class="view-item__sender-swappabilia__header">Your swappabilia</h2>
       <article v-on:click="select" v-for="senderItem in senderItems">
-        <div :data-item="senderItem.itemId">
+        <!-- <div :data-item="senderItem.itemId" v-bind:class="{ active: senderItem.isActive }" v-on:click="toggle"> -->
+        <div :data-item="senderItem.itemId" v-bind:class="{ active: senderItem.isActive }">
           <h4>{{ senderItem.itemName }}</h4>
           <img :src="senderItem.itemImage">
         </div>
@@ -37,14 +38,21 @@ export default {
   props: ['userData'],
   data () {
     return {
+      // isActive: false,
       item: {},
       chatInfo: {},
       senderItems: {}
     }
   },
   mounted() {
+    console.log('item mounted running')
     this.getItem()
-    this.getSenderItems ()
+    var timer = setInterval(() => {
+      if (this.userData) {
+        clearInterval(timer)
+        this.getSenderItems()
+      }
+    }, 200)
   },
   methods: {
     getItem () {
@@ -91,6 +99,9 @@ export default {
         return;
         }
         response.json().then((data) => {
+          for (let item of data) {
+            item.isActive = false;
+          }
           this.senderItems = data
         })
         .catch(function(err) {
@@ -99,15 +110,16 @@ export default {
       })
     },
     select(e) {
-      console.log(e.path[1].dataset.item)
-
-      this.chatInfo.senderItemId = e.path[1].dataset.item
-      
-      console.log(e.currentTarget)
-      
-    }, 
-    toggle: function (clicked) {
-      clicked = !clicked
+      console.log('you are in the select fxn')
+      const id = e.path[1].dataset.item
+      this.chatInfo.senderItemId = id
+      console.log(id)
+      this.senderItems.map(a => {
+        a.isActive = false
+        if (a.itemId == id) {
+          a.isActive = true
+        }
+      })
     }
   }
 }
@@ -132,5 +144,8 @@ export default {
       display: block;
 
     }
+  }
+  .active {
+    border: 1px solid black;
   }
 </style>

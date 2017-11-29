@@ -21,6 +21,7 @@ export default {
     }
   },
   created () {
+    console.log('app created function running')
     this.fetchUserData()
   },
   methods: {

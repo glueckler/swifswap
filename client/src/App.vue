@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <div class="wrapper viewport">
+  <div class id="app">
+    <div class="wrapper">
       <NavBar :userData="userData"/>
       <router-view :userData="userData"/>
     </div>
@@ -50,10 +50,6 @@ export default {
 body, html {
   height: 100%;
   margin: 0;
-}
-
-#app {
-  height: 100%;
 }
 
 .wrapper {

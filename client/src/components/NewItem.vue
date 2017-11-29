@@ -11,12 +11,12 @@
         <input class="new-item__field" v-model.trim="formContent.description">
         <div v-if="!image">
           <h2 class="new-item__field-name">Item Photo</h2>
-          <input class="new-item__field margin-bottom" @change="imageChange" type="file" id="item-photo">
         </div>
         <div v-else>
           <img class="new-item__img-preview margin-bottom" :src="image" alt="upload image preview">
           <div class="new-item__field button" @click="removeImage">Remove Image</div>
         </div>
+        <input v-bind:class="{ hidden: image }" class="new-item__field margin-bottom" @change="imageChange" type="file" id="item-photo">
         <div class="new-item__field button" v-on:click="submitItem">
           Submit Item
         </div>
@@ -26,59 +26,6 @@
 
 </template>
 
-<style lang="scss">
-@import '../assets/styles/_base';
-
-.new-item {
-  padding: 0 29px 29px;
-  margin: 20px 20px 65px;
-  width: 100%;
-  max-width: 600px;
-  padding: 1em 3em;
-  background: rgba(255,255,255,0.7);
-
-  &__sub-header {
-    font-weight: 400;
-  }
-
-  &__field-name {
-    font-size: 1.3em;
-    font-weight: 500;
-  }
-
-  &__img-preview {
-    width: 100%;
-    padding: 2em;
-    box-sizing: border-box;
-  }
-
-  &__field {
-    @include reset;
-    @include font;
-    @include form-basic;
-
-    &[type='file'] {
-      text-align: center;
-    }
-  }
-  .margin-bottom {
-    margin-bottom: .7em;
-  }
-
-  .button {
-    border-radius: 4px;
-    text-align: center;
-    font-size: 1.1em;
-    transition: .1s all ease-out;
-    &:hover {
-      background: rgba(255,255,255, 0.9);
-      opacity: .8;
-      transform: scale(1.01);
-      cursor: pointer;
-    }
-  }
-}
-</style>
 
 <script>
 import uuid from 'uuid/v4'
@@ -145,7 +92,64 @@ export default {
         method: 'post',
         body: formData
       })
+      setTimeout(() => {
+        this.$router.push('/');
+      }, 400)
     }
   }
 }
 </script>
+
+<style lang="scss">
+@import '../assets/styles/_base';
+
+.new-item {
+  padding: 0 29px 29px;
+  margin: 20px 20px 65px;
+  width: 100%;
+  max-width: 600px;
+  padding: 1em 3em;
+  background: rgba(255,255,255,0.7);
+
+  &__sub-header {
+    font-weight: 400;
+  }
+
+  &__field-name {
+    font-size: 1.3em;
+    font-weight: 500;
+  }
+
+  &__img-preview {
+    width: 100%;
+    padding: 2em;
+    box-sizing: border-box;
+  }
+
+  &__field {
+    @include reset;
+    @include font;
+    @include form-basic;
+
+    &[type='file'] {
+      text-align: center;
+    }
+  }
+  .margin-bottom {
+    margin-bottom: .7em;
+  }
+
+  .button {
+    border-radius: 4px;
+    text-align: center;
+    font-size: 1.1em;
+    transition: .1s all ease-out;
+    &:hover {
+      background: rgba(255,255,255, 0.9);
+      opacity: .8;
+      transform: scale(1.01);
+      cursor: pointer;
+    }
+  }
+}
+</style>

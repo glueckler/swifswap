@@ -41,6 +41,11 @@ body, html {
   }
 }
 
+.wrapper {
+  min-height: 100vh;
+  overflow: hidden;
+}
+
 .viewport {
   min-height: 100vh;
   margin-bottom: -65px;
@@ -56,7 +61,7 @@ body, html {
 }
 
 .sofa-background {
-  background: url('../assets/images/swifsofa.jpg');
+  background-image: url('../assets/images/swifsofa.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   filter: blur(6px);
@@ -64,11 +69,13 @@ body, html {
 }
 
 .item-background {
-  background: url('https://images.unsplash.com/photo-1494049694820-92a3163b10ad?auto=format&fit=crop&w=2822&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D');
-  background-repeat: no-repeat;
-  background-size: cover;
-  filter: blur(6px);
-  z-index: -9;
+  @extend .sofa-background;
+  background-image: url('https://images.unsplash.com/photo-1494049694820-92a3163b10ad?auto=format&fit=crop&w=2822&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D');
+}
+
+.chats-background {
+  background-image: url('https://images.unsplash.com/photo-1509650926597-25eead3b6ca9?auto=format&fit=crop&w=2850&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D');
+  @extend .sofa-background;
 }
 
 .flex-middle {
@@ -76,4 +83,8 @@ body, html {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.hidden.hidden.hidden {
+  display: none;
 }

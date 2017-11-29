@@ -88,3 +88,12 @@ body, html {
 .hidden.hidden.hidden {
   display: none;
 }
+
+.clearfix:after {
+   content: ".";
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+

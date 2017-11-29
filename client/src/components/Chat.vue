@@ -1,92 +1,40 @@
 <template>
   <div>
     <div class="fullscreen chats-background"></div>
-    <main class="viewport flex-middle">
-      <div class="chat">
-        <div v-if="chat.receiver">
-          <h1 v-if="userData.id === chat.sender.id">your swifswap with <router-link :to="'/users/'+ chat.receiver.id">{{ chat.receiver.username }}</router-link></h1>
-          <h1 v-else>your swifswap with <router-link :to="'/users/'+ chat.sender.id">{{ chat.sender.username }}</router-link></h1>
+    <div v-if="users.you">
+      <main class="viewport flex-middle">
+        <div class="chat">
+          <h2>your swap with {{users.you.username}}</h2>
           <div class="chat__items">
-            <div v-for="item in chat.items" class="chat__items__container">
-              <router-link :to="'/items/'+item.id">
-              <h2 v-if="item.user_id === userData.id" class="chat__items__container__name">your {{ item.name }}</h2>
-              <h2 v-else class="chat__items__container__name">their {{ item.name }}</h2>
-              <div class="chat__items__container__image">
-                <img :src="item.photo" >
-              </div>
-              </router-link>
+            <div class="chat__items__you">
+              <a :href="'/items/'+items.you.id">
+                <img :src="items.you.photo">
+              </a>
+              <h3>{{items.you.name}}</h3>
+              <p>from user: <a :href="'/'+users.you.username">{{users.you.username}}</a></p>
+            </div>
+            <div class="chat__items__me">
+              <a :href="'/items/'+items.me.id">
+                <img :src="items.me.photo">
+              </a>
+              <h3>{{items.me.name}}</h3>
+              <p>from you: <a :href="'/'+users.me.username">({{users.me.username}})</a></p>
             </div>
           </div>
-          <div class="chat__chat-text" v-if="chat.receiver.id !== userData.id">
-            <div v-for="message in chat.messages" >
-              <p v-if="message.messageAuthor === userData.username">{{ message.messageAuthor }}: {{ message.messageContent }}</p>
-              <p v-else class="chat__chat-text__receiver">{{ message.messageAuthor }}: {{ message.messageContent }}</p>
+          <div class="chat__messages">
+            <div class="chat__messages__msg clearfix" v-for="msg in sortedMsgs">
+              <p v-bind:class="{ me: msg.me }">{{msg.messageContent}}</p>
+              <span v-bind:class="{ me: msg.me }">{{msg.messageAuthor}}</span>
             </div>
-            <form class="form" @keydown.enter.prevent="">
-              <textarea placeholder="Enter a new message and hit enter" @keyup.enter.stop ="submit" v-model="newMessage"></textarea>
-            </form>
           </div>
-          <div class="chat__chat-text" v-else>
-            <div v-for="message in chat.messages" >
-              <p v-if="message.messageAuthor !== userData.username" class="chat__chat-text__receiver">{{ message.messageAuthor }}: {{ message.messageContent }}</p>
-              <p v-else >{{ message.messageAuthor }}: {{ message.messageContent }}</p>
-            </div>
-            <form class="form" @keydown.enter.prevent="">
-              <textarea placeholder="Enter a new message and hit enter" @keyup.enter.stop ="submit" v-model="newMessage"></textarea>
-            </form>
-          </div>
+          <form class="chat__input" @keydown.enter.prevent="">
+            <textarea placeholder="Enter a new message and hit enter" @keyup.enter.stop="submit" v-model="newMessage"></textarea>
+          </form>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
   </div>
 </template>
-
-<style lang="scss">
-  .chat {
-    padding: 29px;
-    width: 100%;
-    max-width: 700px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 7px;
-
-    &__items {
-      display: flex;
-      margin: 1em auto 0;
-      justify-content: space-between;
-      align-items: center;
-
-      &__container {
-
-        &__name {
-          text-align: center;
-        }
-
-        &__image {
-          height: 230px;
-          display: flex;
-          align-items: center;
-
-          img {
-            width: 200px;
-          }
-        }
-      }
-    }
-    &__chat-text {
-      &__receiver{
-        text-align: right;
-      }
-    }
-
-  }
-
-  .form {
-      textarea {
-        width: 100%;
-        height: 5em;
-      }
-  }
-</style>
 
 <script>
 export default {
@@ -132,46 +80,131 @@ export default {
     },
     getMessages() {
       fetch('/api/chats/' + this.$route.params.id)
-        .then(response => {
-          if (response.status !== 200) {
+      .then(response => {
+        if (response.status !== 200) {
           console.log('Looks like there was a problem. Status Code: ' +
             response.status);
           return;
+        }
+        response.json()
+        .then((data) => {
+          this.chat = data
+          this.sortedMsgs = []
+          if (this.userData.id === data.sender.id) {
+            this.users.me = data.sender
+            this.users.you = data.receiver
+            this.items.me = data.items.find((a) => a.user_id === this.userData.id)
+            this.items.you = data.items.find(a => a.user_id === data.receiver.id)
+          } else {
+            this.users = {
+              me: data.receiver,
+              you: data.sender
+            }
+            this.items = {
+              me: data.items.find(a => a.user_id === data.receiver.id),
+              you: data.items.find(a => a.user_id === data.sender.id)
+            }
           }
-          response.json()
-          .then((data) => {
-            if (this.userData.id === data.sender.id) {
-              this.users.me = data.sender
-              this.users.you = data.receiver
-              this.items.me = data.items.find((a) => a.user_id === this.userData.id)
-              this.items.you = data.items.find(a => a.user_id === data.receiver.id)
+          for (let msg of data.messages) {
+            if (msg.messageAuthor === this.userData.username) {
+              msg.me = true
             } else {
-              this.users = {
-                me: data.receiver,
-                you: data.sender
-              }
-              this.items = {
-                me: data.items.find(a => a.user_id === data.receiver.id),
-                you: data.items.find(a => a.user_id === data.sender.id)
-              }
+              msg.me = false
             }
-            for (let msg of data.messages) {
-              if (msg.messageAuthor === this.userData.username) {
-                msg.me = true
-              } else {
-                msg.me = false
-              }
-              this.sortedMsgs.push(msg)
-            }
-            this.chat = data
-          })
-          .catch(function(err) {
-            console.log('Fetch Error :-S', err);
-          })
+            this.sortedMsgs.push(msg)
+          }
         })
-      }
+        .catch(function(err) {
+          console.log('Fetch Error :-S', err);
+        })
+      })
     }
   }
+}
 
 </script>
+
+
+<style lang="scss">
+@import '../assets/styles/_base';
+
+  .chat {
+    padding: 29px;
+    width: 100%;
+    max-width: 700px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 7px;
+    text-align: center;
+
+    h2 {
+      font-size: 2em;
+    }
+
+    &__items {
+      display: flex;
+      justify-content: space-around;
+
+      img {
+        width: 150px;
+        height: 150px;
+      }
+    }
+
+    &__messages {
+      margin: 3em 0;
+
+      p {
+        font-weight: 500;
+        display: inline-block;
+        max-width: 400px;
+        border-radius: 10px;
+        padding: .5em 1em;
+        margin-bottom: 1.5em;
+        background: rgba(255,255,255, .9);
+        float: left;
+
+        &.me {
+          float: right;
+          background: rgba(255,255,255, .5);
+        }
+      }
+
+      &__msg {
+        margin: 1em;
+        position: relative;
+        text-align: left;
+
+        span {
+          position: absolute;
+          bottom: 0;
+          left: 9px;
+
+          &.me {
+            left: auto;
+            right: 9px;
+          }
+        }
+      }
+    }
+
+    &__input {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+
+      textarea {
+        @include font;
+        width: 100%;
+        height: 80px;
+        background: rgba(255,255,255, .8);
+
+        &:focus {
+          outline-color: #fff;
+          background: rgba(255,255,255, .9);
+        }
+      }
+    }
+
+  }
+</style>
 

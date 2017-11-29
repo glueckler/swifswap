@@ -22,6 +22,70 @@
   </div>
 </template>
 
+<script>
+import moment from "moment";
+export default {
+  name: "Chats",
+  props: {
+    userData: {
+      required: true
+    }
+  },
+  data() {
+    return {
+      chats: {},
+      sortedChats: [],
+      loading: false
+    };
+  },
+  mounted() {
+    this.getChats()
+  },
+  methods: {
+    getChats() {
+      this.loading = true;
+
+      fetch("/api/chats", { credentials: "same-origin" }).then(response => {
+        response.json()
+        .then(data => {
+          data = data.sort((a, b) => {
+            return Date.parse(b.updated) - Date.parse(a.updated);
+          });
+          this.chats = data;
+          this.sortChats()
+          this.loading = false;
+        })
+        .catch(function(err) {
+          console.log("Fetch Error", err);
+        });
+      });
+    },
+    sortChats() {
+      this.sortedChats = []
+      for (let chat of this.chats) {
+        if (chat.receiver.id !== this.userData.id) {
+          var sortedChat = {
+            user: chat.receiver,
+            item: chat.receiverItem
+          }
+        } else {
+          var sortedChat = {
+            user: chat.sender,
+            item: chat.senderItem
+          }
+        }
+        sortedChat.updated = chat.updated
+        this.sortedChats.push(sortedChat)
+      }
+    },
+    convertTime(x) {
+      return moment(x).fromNow();
+    }
+  }
+};
+</script>
+
+
 <style lang="scss">
 @import "../assets/styles/_base";
 
@@ -86,66 +150,3 @@
   }
 }
 </style>
-
-<script>
-import moment from "moment";
-export default {
-  name: "Chats",
-  props: {
-    userData: {
-      required: true
-    }
-  },
-  data() {
-    return {
-      chats: {},
-      sortedChats: [],
-      loading: false
-    };
-  },
-  mounted() {
-    this.getChats()
-  },
-  methods: {
-    getChats() {
-      this.loading = true;
-
-      fetch("/api/chats", { credentials: "same-origin" }).then(response => {
-        response.json()
-        .then(data => {
-          data = data.sort((a, b) => {
-            return Date.parse(b.updated) - Date.parse(a.updated);
-          });
-          this.chats = data;
-          this.sortChats()
-          this.loading = false;
-        })
-        .catch(function(err) {
-          console.log("Fetch Error", err);
-        });
-      });
-    },
-    sortChats() {
-      this.sortedChats = []
-      for (let chat of this.chats) {
-        if (chat.receiver.id !== this.userData.id) {
-          var sortedChat = {
-            user: chat.receiver,
-            item: chat.receiverItem
-          }
-        } else {
-          var sortedChat = {
-            user: chat.sender,
-            item: chat.senderItem
-          }
-        }
-        sortedChat.updated = chat.updated
-        this.sortedChats.push(sortedChat)
-      }
-    },
-    convertTime(x) {
-      return moment(x).fromNow();
-    }
-  }
-};
-</script>

@@ -15,15 +15,16 @@
        <h2 class="profile__items__header">{{userData[0].userName}}'s swapabilia:</h2>
         <article  v-for="item in userData">
           <router-link :to="'/items/'+item.itemId">
-          <h2>{{item.itemName}}</h2>
-          <img :src="item.itemImage">
-          <div>{{item.itemDescription}}</div>
+            <h2>{{item.itemName}}</h2>
+            <img :src="item.itemImage">
           </router-link>
+          <p>{{item.itemDescription}}</p>
         </article>
       </div>
     </div>
   </main>
 </template>
+
 <script>
 export default {
   data () {
@@ -58,6 +59,7 @@ export default {
   }
 }
 </script>
+
 <style lang="scss">
 @import '../assets/styles/_base';
 .profile {
@@ -97,10 +99,18 @@ export default {
 
   &__items {
     border-top: 2px solid #ccc;
+    padding: 25px 0 60px;
 
     article {
       width: 100%;
-      max-width: 350px;
+      max-width: 400px;
+      box-sizing: border-box;
+      height: 500px;
+      padding: 0 20px;
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #efefef;
 
       h2 {
         text-align: center;
@@ -108,6 +118,7 @@ export default {
 
       img {
         width: 100%;
+        max-height: 550px;
       }
     }
 

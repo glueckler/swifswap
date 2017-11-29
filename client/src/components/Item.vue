@@ -25,6 +25,7 @@
 
 export default {
   name: 'Item',
+  props: ['userData'],
   data () {
     return {
       item: {},
@@ -55,7 +56,8 @@ export default {
       })
     },
     swap () {
-      this.chatInfo.senderId = '4'
+      console.log('in the swap function')
+      this.chatInfo.senderId = this.userData.id
       this.chatInfo.receiverId = this.item.user_id
       this.chatInfo.senderItemId = '6'
       this.chatInfo.receiverItemId = this.item.id
@@ -66,6 +68,7 @@ export default {
       },
       body: JSON.stringify(this.chatInfo)
       })
+      .then(this.$router.push('/chats'))
     },
   }
 }

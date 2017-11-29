@@ -1,4 +1,4 @@
-const fs = require('fs')
+  const fs = require('fs')
 const { items, users, chats, sessions } = require('./controllers/controller')
 const { api, client, bodyParser, multiParser } = require('./server.config')
 
@@ -114,6 +114,7 @@ api.delete('/items/:id', async ctx => {
 
 // Chats
 api.get('/chats', async ctx => {
+  ctx.user = await sessions.validate(ctx)
   ctx = await chats.getChatsByUserId(ctx)
 })
 

@@ -4,7 +4,7 @@ const chats = function (db) {
   const c = {}
 
   c.getChatsByUserId = async function (ctx) {
-    let userId = '3'
+    let userId = ctx.user.id
     const chats = await
       db('chats')
         .join('users as receiver', 'chats.receiver_id', 'receiver.id')

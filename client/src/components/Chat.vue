@@ -58,8 +58,14 @@ export default {
   },
   methods: {
     submit () {
-      this.messageInfo.userId = this.chat.sender.id
-      this.messageInfo.message = this.newMessage
+      if (this.chat.receiver.username !== this.userData.username) {
+        this.messageInfo.userId = this.chat.sender.id
+        this.messageInfo.message = this.newMessage
+      }
+      else {
+        this.messageInfo.userId = this.chat.receiver.id
+        this.messageInfo.message = this.newMessage
+      }
       fetch('/api/chats/' + this.$route.params.id, {
         method: 'post',
         headers: {

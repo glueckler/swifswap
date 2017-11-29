@@ -15,9 +15,19 @@
       </p>
     </div>
     <form>
-      <textarea placeholder="Type a message and hit enter or click swap to start a chat!" @keyup.enter="swap" v-model="chatInfo.message"></textarea>
+      <textarea placeholder="Type a message and select an item to swap, then hit enter or click the swap button!" @keyup.enter="swap" v-model="chatInfo.message"></textarea>
     </form>
     <button class="view-item__swap-button" v-on:click="swap">swap!</button>
+    <div v-if="userData && item.user_id !== userData.id" class="view-item__sender-swappabilia">
+      <h2 class="view-item__sender-swappabilia__header">Your swappabilia</h2>
+      <article v-on:click="select" v-for="senderItem in senderItems">
+        <!-- <div :data-item="senderItem.itemId" v-bind:class="{ active: senderItem.isActive }" v-on:click="toggle"> -->
+        <div :data-item="senderItem.itemId" v-bind:class="{ active: senderItem.isActive }">
+          <h4>{{ senderItem.itemName }}</h4>
+          <img :src="senderItem.itemImage">
+        </div>
+      </article>
+    </div>
   </div>
 </template>
 
@@ -28,12 +38,21 @@ export default {
   props: ['userData'],
   data () {
     return {
+      // isActive: false,
       item: {},
-      chatInfo: {}
+      chatInfo: {},
+      senderItems: {}
     }
   },
   mounted() {
+    console.log('item mounted running')
     this.getItem()
+    var timer = setInterval(() => {
+      if (this.userData) {
+        clearInterval(timer)
+        this.getSenderItems()
+      }
+    }, 200)
   },
   methods: {
     getItem () {
@@ -57,9 +76,10 @@ export default {
     },
     swap () {
       console.log('in the swap function')
+      console.log(this.chatInfo.senderItemId)
       this.chatInfo.senderId = this.userData.id
       this.chatInfo.receiverId = this.item.user_id
-      this.chatInfo.senderItemId = '6'
+      // this.chatInfo.senderItemId = '6'
       this.chatInfo.receiverItemId = this.item.id
       fetch('/api/chats', {
       method: 'post',
@@ -70,6 +90,37 @@ export default {
       })
       .then(this.$router.push('/chats'))
     },
+    getSenderItems () {
+      fetch ('/api/users/' + this.userData.id)
+      .then(response => {
+        if (response.status !== 200) {
+        console.log('Looks like there was a problem. Status Code: ' +
+          response.status);
+        return;
+        }
+        response.json().then((data) => {
+          for (let item of data) {
+            item.isActive = false;
+          }
+          this.senderItems = data
+        })
+        .catch(function(err) {
+          console.log('Fetch Error :-S', err);
+        })
+      })
+    },
+    select(e) {
+      console.log('you are in the select fxn')
+      const id = e.path[1].dataset.item
+      this.chatInfo.senderItemId = id
+      console.log(id)
+      this.senderItems.map(a => {
+        a.isActive = false
+        if (a.itemId == id) {
+          a.isActive = true
+        }
+      })
+    }
   }
 }
 </script>
@@ -93,5 +144,8 @@ export default {
       display: block;
 
     }
+  }
+  .active {
+    border: 1px solid black;
   }
 </style>

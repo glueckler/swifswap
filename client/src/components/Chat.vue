@@ -5,16 +5,18 @@
       <div class="chat__items">
         <div v-for="item in chat.items" class="chat__items__container">
           <router-link :to="'/items/'+item.id">
-          <h2 class="chat__items__container__name">{{ item.name }}</h2>
+          <h2 v-if="item.user_id === userData.id" class="chat__items__container__name">your {{ item.name }}</h2>
+          <h2 v-else class="chat__items__container__name">their {{ item.name }}</h2>
           <div class="chat__items__container__image">
             <img :src="item.photo" >
           </div>
           </router-link>
         </div>
       </div>
-      <div class="chat-text">
+      <div class="chat__chat-text">
         <div v-for="message in chat.messages">
-          <p>{{ message.messageAuthor }}: {{ message.messageContent }}</p>
+          <p v-if="message.messageAuthor === userData.username">{{ message.messageAuthor }}: {{ message.messageContent }}</p>
+          <p v-else class="chat__chat-text__receiver">{{ message.messageAuthor }}: {{ message.messageContent }}</p>
         </div>
         <form class="form" @keydown.enter.prevent="">
           <textarea placeholder="Enter a new message and hit enter" @keyup.enter.stop ="submit" v-model="newMessage"></textarea>
@@ -27,6 +29,11 @@
 <script>
 export default {
   name: 'Chat',
+    props: {
+    userData: {
+      required: true
+    }
+  },
   data () {
     return {
       newMessage: '',
@@ -37,6 +44,7 @@ export default {
   },
   mounted () {
     this.getMessages()
+    console.log('userData', this.userData)
   },
   methods: {
     submit () {
@@ -101,6 +109,11 @@ export default {
             width: 200px;
           }
         }
+      }
+    }
+    &__chat-text {
+      &__receiver{
+        text-align: right;
       }
     }
   

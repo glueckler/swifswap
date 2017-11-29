@@ -1,7 +1,7 @@
 <template>
   <footer>
     <ul>
-      <li><logo>swifswap</logo></li>
+      <li><div class="logo">swifswap</div></li>
       <li><img class="tall-boys" src="../assets/images/tallboys.png"></li>
       <li>Contact Us</li>
       <li>No Copyright</li>
@@ -42,7 +42,7 @@ footer {
         cursor: pointer;
         opacity: .7;
       }
-      logo {
+      .logo {
         font-weight: 700;
       }
       img {

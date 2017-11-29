@@ -2,7 +2,7 @@
   <div id="app">
     <div class="wrapper viewport">
       <NavBar :userData="userData"/>
-      <router-view/>
+      <router-view :userData="userData"/>
     </div>
     <FooterBar/>
   </div>
@@ -23,6 +23,7 @@ export default {
     }
   },
   created () {
+    console.log('app created function running')
     this.fetchUserData()
   },
   methods: {

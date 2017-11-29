@@ -15,9 +15,18 @@
       </p>
     </div>
     <form>
-      <textarea placeholder="Type a message and hit enter or click swap to start a chat!" @keyup.enter="swap" v-model="chatInfo.message"></textarea>
+      <textarea placeholder="Type a message and select an item to swap, then hit enter or click the swap button!" @keyup.enter="swap" v-model="chatInfo.message"></textarea>
     </form>
     <button class="view-item__swap-button" v-on:click="swap">swap!</button>
+    <div class="view-item__sender-swappabilia">
+      <h2 class="view-item__sender-swappabilia__header">Your swappabilia</h2>
+      <article v-on:click="select" v-for="senderItem in senderItems">
+        <div :data-item="senderItem.itemId">
+          <h4>{{ senderItem.itemName }}</h4>
+          <img :src="senderItem.itemImage">
+        </div>
+      </article>
+    </div>
   </div>
 </template>
 
@@ -59,9 +68,10 @@ export default {
     },
     swap () {
       console.log('in the swap function')
+      console.log(this.chatInfo.senderItemId)
       this.chatInfo.senderId = this.userData.id
       this.chatInfo.receiverId = this.item.user_id
-      this.chatInfo.senderItemId = '6'
+      // this.chatInfo.senderItemId = '6'
       this.chatInfo.receiverItemId = this.item.id
       fetch('/api/chats', {
       method: 'post',
@@ -87,6 +97,17 @@ export default {
           console.log('Fetch Error :-S', err);
         })
       })
+    },
+    select(e) {
+      console.log(e.path[1].dataset.item)
+
+      this.chatInfo.senderItemId = e.path[1].dataset.item
+      
+      console.log(e.currentTarget)
+      
+    }, 
+    toggle: function (clicked) {
+      clicked = !clicked
     }
   }
 }

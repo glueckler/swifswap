@@ -14,10 +14,19 @@
           </router-link>
         </div>
       </div>
-      <div class="chat__chat-text">
-        <div v-for="message in chat.messages">
+      <div class="chat__chat-text" v-if="chat.receiver.id !== userData.id">
+        <div v-for="message in chat.messages" >
           <p v-if="message.messageAuthor === userData.username">{{ message.messageAuthor }}: {{ message.messageContent }}</p>
           <p v-else class="chat__chat-text__receiver">{{ message.messageAuthor }}: {{ message.messageContent }}</p>
+        </div>
+        <form class="form" @keydown.enter.prevent="">
+          <textarea placeholder="Enter a new message and hit enter" @keyup.enter.stop ="submit" v-model="newMessage"></textarea>
+        </form>
+      </div>
+      <div class="chat__chat-text" v-else>
+        <div v-for="message in chat.messages" >
+          <p v-if="message.messageAuthor !== userData.username" class="chat__chat-text__receiver">{{ message.messageAuthor }}: {{ message.messageContent }}</p>
+          <p v-else >{{ message.messageAuthor }}: {{ message.messageContent }}</p>
         </div>
         <form class="form" @keydown.enter.prevent="">
           <textarea placeholder="Enter a new message and hit enter" @keyup.enter.stop ="submit" v-model="newMessage"></textarea>

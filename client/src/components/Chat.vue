@@ -5,7 +5,8 @@
       <div class="chat__items">
         <div v-for="item in chat.items" class="chat__items__container">
           <router-link :to="'/items/'+item.id">
-          <h2 class="chat__items__container__name">{{ item.name }}</h2>
+          <h2 v-if="item.user_id === userData.id" class="chat__items__container__name">your {{ item.name }}</h2>
+          <h2 v-else class="chat__items__container__name">their {{ item.name }}</h2>
           <div class="chat__items__container__image">
             <img :src="item.photo" >
           </div>

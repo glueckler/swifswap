@@ -13,12 +13,14 @@
       </div>
       <div class="profile__items">
        <h2 class="profile__items__header">{{userData[0].userName}}'s swapabilia:</h2>
-       <article  v-for="item in userData">
-         <h2>{{item.itemName}}</h2>
-         <img :src="item.itemImage">
-         <div>{{item.itemDescription}}</div>
-       </article>
-     </div>
+        <article  v-for="item in userData">
+          <router-link :to="'/items/'+item.itemId">
+          <h2>{{item.itemName}}</h2>
+          <img :src="item.itemImage">
+          <div>{{item.itemDescription}}</div>
+          </router-link>
+        </article>
+      </div>
     </div>
   </main>
 </template>
@@ -123,13 +125,3 @@ export default {
 }
 
 </style>
-
-
-
-
-
-
-
-
-
-

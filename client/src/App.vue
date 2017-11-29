@@ -2,7 +2,7 @@
   <div id="app">
     <div class="wrapper viewport">
       <NavBar :userData="userData"/>
-      <router-view/>
+      <router-view :userData="userData"/>
     </div>
     <FooterBar/>
   </div>

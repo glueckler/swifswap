@@ -5,7 +5,7 @@
       <div class="register-form">
         <h2 class="register-form__catch">Join the traders network!</h2>
         <h3 class="register-form__header">Join swifswap forever, or for a bit!  We've missed you!</h3>
-        <form class="register-form__form" v-on:submit.prevent="submitUser">
+        <form class="register-form__form">
           <input
             class="register-form__field"
             type="text"
@@ -28,7 +28,7 @@
             autocomplete="off"
           >
           <div
-            v-on:click="submitUser1"
+            v-on:click="submitUser"
             class="register-form__field button"
             type="submit">Register</div>
         </form>

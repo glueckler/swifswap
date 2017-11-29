@@ -1,7 +1,8 @@
 <template>
   <div>
     <div v-if="chat.receiver" class="chat">
-      <h1>your swifswap with {{ chat.receiver.username }}</h1>
+      <h1 v-if="userData.id === chat.sender.id">your swifswap with <router-link :to="'/users/'+ chat.receiver.id">{{ chat.receiver.username }}</router-link></h1>
+      <h1 v-else>your swifswap with <router-link :to="'/users/'+ chat.sender.id">{{ chat.sender.username }}</router-link></h1>
       <div class="chat__items">
         <div v-for="item in chat.items" class="chat__items__container">
           <router-link :to="'/items/'+item.id">

@@ -70,7 +70,8 @@ export default {
       const file = (document.getElementById('item-photo').files)[0]
       const imgName = file.name
       const ext = imgName.substring(imgName.lastIndexOf('.'))
-      const imgKey = imageUUID + ext
+      const imgKey = (imageUUID + ext).toLowerCase()
+
 
       this.formContent.imageUrl = apiHost + 'images/' + imgKey
 

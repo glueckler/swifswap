@@ -93,7 +93,6 @@ export default {
       console.log(this.chatInfo.senderItemId)
       this.chatInfo.senderId = this.userData.id
       this.chatInfo.receiverId = this.item.user_id
-      // this.chatInfo.senderItemId = '6'
       this.chatInfo.receiverItemId = this.item.id
       fetch('/api/chats', {
         method: 'post',

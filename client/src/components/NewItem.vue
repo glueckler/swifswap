@@ -82,7 +82,14 @@ export default {
         },
         body: JSON.stringify(this.formContent)
       })
-      .then((response) => response.text())
+      .then((response) => {
+        // todo, check if this does anything?
+        response.text()
+        // also find a way for the page to reload after image has uploaded
+        setTimeout(() => {
+          this.$router.push('/');
+        }, 1400)
+      })
       .catch(function (error) {
         console.log('Request failed', error);
       });
@@ -94,9 +101,6 @@ export default {
         method: 'post',
         body: formData
       })
-      setTimeout(() => {
-        this.$router.push('/');
-      }, 400)
     }
   },
   directives: {
@@ -114,7 +118,7 @@ export default {
 
 .new-item {
   padding: 0 29px 29px;
-  margin: 20px 20px 65px;
+  margin: 90px 0 25px;
   width: 100%;
   max-width: 600px;
   padding: 1em 3em;

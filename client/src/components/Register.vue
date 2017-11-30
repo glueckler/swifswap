@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="register fullscreen sofa-background"></div>
-    <div class="viewport flex-middle">
+    <div class="full-flex-middle">
       <div class="register-form">
         <h2 class="register-form__catch">Join the traders network!</h2>
         <h3 class="register-form__header">Join swifswap forever, or for a bit!  We've missed you!</h3>

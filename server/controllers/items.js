@@ -18,7 +18,6 @@ const items = function (db) {
       .where('items.id', paramsId)
       .then(data => data)
       .catch(err => console.log('Error in items controller (getItemById).. ', err))
-    console.log(itemsFull)
     return dbHelpers.flattenQuery(itemsFull)
   }
 

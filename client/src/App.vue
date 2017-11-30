@@ -23,7 +23,6 @@ export default {
     }
   },
   created () {
-    console.log('app created function running')
     this.fetchUserData()
   },
   methods: {
@@ -47,8 +46,59 @@ export default {
 
 <style lang="scss">
 
+body, html {
+  font-family: 'Work Sans', sans-serif;
+}
+
 .wrapper {
-  min-height: 100%;
+  overflow: hidden;
+}
+
+.fullscreen {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -5;
+}
+
+.full-flex-middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  margin-top: -65px;
+}
+
+.sofa-background {
+  background-image: url('./assets/images/swifsofa.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(6px);
+}
+
+.item-background {
+  @extend .sofa-background;
+  background-image: url('https://images.unsplash.com/photo-1494049694820-92a3163b10ad?auto=format&fit=crop&w=2822&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D');
+}
+
+.chats-background {
+  background-image: url('https://images.unsplash.com/photo-1509650926597-25eead3b6ca9?auto=format&fit=crop&w=2850&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D');
+  @extend .sofa-background;
+}
+
+.hidden.hidden.hidden {
+  display: none;
+}
+
+.clearfix:after {
+   content: ".";
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
 }
 
 

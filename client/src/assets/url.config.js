@@ -1,6 +1,6 @@
 let url = ''
 if (process.env.NODE_ENV === 'production') {
-   url = process.env.BASE_URL
+   url = '/'
 } else {
    url = 'http://localhost:3000/'
 }

@@ -199,7 +199,7 @@ export default {
 
       img {
         width: 100%;
-        max-height: 180px;
+        max-height: 175px;
         border: 1px solid #eee;
         box-sizing: border-box;
       }

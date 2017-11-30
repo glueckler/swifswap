@@ -8,6 +8,7 @@
       <li v-if="userData"> | <a :href="userData.profilePath" to="/"><small>profile</small></a></li>
       <li v-if="userData"> | <router-link to="/chats"><small>chats</small></router-link></li>
       <li v-if="userData"> | <a v-bind:href="logoutRoute"><small>logout</small></a></li>
+      <li v-if="userData"><small>( {{userData.username}} )</small></li>
     </ul>
   </nav>
 </template>

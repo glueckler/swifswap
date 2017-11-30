@@ -101,7 +101,9 @@ export default {
         },
         body: JSON.stringify(this.chatInfo)
       })
-      .then(this.$router.push('/chats'))
+      .then(setTimeout(() => {
+        this.$router.push('/chats')
+      }, 700))
     },
     getSenderItems () {
       fetch ('/api/users/' + this.userData.id)

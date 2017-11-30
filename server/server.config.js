@@ -43,7 +43,7 @@ app.use(async (ctx, next) => {
   await next()
 })
 
-app.use(history({ whiteList: ['/api', '/logout', '/sessions'] }))
+app.use(history({ whiteList: ['/api', '/logout', '/sessions', '/images'] }))
 
 app.use(serve('static'))
 app.use(serve('../client/dist'))

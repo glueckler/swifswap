@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { apiHost } from '../../url.config'
+import { apiHost } from '@/assets/url.config'
 
 const formContent = {
   username: '',
@@ -58,7 +58,7 @@ export default {
   data() {
     return {
       formContent,
-      register: apiHost + '/api/users'
+      register: apiHost + 'api/users'
     }
   },
   methods: {

@@ -29,7 +29,7 @@
 
 <script>
 import uuid from 'uuid/v4'
-import { apiHost } from '../../url.config.js'
+import { apiHost } from '@/assets/url.config.js'
 
 const formContent = {
   name: '',
@@ -72,7 +72,7 @@ export default {
       const ext = imgName.substring(imgName.lastIndexOf('.'))
       const imgKey = imageUUID + ext
 
-      this.formContent.imageUrl = apiHost + '/images/' + imgKey
+      this.formContent.imageUrl = apiHost + 'images/' + imgKey
 
       this.formContent.userId = this.userData.id
       fetch('/api/items', {

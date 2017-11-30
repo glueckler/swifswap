@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:client": "npm run dev --prefix ./client",
     "dev:sever": "npm run dev --prefix ./server",
-    "dev": "run-p dev:*"
+    "dev": "run-p dev:*",
+    "build": "NODE_ENV=production npm run build --prefix ./client",
+    "deploy": "NODE_ENV=production npm start --prefix ./server"
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,7 @@
   },
   "homepage": "https://github.com/glueckler/swifswap#readme",
   "dependencies": {
+    "koa2-connect-history-api-fallback": "0.0.6",
     "npm-run-all": "^4.1.2"
   },
   "devDependencies": {}

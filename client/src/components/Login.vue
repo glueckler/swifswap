@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { apiHost } from '../../url.config'
+import { apiHost } from '@/assets/url.config'
 export default {
   name: 'Login',
   data() {
@@ -41,7 +41,7 @@ export default {
         email: '',
         password: ''
       },
-      login: apiHost + '/sessions'
+      login: apiHost + 'sessions'
     }
   },
    directives: {
@@ -51,8 +51,8 @@ export default {
         }
       }
     }
-  
-  
+
+
 }
 </script>
 

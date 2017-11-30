@@ -10,7 +10,8 @@ const multiParser = require('koa-body')({
   multipart: true,
   formidable: {
     uploadDir: path.join(__dirname, 'static/images'),
-    keepExtensions: true
+    keepExtensions: true,
+    maxFieldsSize: 4 * 1024 * 1024
   }
 })
 const { sessions } = require('./controllers/controller')

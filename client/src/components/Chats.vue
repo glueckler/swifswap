@@ -5,7 +5,7 @@
       <div class="chats">
         <h2 v-if="chats.length === 0" style="text-align: center">no swifswaps yet</h2>
         <h2 v-else>your swifswaps</h2>
-        
+
         <i v-show="loading" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
         <div class="chats__chat" v-for="chat in sortedChats">
           <div class="chats__chat__img">
@@ -51,7 +51,11 @@ export default {
         response.json()
         .then(data => {
           data = data.sort((a, b) => {
-            return Date.parse(b.updated) - Date.parse(a.updated);
+            if (a.updated && b.updated) {
+              return Date.parse(b.updated) - Date.parse(a.updated)
+            } else {
+              return Date.parse(b.created) - Date.parse(a.created)
+            }
           });
           this.chats = data;
           this.sortChats()
@@ -78,6 +82,9 @@ export default {
         }
         sortedChat.id = chat.id
         sortedChat.updated = chat.updated
+        if (!sortedChat.updated) {
+          sortedChat.updated = chat.created
+        }
         this.sortedChats.push(sortedChat)
       }
     },
@@ -94,6 +101,7 @@ export default {
 
 .chats {
   padding: 29px;
+  margin: 90px 0 25px;
   width: 100%;
   max-width: 700px;
   background: rgba(255, 255, 255, 0.8);

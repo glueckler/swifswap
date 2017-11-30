@@ -19,6 +19,7 @@ const app = new Koa()
 app.keys = [process.env.SECRET]
 app.use(session({ key: 'swif:authentication', maxAge: 86400000 }, app))
 app.use(serve('static'))
+app.use(serve('../client/dist'))
 
 const api = new Router({ prefix: '/api' })
 const client = new Router()
@@ -55,8 +56,4 @@ module.exports = {
   path
 }
 
-if (process.env.NODE_ENV === 'production') {
-  app.listen(80, '0.0.0.0')
-} else {
-  app.listen(3000, '0.0.0.0')
-}
+app.listen(3000, '0.0.0.0')

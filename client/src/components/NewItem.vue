@@ -29,7 +29,7 @@
 
 <script>
 import uuid from 'uuid/v4'
-import { apiHost } from '../../url.config.js'
+import { apiHost } from '@/assets/url.config.js'
 
 const formContent = {
   name: '',

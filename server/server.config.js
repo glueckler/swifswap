@@ -55,4 +55,8 @@ module.exports = {
   path
 }
 
-app.listen(3000, '0.0.0.0')
+if (process.env.NODE_ENV === 'production') {
+  app.listen(80, '0.0.0.0')
+} else {
+  app.listen(3000, '0.0.0.0')
+}

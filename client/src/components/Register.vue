@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { apiHost } from '../../url.config'
+import { apiHost } from '@/assets/url.config'
 
 const formContent = {
   username: '',

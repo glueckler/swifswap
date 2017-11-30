@@ -1,0 +1,39 @@
+{
+  "name": "swifswap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon",
+    "heart": "echo '<3'"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^4.11.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "koa-logger": "^3.1.0",
+    "nodemon": "^1.12.1",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
+  },
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "eslint-plugin-import": "^2.8.0",
+    "knex": "^0.14.0",
+    "koa": "^2.4.1",
+    "koa-body": "^2.5.0",
+    "koa-multer": "^1.0.2",
+    "koa-router": "^7.3.0",
+    "koa-session": "^5.5.1",
+    "koa-static": "^4.0.2",
+    "lodash": "^4.17.4",
+    "moment": "^2.19.2",
+    "path": "^0.12.7",
+    "pg": "^7.4.0"
+  }
+}

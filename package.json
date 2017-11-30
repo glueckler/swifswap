@@ -1,27 +1,29 @@
 {
   "name": "swifswap",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "description": "LHL Final Project",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon",
-    "heart": "echo '<3'"
+    "dev:client": "npm run dev --prefix ./client",
+    "dev:sever": "npm run dev --prefix ./server",
+    "dev": "run-p dev:*"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glueckler/swifswap.git"
+  },
+  "keywords": [
+    "app"
+  ],
+  "author": "Dean and Thomas",
   "license": "ISC",
-  "devDependencies": {
-    "koa-logger": "^3.1.0",
-    "nodemon": "^1.12.1",
-    "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.4"
+  "bugs": {
+    "url": "https://github.com/glueckler/swifswap/issues"
   },
+  "homepage": "https://github.com/glueckler/swifswap#readme",
   "dependencies": {
-    "dotenv": "^4.0.0",
-    "koa": "^2.4.1",
-    "koa-router": "^7.3.0",
-    "path": "^0.12.7",
-    "knex": "^0.14.0",
-    "pg": "^7.4.0"
-  }
+    "npm-run-all": "^4.1.2"
+  },
+  "devDependencies": {}
 }

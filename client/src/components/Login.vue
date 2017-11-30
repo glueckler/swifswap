@@ -12,6 +12,7 @@
             placeholder="username"
             autocomplete="off"
             autofocus
+            v-focus
           >
           <input
             class="margin-bottom"
@@ -42,7 +43,14 @@ export default {
       },
       login: apiHost + '/sessions'
     }
-  }
+  }, 
+  directives: {
+      focus: {
+        inserted: function (el) {
+          el.focus()
+        }
+      }
+    }
 }
 </script>
 

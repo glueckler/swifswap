@@ -32,10 +32,10 @@ import uuid from 'uuid/v4'
 import { apiHost } from '../../url.config.js'
 
 const formContent = {
-  name: 'TallyHo',
-  description: 'it\'s whatever I wasn\'t even alive back then',
+  name: '',
+  description: '',
   tags: ['Other'],
-  imageUrl: 'http://fillmurray.com/g/190/200'
+  imageUrl: ''
 }
 
 export default {

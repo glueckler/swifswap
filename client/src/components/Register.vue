@@ -14,6 +14,7 @@
             placeholder="username"
             autocomplete="off"
             autofocus
+            v-focus
           >
           <input
             class="register-form__field"
@@ -84,7 +85,14 @@ export default {
       })
       .then(this.$router.push('/'))
     }
-  }
+  },
+  directives: {
+      focus: {
+        inserted: function (el) {
+          el.focus()
+        }
+      }
+    }
 }
 </script>
 <style lang="scss">

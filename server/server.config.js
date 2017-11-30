@@ -14,15 +14,12 @@ const multiParser = require('koa-body')({
   }
 })
 const { sessions } = require('./controllers/controller')
+const history = require('koa2-connect-history-api-fallback')
 
 const app = new Koa()
-app.keys = [process.env.SECRET]
-app.use(session({ key: 'swif:authentication', maxAge: 86400000 }, app))
-app.use(serve('static'))
-app.use(serve('../client/dist'))
 
 const api = new Router({ prefix: '/api' })
-const client = new Router()
+const router = new Router()
 
 if (process.env.NODE_ENV === 'development') {
   console.log('koa server script running in development ENV!')
@@ -39,18 +36,25 @@ app.use(async (ctx, next) => {
   }
 })
 
+app.keys = [process.env.SECRET]
+app.use(session({ key: 'swif:authentication', maxAge: 86400000 }, app))
 app.use(async (ctx, next) => {
   ctx.user = await sessions.validate(ctx)
   await next()
 })
 
+app.use(history({ whiteList: ['/api', '/logout', '/sessions'] }))
+
+app.use(serve('static'))
+app.use(serve('../client/dist'))
+
 app.use(api.routes())
-app.use(client.routes())
+app.use(router.routes())
 
 module.exports = {
   app,
   api,
-  client,
+  router,
   bodyParser,
   multiParser,
   path

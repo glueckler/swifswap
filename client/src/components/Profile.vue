@@ -93,24 +93,29 @@ export default {
     font-size: 1.5em;
   }
 
-  &__location {
-
-  }
-
   &__items {
     border-top: 2px solid #ccc;
     padding: 25px 0 60px;
 
     article {
       width: 100%;
-      max-width: 400px;
+      max-width: 50%;
       box-sizing: border-box;
       height: 500px;
       padding: 0 20px;
       display: inline-flex;
       flex-direction: column;
       justify-content: space-between;
-      background: #efefef;
+      background: $light-bg-1;
+
+      a {
+        text-decoration: none;
+        @include font;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
 
       h2 {
         text-align: center;
@@ -119,6 +124,12 @@ export default {
       img {
         width: 100%;
         max-height: 550px;
+        @include box-shadow;
+        transition: .3s all ease-out;
+
+        &:hover {
+          transform: scale(1.01);
+        }
       }
     }
 

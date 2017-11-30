@@ -2,7 +2,7 @@
   <div>
     <div class="fullscreen chats-background"></div>
     <div v-if="users.you">
-      <main class="viewport flex-middle">
+      <main class="full-flex-middle">
         <div class="chat">
           <h2>your swap with {{users.you.username}}</h2>
           <div class="chat__items">
@@ -91,10 +91,14 @@ export default {
           this.chat = data
           this.sortedMsgs = []
           if (this.userData.id === data.sender.id) {
-            this.users.me = data.sender
-            this.users.you = data.receiver
-            this.items.me = data.items.find((a) => a.user_id === this.userData.id)
-            this.items.you = data.items.find(a => a.user_id === data.receiver.id)
+            this.users = {
+              me: data.sender,
+              you: data.receiver
+            }
+            this.items = {
+              me: data.items.find(a => a.user_id === data.sender.id),
+              you: data.items.find(a => a.user_id === data.receiver.id)
+            }
           } else {
             this.users = {
               me: data.receiver,
@@ -193,15 +197,7 @@ export default {
       margin: 0 auto;
 
       textarea {
-        @include font;
-        width: 100%;
-        height: 80px;
-        background: rgba(255,255,255, .8);
-
-        &:focus {
-          outline-color: #fff;
-          background: rgba(255,255,255, .9);
-        }
+        @include textarea-basic;
       }
     }
 

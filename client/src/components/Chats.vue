@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="fullscreen chats-background"></div>
-    <div class="viewport flex-middle">
+    <div class="full-flex-middle">
       <div class="chats">
         <h2>your swifswaps</h2>
         <i v-show="loading" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>

@@ -8,33 +8,94 @@
     </div>
     <div class="view-item__info">
       <p>{{ item.description }}</p>
-      <p>tag(s): 
+      <p>tag(s):
         <ul>
           <li v-for="tag in item.tagName">{{ tag }}</li>
         </ul>
       </p>
     </div>
     <div class="view-item__swap-section" v-if="userData && item.user_id !== userData.id">
-      <form>
-        <textarea placeholder="Type a message and select an item to swap, then hit enter or click the swap button!" @keyup.enter="swap" v-model="chatInfo.message"></textarea>
-      </form>
-      <button class="view-item__swap-button" v-on:click="swap">swap!</button>
-      <div  class="view-item__sender-swappabilia">
-        <h2 class="view-item__sender-swappabilia__header">Your swappabilia</h2>
+      <div  class="view-item__sender-swappabilia clearfix">
+        <h2 class="view-item__sender-swappabilia__header">Your swappabilia (offer an item...)</h2>
         <article v-on:click="select" v-for="senderItem in senderItems">
-          <!-- <div :data-item="senderItem.itemId" v-bind:class="{ active: senderItem.isActive }" v-on:click="toggle"> -->
           <div :data-item="senderItem.itemId" v-bind:class="{ active: senderItem.isActive }">
             <h4>{{ senderItem.itemName }}</h4>
             <img :src="senderItem.itemImage">
           </div>
         </article>
       </div>
+      <form>
+        <textarea placeholder="Type a message and select an item to swap, then hit enter or click the swap button!" @keyup.enter="swap" v-model="chatInfo.message"></textarea>
+      </form>
+      <button class="view-item__swap-button" v-on:click="swap">swap!</button>
     </div>
     <div v-else>
       <p><router-link to="/">Go find something to swap for your item!</router-link></p>
     </div>
   </div>
 </template>
+
+
+<style lang="scss">
+@import '../assets/styles/_base';
+
+.view-item {
+  width: 100%;
+  max-width: 600px;
+  margin: 25px auto;
+  padding: 1.5em 2.5em;
+  background: $light-bg-1;
+
+  &__name {
+    text-align: center;
+  }
+
+  &__photo {
+    @include box-shadow;
+
+    img{
+      width: 100%;
+    }
+  }
+  textarea {
+    @include textarea-basic;
+  }
+  button {
+    margin: auto;
+    display: block;
+
+  }
+
+  &__sender-swappabilia {
+
+    article {
+      float: left;
+      width: 33%;
+      box-sizing: border-box;
+      padding: .7em;
+      background: #fff;
+      @include box-shadow;
+      margin-bottom: 1em;
+
+      h4 {
+        text-align: center;
+      }
+
+      img {
+        width: 100%;
+        border: 1px solid #eee;
+        box-sizing: border-box;
+      }
+    }
+  }
+}
+
+.active {
+  border: 2px solid #a2cbec;
+  border-radius: 5px;
+}
+</style>
+
 
 <script>
 
@@ -61,23 +122,23 @@ export default {
   },
   methods: {
     getItem () {
-    fetch('/api/items/' + this.$route.params.id)
+      fetch('/api/items/' + this.$route.params.id)
       .then(response => {
-         if (response.status !== 200) {
-          console.log('Looks like there was a problem. Status Code: ' +
-            response.status);
-          return;
-          }
-          response.json().then((data) => {
-            if (typeof data.tagName === 'string') {
-              data.tagName = [data.tagName]
-              }
-            this.item = data
-          })
-          .catch(function(err) {
-            console.log('Fetch Error :-S', err);
-          })
+       if (response.status !== 200) {
+        console.log('Looks like there was a problem. Status Code: ' +
+          response.status);
+        return;
+      }
+      response.json().then((data) => {
+        if (typeof data.tagName === 'string') {
+          data.tagName = [data.tagName]
+        }
+        this.item = data
       })
+      .catch(function(err) {
+        console.log('Fetch Error :-S', err);
+      })
+    })
     },
     swap () {
       console.log('in the swap function')
@@ -87,11 +148,11 @@ export default {
       // this.chatInfo.senderItemId = '6'
       this.chatInfo.receiverItemId = this.item.id
       fetch('/api/chats', {
-      method: 'post',
-      headers: {
-        "Content-type": "application/json"
-      },
-      body: JSON.stringify(this.chatInfo)
+        method: 'post',
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(this.chatInfo)
       })
       .then(this.$router.push('/chats'))
     },
@@ -99,9 +160,9 @@ export default {
       fetch ('/api/users/' + this.userData.id)
       .then(response => {
         if (response.status !== 200) {
-        console.log('Looks like there was a problem. Status Code: ' +
-          response.status);
-        return;
+          console.log('Looks like there was a problem. Status Code: ' +
+            response.status);
+          return;
         }
         response.json().then((data) => {
           for (let item of data) {
@@ -129,28 +190,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-  .view-item {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-
-    &__photo {
-      img{
-        max-width: 600px;
-      }
-    }
-    textarea {
-      width: 100%;
-    }
-    button {
-      margin: auto;
-      display: block;
-
-    }
-  }
-  .active {
-    border: 1px solid black;
-  }
-</style>

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="register fullscreen item-background"></div>
-    <div class="viewport flex-middle">
+    <div class="fullscreen item-background"></div>
+    <div class="full-flex-middle">
       <div class="new-item">
         <h2>New Item</h2>
         <h3 class="new-item__sub-header">Add some new swapabilia, you're allowed one image.  Make it count!</h3>

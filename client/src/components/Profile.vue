@@ -15,7 +15,8 @@
        <h2 class="profile__items__header">{{userData[0].userName}}'s swapabilia:</h2>
         <article  v-for="item in userData">
           <router-link :to="'/items/'+item.itemId">
-            <h2>{{item.itemName}}</h2>
+            <h2 v-if="item.itemName">{{item.itemName}}</h2>
+            <h2 v-else>anon</h2>
             <img :src="item.itemImage">
           </router-link>
           <p>{{item.itemDescription}}</p>
@@ -98,8 +99,9 @@ export default {
     padding: 25px 0 60px;
 
     article {
-      width: 100%;
-      max-width: 50%;
+      width: calc(50% - 10px);
+      margin: 5px;
+      vertical-align: top;
       box-sizing: border-box;
       height: 500px;
       padding: 0 20px;

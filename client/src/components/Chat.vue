@@ -28,7 +28,7 @@
             </div>
           </div>
           <form class="chat__input" @keydown.enter.prevent="">
-            <textarea placeholder="Enter a new message and hit enter" @keyup.enter.stop="submit" v-model="newMessage"></textarea>
+            <textarea placeholder="Enter a new message and hit enter" @keyup.enter.stop="submit" v-model="newMessage" v-focus></textarea>
           </form>
         </div>
       </main>
@@ -122,8 +122,16 @@ export default {
           console.log('Fetch Error :-S', err);
         })
       })
+    },
+    
+  }, 
+   directives: {
+      focus: {
+        inserted: function (el) {
+          el.focus()
+        }
+      }
     }
-  }
 }
 
 </script>

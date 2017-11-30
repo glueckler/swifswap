@@ -25,7 +25,7 @@
         </article>
       </div>
       <form>
-        <textarea placeholder="Type a message and select an item to swap, then hit enter or click the swap button!" @keyup.enter="swap" v-model="chatInfo.message"></textarea>
+        <textarea placeholder="Type a message and select an item to swap, then hit enter or click the swap button!" @keyup.enter="swap" v-model="chatInfo.message" v-focus></textarea>
       </form>
       <button class="view-item__swap-button" v-on:click="swap">swap!</button>
     </div>
@@ -125,7 +125,14 @@ export default {
         }
       })
     }
-  }
+  },
+   directives: {
+      focus: {
+        inserted: function (el) {
+          el.focus()
+        }
+      }
+    }
 }
 </script>
 

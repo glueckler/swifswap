@@ -6,7 +6,7 @@
         <h2>New Item</h2>
         <h3 class="new-item__sub-header">Add some new swapabilia, you're allowed one image.  Make it count!</h3>
         <h2 class="new-item__field-name">Item Name</h2>
-        <input class="new-item__field" v-model.trim="formContent.name">
+        <input class="new-item__field" v-model.trim="formContent.name" v-focus>
         <h2 class="new-item__field-name">Item Description</h2>
         <input class="new-item__field" v-model.trim="formContent.description">
         <div v-if="!image">
@@ -97,6 +97,13 @@ export default {
       setTimeout(() => {
         this.$router.push('/');
       }, 400)
+    }
+  },
+  directives: {
+    focus: {
+      inserted: function (el) {
+        el.focus()
+      }
     }
   }
 }

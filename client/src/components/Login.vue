@@ -43,14 +43,16 @@ export default {
       },
       login: apiHost + '/sessions'
     }
-  }, 
-  directives: {
+  },
+   directives: {
       focus: {
         inserted: function (el) {
           el.focus()
         }
       }
     }
+  
+  
 }
 </script>
 

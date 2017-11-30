@@ -39,6 +39,7 @@ const formContent = {
 }
 
 export default {
+  props: ['userData'],
   data () {
     return {
       formContent,
@@ -73,6 +74,7 @@ export default {
 
       this.formContent.imageUrl = apiHost + '/images/' + imgKey
 
+      this.formContent.userId = this.userData.id
       fetch('/api/items', {
         method: 'post',
         headers: {

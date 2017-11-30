@@ -22,11 +22,8 @@ const items = function (db) {
   }
 
   i.createItem = async function (ctx) {
-    // todo: fix this hardcoded user scene..
-    const userId = '5'
-
     const postBody = ctx.request.body
-    const { name, description, imageUrl, tags } = postBody
+    const { name, description, imageUrl, userId, tags } = postBody
 
     const itemId = await db.insert({
       name,

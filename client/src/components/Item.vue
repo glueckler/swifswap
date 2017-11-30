@@ -35,68 +35,6 @@
   </div>
 </template>
 
-
-<style lang="scss">
-@import '../assets/styles/_base';
-
-.view-item {
-  width: 100%;
-  max-width: 600px;
-  margin: 25px auto;
-  padding: 1.5em 2.5em;
-  background: $light-bg-1;
-
-  &__name {
-    text-align: center;
-  }
-
-  &__photo {
-    @include box-shadow;
-
-    img{
-      width: 100%;
-    }
-  }
-  textarea {
-    @include textarea-basic;
-  }
-  button {
-    margin: auto;
-    display: block;
-
-  }
-
-  &__sender-swappabilia {
-
-    article {
-      float: left;
-      width: 33%;
-      box-sizing: border-box;
-      padding: .7em;
-      background: #fff;
-      @include box-shadow;
-      margin-bottom: 1em;
-
-      h4 {
-        text-align: center;
-      }
-
-      img {
-        width: 100%;
-        border: 1px solid #eee;
-        box-sizing: border-box;
-      }
-    }
-  }
-}
-
-.active {
-  border: 2px solid #a2cbec;
-  border-radius: 5px;
-}
-</style>
-
-
 <script>
 
 export default {
@@ -124,8 +62,8 @@ export default {
     getItem () {
       fetch('/api/items/' + this.$route.params.id)
       .then(response => {
-       if (response.status !== 200) {
-        console.log('Looks like there was a problem. Status Code: ' +
+        if (response.status !== 200) {
+          console.log('Looks like there was a problem. Status Code: ' +
           response.status);
         return;
       }
@@ -190,3 +128,63 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+@import '../assets/styles/_base';
+
+.view-item {
+  width: 100%;
+  max-width: 600px;
+  margin: 25px auto;
+  padding: 1.5em 2.5em;
+  background: $light-bg-1;
+
+  &__name {
+    text-align: center;
+  }
+
+  &__photo {
+    @include box-shadow;
+
+    img{
+      width: 100%;
+    }
+  }
+  textarea {
+    @include textarea-basic;
+  }
+  button {
+    margin: auto;
+    display: block;
+
+  }
+
+  &__sender-swappabilia {
+
+    article {
+      float: left;
+      width: 33%;
+      box-sizing: border-box;
+      padding: .7em;
+      background: #fff;
+      @include box-shadow;
+      margin-bottom: 1em;
+
+      h4 {
+        text-align: center;
+      }
+
+      img {
+        width: 100%;
+        border: 1px solid #eee;
+        box-sizing: border-box;
+      }
+    }
+  }
+}
+
+.active {
+  border: 2px solid #a2cbec;
+  border-radius: 5px;
+}
+</style>

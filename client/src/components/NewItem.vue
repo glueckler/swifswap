@@ -87,12 +87,9 @@ export default {
         // todo, check if this does anything?
         response.text()
         // also find a way for the page to reload after image has uploaded
-        setTimeout(() => {
-          this.$router.push('/');
-        }, 1400)
       })
       .catch(function (error) {
-        console.log('Request failed', error);
+        console.log('Pushing form text fields failed', error);
       });
 
       const formData = new FormData()
@@ -102,6 +99,14 @@ export default {
         method: 'post',
         body: formData
       })
+      .then(
+        setTimeout(() => {
+          this.$router.push('/');
+        }, 1400)
+      )
+      .catch(function (error) {
+        console.log('Pushing form files failed', error);
+      });
     }
   },
   directives: {

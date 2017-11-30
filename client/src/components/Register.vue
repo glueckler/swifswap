@@ -58,7 +58,7 @@ export default {
   data() {
     return {
       formContent,
-      register: apiHost + '/api/users'
+      register: apiHost + 'api/users'
     }
   },
   methods: {

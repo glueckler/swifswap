@@ -72,7 +72,7 @@ export default {
       const ext = imgName.substring(imgName.lastIndexOf('.'))
       const imgKey = imageUUID + ext
 
-      this.formContent.imageUrl = apiHost + '/images/' + imgKey
+      this.formContent.imageUrl = apiHost + 'images/' + imgKey
 
       this.formContent.userId = this.userData.id
       fetch('/api/items', {

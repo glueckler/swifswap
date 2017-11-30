@@ -22,7 +22,7 @@ export default {
   },
   data () {
     return {
-      logoutRoute: apiHost + '/logout'
+      logoutRoute: apiHost + 'logout'
     }
   }
 }

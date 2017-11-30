@@ -41,7 +41,7 @@ export default {
         email: '',
         password: ''
       },
-      login: apiHost + '/sessions'
+      login: apiHost + 'sessions'
     }
   },
    directives: {
@@ -51,8 +51,8 @@ export default {
         }
       }
     }
-  
-  
+
+
 }
 </script>
 

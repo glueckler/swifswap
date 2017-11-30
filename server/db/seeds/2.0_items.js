@@ -8,19 +8,19 @@ exports.seed = function (knex, Promise) {
         name: 'atom bomb',
         description: 'with great atom bomb comes great responsibility',
         user_id: 2,
-        img_path: 'https://previews.123rf.com/images/lineartestpilot/lineartestpilot1401/lineartestpilot140101096/24799563-cartoon-atom-bomb-Stock-Vector.jpg'
+        img_path: 'https://i.stack.imgur.com/C3qcc.png'
       },
       {
         name: 'hat',
         description: 'you might like to put it on your head',
         user_id: 1,
-        img_path: 'https://static.giantbomb.com/uploads/original/10/103701/1791449-newtophat.jpg'
+        img_path: 'https://i.pinimg.com/originals/d1/3c/c8/d13cc8fb971fbaf4cd3cdfc031bc79f3.jpg'
       },
       {
         name: 'shoe',
         description: 'where is the other one?  bear is driving?  how can that be?',
         user_id: 1,
-        img_path: 'http://www.carltonlondon.co.uk/images/carlton-london-ken-leather-moccasin-shoe-red-p536-2334_image.jpg'
+        img_path: 'https://www.askideas.com/media/16/Box-Funny-Nike-Shoes.jpg'
       },
       {
         name: 'car',
@@ -44,13 +44,13 @@ exports.seed = function (knex, Promise) {
         name: 'power mac',
         description: 'filled with power, entirely to the upper boundary',
         user_id: 5,
-        img_path: 'https://cdn.cultofmac.com/wp-content/uploads/2017/03/Power_Macintosh_7220-780x482.jpg'
+        img_path: 'http://www.applegazette.com/wp-content/uploads/powermac_mailbox-550x733.jpg'
       },
       {
         name: 'coffee mug',
         description: 'a dainty yet elegant liquids vessel (not a liquid vessel, that would not work)',
         user_id: 5,
-        img_path: 'http://www.ikea.com/gb/en/images/products/ikea-365-mug-white__0328949_pe520151_s5.jpg'
+        img_path: 'https://img0.etsystatic.com/208/2/15817494/il_340x270.1295300294_pqo3.jpg'
       },
       ])
     })

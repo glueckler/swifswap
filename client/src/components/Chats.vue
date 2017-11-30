@@ -3,7 +3,9 @@
     <div class="fullscreen chats-background"></div>
     <div class="full-flex-middle">
       <div class="chats">
-        <h2>your swifswaps</h2>
+        <h2 v-if="chats.length === 0" style="text-align: center">no swifswaps yet</h2>
+        <h2 v-else>your swifswaps</h2>
+        
         <i v-show="loading" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
         <div class="chats__chat" v-for="chat in sortedChats">
           <div class="chats__chat__img">

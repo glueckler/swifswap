@@ -72,6 +72,10 @@ body, html {
   margin-top: -65px;
 }
 
+.top-padding {
+  padding-top: 65px;
+}
+
 .sofa-background {
   background-image: url('./assets/images/swifsofa.jpg');
   background-repeat: no-repeat;

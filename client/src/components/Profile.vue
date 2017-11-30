@@ -99,13 +99,15 @@ export default {
   &__items {
     border-top: 2px solid #ccc;
     padding: 25px 0 60px;
+    margin-bottom: 5px;
 
     article {
       width: calc(50% - 10px);
       margin: 5px;
       vertical-align: top;
       box-sizing: border-box;
-      height: 500px;
+      min-height: 550px;
+      overflow: scroll;
       padding: 0 20px;
       display: inline-flex;
       flex-direction: column;

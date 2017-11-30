@@ -87,6 +87,8 @@ export default {
         // todo, check if this does anything?
         response.text()
         // also find a way for the page to reload after image has uploaded
+        this.formContent.name = ''
+        this.formContent.description = ''
       })
       .catch(function (error) {
         console.log('Pushing form text fields failed', error);

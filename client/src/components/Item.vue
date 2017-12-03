@@ -27,11 +27,11 @@
           </article>
         </div>
       </div>
-      <form class="swap-form">
+      <form class="swap-form" >
         <textarea placeholder="Type a message and select an item to swap, then hit enter or click the swap button!" @keyup.enter="swap" v-model="chatInfo.message" v-focus></textarea>
         <input
           class="swap-form__field button"
-          type="submit"
+          v-on:click="swap"
           value="Swap!">
       </form>
       <!-- <button class="view-item__swap-button" v-on:click="swap">swap!</button> -->
@@ -101,7 +101,12 @@ export default {
         },
         body: JSON.stringify(this.chatInfo)
       })
-      .then(this.$router.push('/chats'))
+      .then(() => {
+        setTimeout(() => {
+          this.$router.push('/chats')
+        }, 700)
+      })
+      .catch(err => console.log('Error in swap function', err))
     },
     getSenderItems () {
       fetch ('/api/users/' + this.userData.id)
@@ -194,6 +199,7 @@ export default {
 
       img {
         width: 100%;
+        max-height: 175px;
         border: 1px solid #eee;
         box-sizing: border-box;
       }

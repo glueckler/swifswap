@@ -12,4 +12,4 @@
 
 ---
 
-![swifswap homepage](https://github.com/glueckler/swifswap/swifswap-screenshot.png "swifswap")
+![swifswap homepage](https://github.com/glueckler/swifswap/blob/master/swifswap-screenshot.png "swifswap")

@@ -1,36 +1,38 @@
 <template>
-  <main>
-    <div class="not-found" v-if="notFound">Not Found</div>
-    <div v-if="userData[0]" class="profile">
-      <div class="profile__container">
-        <div class="profile__photo">
-          <img :src="userData[0].userPhoto">
+  <div>
+    <div class="full-flex-middle top-padding">
+      <div class="not-found" v-if="notFound">Not Found</div>
+      <div v-if="profileData[0]" class="profile">
+        <div class="profile__container">
+          <div class="profile__photo">
+            <img :src="profileData[0].userPhoto">
+          </div>
+          <div class="profile__info">
+            <h2 class="profile__name">{{profileData[0].userName}}</h2>
+            <div class="profile__location">Location: {{profileData[0].userLocation}}</div>
+          </div>
         </div>
-        <div class="profile__info">
-          <h2 class="profile__name">{{userData[0].userName}}</h2>
-          <div class="profile__location">Location: {{userData[0].userLocation}}</div>
+        <div v-if="profileData[0].itemId" class="profile__items">
+        <h2 class="profile__items__header">{{profileData[0].userName}}'s swappabilia:</h2>
+          <article  v-for="item in profileData">
+            <router-link :to="'/items/'+item.itemId">
+              <h2 v-if="item.itemName">{{item.itemName}}</h2>
+              <h2 v-else>anon</h2>
+              <img :src="item.itemImage">
+            </router-link>
+            <p>{{item.itemDescription}}</p>
+          </article>
         </div>
-      </div>
-      <div class="profile__items">
-       <h2 class="profile__items__header">{{userData[0].userName}}'s swapabilia:</h2>
-        <article  v-for="item in userData">
-          <router-link :to="'/items/'+item.itemId">
-            <h2 v-if="item.itemName">{{item.itemName}}</h2>
-            <h2 v-else>anon</h2>
-            <img :src="item.itemImage">
-          </router-link>
-          <p>{{item.itemDescription}}</p>
-        </article>
       </div>
     </div>
-  </main>
+  </div>
 </template>
 
 <script>
 export default {
   data () {
     return {
-      userData: {},
+      profileData: {},
       notFound: false
     }
   },
@@ -48,7 +50,7 @@ export default {
       .then(response => {
         if (response.status === 200) {
           response.json().then(json => {
-            this.userData = json
+            this.profileData = json
           })
         }
         if (response.status === 400) {
@@ -97,13 +99,15 @@ export default {
   &__items {
     border-top: 2px solid #ccc;
     padding: 25px 0 60px;
+    margin-bottom: 5px;
 
     article {
       width: calc(50% - 10px);
       margin: 5px;
       vertical-align: top;
       box-sizing: border-box;
-      height: 500px;
+      min-height: 550px;
+      overflow: scroll;
       padding: 0 20px;
       display: inline-flex;
       flex-direction: column;

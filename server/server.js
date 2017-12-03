@@ -1,30 +1,33 @@
 const fs = require('fs')
 const { items, users, chats, sessions } = require('./controllers/controller')
-const { api, client, bodyParser, multiParser } = require('./server.config')
+const { api, router, bodyParser, multiParser } = require('./server.config')
 
-api.get('/', async ctx => {
-  await items.getHomePageItems(ctx)
-})
+// ------- R O U T E R R O U T E S --------
 
-// ------- C L I E N T  R O U T E S --------
-
-client.get('/', async ctx => {
+router.get('/', async ctx => {
   ctx.redirect('http://localhost:8080')
 })
 
-client.get('/logout', async ctx => {
+router.get('/logout', async ctx => {
   ctx = await sessions.destroySession(ctx)
   ctx.redirect('/')
 })
 
-client.post('/sessions', bodyParser, async ctx => {
+router.post('/sessions', bodyParser, async ctx => {
   ctx = await sessions.validateSignIn(ctx)
   ctx.redirect('/')
 })
 
 // ------- A P I  R O U T E S --------
+// api root
 
+api.get('/', async ctx => {
+  await items.getHomePageItems(ctx)
+})
+
+// ----------------------
 // user routes
+
 api.get('/usersession', async ctx => {
   ctx.user = await sessions.validate(ctx)
   if (ctx.user) {
@@ -63,8 +66,8 @@ api.delete('/users/:id', async ctx => {
 })
 
 // ----------------------
-
 // Sessions
+
 api.post('/sessions', bodyParser, async ctx => {
   ctx = await sessions.validateSignIn(ctx)
   ctx.redirect('/')
@@ -76,8 +79,8 @@ api.get('/destroy', async ctx => {
 })
 
 // ----------------------
-
 // Item
+
 api.get('/items/:id', async ctx => {
   const item = (await items.getItemById(ctx.params.id))
   ctx.body = item
@@ -104,8 +107,8 @@ api.delete('/items/:id', async ctx => {
 })
 
 // ----------------------
-
 // Chats
+
 api.get('/chats', async ctx => {
   ctx.user = await sessions.validate(ctx)
   ctx = await chats.getChatsByUserId(ctx)

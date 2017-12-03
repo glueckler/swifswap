@@ -37,9 +37,9 @@ export default {
   data() {
     return {
       loginForm: {
-        username: '',
+        username: 'carol',
         email: '',
-        password: ''
+        password: 'banana'
       },
       login: apiHost + 'sessions'
     }

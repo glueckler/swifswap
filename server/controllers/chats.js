@@ -29,7 +29,6 @@ const chats = function (db) {
         .orWhere('sender.id', userId)
 
     ctx.body = dbHelpers.flattenChats(chats)
-    console.log(ctx.body)
     return ctx
   }
 

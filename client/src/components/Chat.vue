@@ -123,8 +123,8 @@ export default {
         })
       })
     },
-    
-  }, 
+
+  },
    directives: {
       focus: {
         inserted: function (el) {
@@ -142,8 +142,9 @@ export default {
 
   .chat {
     padding: 29px;
+    margin: 90px 0 25px;
     width: 100%;
-    max-width: 700px;
+    max-width: 600px;
     background: rgba(255, 255, 255, 0.8);
     border-radius: 7px;
     text-align: center;

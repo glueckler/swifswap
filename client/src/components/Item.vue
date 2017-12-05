@@ -36,7 +36,7 @@
       </form>
       <!-- <button class="view-item__swap-button" v-on:click="swap">swap!</button> -->
     </div>
-    <div v-else-if="item.user_id === userData.id">
+    <div v-else-if="userData && item.user_id === userData.id">
       <p><router-link to="/">Go find something to swap for your item!</router-link></p>
     </div>
     <div v-else>
@@ -59,7 +59,6 @@ export default {
     }
   },
   mounted() {
-    console.log('item mounted running')
     this.getItem()
     var timer = setInterval(() => {
       if (this.userData) {
@@ -88,26 +87,6 @@ export default {
         })
       })
     },
-    swap () {
-      console.log('in the swap function')
-      console.log(this.chatInfo.senderItemId)
-      this.chatInfo.senderId = this.userData.id
-      this.chatInfo.receiverId = this.item.user_id
-      this.chatInfo.receiverItemId = this.item.id
-      fetch('/api/chats', {
-        method: 'post',
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify(this.chatInfo)
-      })
-      .then(() => {
-        setTimeout(() => {
-          this.$router.push('/chats')
-        }, 700)
-      })
-      .catch(err => console.log('Error in swap function', err))
-    },
     getSenderItems () {
       fetch ('/api/users/' + this.userData.id)
       .then(response => {
@@ -126,6 +105,24 @@ export default {
           console.log('Fetch Error :-S', err);
         })
       })
+    },
+    swap () {
+      this.chatInfo.senderId = this.userData.id
+      this.chatInfo.receiverId = this.item.user_id
+      this.chatInfo.receiverItemId = this.item.id
+      fetch('/api/chats', {
+        method: 'post',
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(this.chatInfo)
+      })
+      .then(() => {
+        setTimeout(() => {
+          this.$router.push('/chats')
+        }, 700)
+      })
+      .catch(err => console.log('Error in swap function', err))
     },
     select(e) {
       console.log('you are in the select fxn')

@@ -26,7 +26,7 @@
 
 ![swifswap homepage](https://github.com/glueckler/swifswap/blob/master/pics/pic-home.png "swifswap")
 
-![swifswap login](https://github.com/glueckler/swifswap/blob/master/pics/pic-login.png "login")
+![swifswap login](https://github.com/glueckler/swifswap/blob/master/pics/pic-login2.png "login")
 
 ![swifswap profile](https://github.com/glueckler/swifswap/blob/master/pics/pic-profile.png "profile")
 

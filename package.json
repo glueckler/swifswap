@@ -9,7 +9,9 @@
     "dev:sever": "npm run dev --prefix ./server",
     "dev": "run-p dev:*",
     "build": "NODE_ENV=production npm run build --prefix ./client",
-    "deploy": "NODE_ENV=production npm start --prefix ./server"
+    "deploy": "NODE_ENV=production npm start --prefix ./server",
+    "seed": "npm run seed --prefix ./server",
+    "migrate": "npm run migrate --prefix ./server"
   },
   "repository": {
     "type": "git",
